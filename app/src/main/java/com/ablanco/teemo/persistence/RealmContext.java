@@ -35,12 +35,20 @@ public class RealmContext{
                         .build());
     }
 
-
-    public void saveData(RealmObject data) {
-        saveData(data, null);
+    public void deleteAll(final Class<? extends RealmObject> clazz){
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.clear(clazz);
+            }
+        });
     }
 
-    public void saveData(final RealmObject data, final Realm.Transaction.Callback callback) {
+    public void save(RealmObject data) {
+        save(data, null);
+    }
+
+    public void save(final RealmObject data, final Realm.Transaction.Callback callback) {
 
 
         mRealm.executeTransaction(new Realm.Transaction() {

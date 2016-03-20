@@ -37,7 +37,6 @@ public class Teemo {
 
     private static Teemo mInstance;
     private Retrofit retrofit;
-    private ConfigurationHandler mConfigurationHandler;
     private ChampionsServiceI mChampionsServiceHandler;
 
     public static Teemo getInstance(Context context) {
@@ -63,21 +62,19 @@ public class Teemo {
 
     private Teemo(Context context, String apiKey, String region) {
 
-        mConfigurationHandler = new ConfigurationHandler();
 
         if(apiKey == null){
             try {
                 ApplicationInfo ai = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
                 Bundle bundle = ai.metaData;
                 apiKey = bundle.getString(META_DATA_API_KEY);
-                mConfigurationHandler.setApiKey(apiKey);
             } catch (PackageManager.NameNotFoundException | NullPointerException e) {
                 throw new IllegalStateException("");
             }
         }
 
-        mConfigurationHandler.setApiKey(apiKey);
-        mConfigurationHandler.setRegion(region);
+        APIConfigurationContext.API_KEY = apiKey;
+        APIConfigurationContext.setRegion(region);
 
         if(region != null){
             buildRetrofit(context);
@@ -85,7 +82,7 @@ public class Teemo {
     }
 
     public void setRegion(Context context, String region){
-        mConfigurationHandler.setRegion(region);
+        APIConfigurationContext.setRegion(region);
         buildRetrofit(context);
     }
 
@@ -95,7 +92,7 @@ public class Teemo {
             @Override
             public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
                 Request request = chain.request();
-                HttpUrl url = request.url().newBuilder().addQueryParameter(API_KEY_PARAM, mConfigurationHandler.getApiKey()).build();
+                HttpUrl url = request.url().newBuilder().addQueryParameter(API_KEY_PARAM, APIConfigurationContext.API_KEY).build();
                 request = request.newBuilder().url(url).build();
                 return chain.proceed(request);
             }
@@ -120,7 +117,7 @@ public class Teemo {
         OkHttpClient client = builder.build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(mConfigurationHandler.getBaseUrl())
+                .baseUrl(APIConfigurationContext.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
@@ -131,9 +128,10 @@ public class Teemo {
     }
 
     public ChampionsServiceI getChampionsHandler() {
-        if(mConfigurationHandler == null){
+        if(APIConfigurationContext.REGION() == null){
             throw new IllegalStateException("Teemo not initialized, forgot to add region?");
         }
         return mChampionsServiceHandler;
     }
+
 }

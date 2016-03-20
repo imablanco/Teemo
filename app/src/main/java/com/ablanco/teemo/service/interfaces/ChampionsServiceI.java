@@ -9,5 +9,5 @@ import com.ablanco.teemo.service.ServiceResponseListener;
  */
 public interface ChampionsServiceI {
 
-    void getChallenges(ServiceResponseListener<ChampionList> listener);
+    void getChampions(ServiceResponseListener<ChampionList> listener);
 }

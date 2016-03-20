@@ -13,5 +13,5 @@ import retrofit2.http.Path;
 public interface RetrofitChampionsServiceHandler {
 
     @GET("api/lol/{region}/v1.2/champion")
-    Call<ChampionList> getChallenges(@Path("region") String region);
+    Call<ChampionList> getChampions(@Path("region") String region);
 }

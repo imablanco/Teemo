@@ -1,6 +1,7 @@
 package com.ablanco.teemo.service.champions;
 
 import com.ablanco.teemo.Teemo;
+import com.ablanco.teemo.TeemoException;
 import com.ablanco.teemo.model.champions.ChampionList;
 import com.ablanco.teemo.service.BaseServiceTest;
 import com.ablanco.teemo.service.ServiceResponseListener;
@@ -18,7 +19,7 @@ public class ChampionsServiceTest extends BaseServiceTest{
 
         try {
 
-            Teemo.getInstance(getContext()).getChampionsHandler().getChallenges(new ServiceResponseListener<ChampionList>() {
+            Teemo.getInstance(getContext()).getChampionsHandler().getChampions(new ServiceResponseListener<ChampionList>() {
                 @Override
                 public void onResponse(ChampionList response) {
                     response.toString();
@@ -27,7 +28,7 @@ public class ChampionsServiceTest extends BaseServiceTest{
                 }
 
                 @Override
-                public void onError(Exception e) {
+                public void onError(TeemoException e) {
                     e.toString();
                     countDownLatch.countDown();
                 }

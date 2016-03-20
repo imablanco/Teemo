@@ -41,12 +41,16 @@ public class ChampionsServiceHandler extends BaseRetrofitServiceClass<RetrofitCh
                 public void onResponse(Call<ChampionList> call, Response<ChampionList> response) {
 
                     if(response.isSuccessful()){
-
                         RealmContext.getInstance(mContext).deleteAll(ChampionList.class);
                         RealmContext.getInstance(mContext).save(response.body());
                         listener.onResponse(response.body());
 
                     }else {
+
+                        if(response.code() == TeemoException.CODE_RATE_LIMIT_EXCEEDED){
+                            RateLimiter.getInstance().updateLimitRateExceeded(response);
+                        }
+
                         listener.onError(new TeemoException(response));
                     }
 

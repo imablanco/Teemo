@@ -1,8 +1,8 @@
 package com.ablanco.teemo.model.champions;
 
-import io.realm.RealmObject;
+import com.ablanco.teemo.model.BaseObject;
 
-public class Champion extends RealmObject{
+public class Champion extends BaseObject {
 
     private boolean botMmEnabled;
     private int id;

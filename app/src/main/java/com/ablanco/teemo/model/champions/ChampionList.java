@@ -1,7 +1,5 @@
 package com.ablanco.teemo.model.champions;
 
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 

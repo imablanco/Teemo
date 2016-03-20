@@ -60,6 +60,22 @@ public class RealmContext{
         }, callback);
     }
 
+    public void save(List<RealmObject> data) {
+        save(data, null);
+    }
+
+    public void save(final List<RealmObject> data, final Realm.Transaction.Callback callback) {
+
+
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.copyToRealm(data);
+
+            }
+        }, callback);
+    }
+
     public <T extends RealmObject> List<T> findAll(Class<T> realmObjectClass) {
         return mRealm.where(realmObjectClass).findAll();
     }

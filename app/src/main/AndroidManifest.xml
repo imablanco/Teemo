@@ -1,1 +1,6 @@
-<manifest package="com.ablanco.teemo"/>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ablanco.teemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

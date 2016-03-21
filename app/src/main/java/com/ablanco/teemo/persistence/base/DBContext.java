@@ -15,8 +15,8 @@ import com.ablanco.teemo.persistence.champions.ChampionListDAO;
  */
 public class DBContext extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "DigitalPlatformClient";
-    private static final int DB_VERSION = 22;
+    private static final String DB_NAME = "Teemo";
+    private static final int DB_VERSION = 1;
 
     /**
      * Singleton

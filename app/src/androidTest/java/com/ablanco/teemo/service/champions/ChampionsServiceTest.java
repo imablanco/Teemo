@@ -82,15 +82,17 @@ public class ChampionsServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getChampionsHandler().getChampionById(205, new ServiceResponseListener<Champion>() {
+            Teemo.getInstance(getContext()).getChampionsHandler().getChampionById(266, new ServiceResponseListener<Champion>() {
                 @Override
                 public void onResponse(Champion response) {
                     assertTrue(response != null);
+                    countDownLatch.countDown();
                 }
 
                 @Override
                 public void onError(TeemoException e) {
                     assertTrue(false);
+                    countDownLatch.countDown();
                 }
             });
 

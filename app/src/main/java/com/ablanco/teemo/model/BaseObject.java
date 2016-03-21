@@ -1,7 +1,5 @@
 package com.ablanco.teemo.model;
 
-import com.ablanco.teemo.persistence.ExpirationTime;
-
 import java.util.Date;
 
 /**
@@ -10,17 +8,22 @@ import java.util.Date;
  */
 public abstract class BaseObject {
 
-    protected long id;
+    protected Long _id = null;
+    protected Date lastUpdate = null;
 
-    protected long expirationTime = ExpirationTime.EXPIRATION_TIME_MINUTE;
-
-    protected Date lastUpdate;
-
-    protected void update(){
-        this.lastUpdate = new Date();
+    public Date getLastUpdate() {
+        return lastUpdate;
     }
 
-    public boolean hasExpired(){
-        return System.currentTimeMillis() > lastUpdate.getTime() + expirationTime;
+    public void setLastUpdate(Date creationDate) {
+        this.lastUpdate = creationDate;
+    }
+
+    public Long get_id() {
+        return _id;
+    }
+
+    public void set_id(Long _id) {
+        this._id = _id;
     }
 }

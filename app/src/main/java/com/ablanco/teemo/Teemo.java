@@ -5,18 +5,14 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import com.ablanco.teemo.service.ServiceGenerator;
+import com.ablanco.teemo.persistence.base.DBContext;
+import com.ablanco.teemo.service.base.ServiceGenerator;
 import com.ablanco.teemo.service.handlers.ChampionsServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
-import com.google.gson.ExclusionStrategy;
-import com.google.gson.FieldAttributes;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
-import io.realm.RealmObject;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -76,6 +72,8 @@ public class Teemo {
         APIConfigurationContext.API_KEY = apiKey;
         APIConfigurationContext.setRegion(region);
 
+        DBContext.initDb(context);
+
         if(region != null){
             buildRetrofit(context);
         }
@@ -98,27 +96,13 @@ public class Teemo {
             }
         };
 
-        Gson gson = new GsonBuilder()
-                .setExclusionStrategies(new ExclusionStrategy() {
-                    @Override
-                    public boolean shouldSkipField(FieldAttributes f) {
-                        return f.getDeclaringClass().equals(RealmObject.class);
-                    }
-
-                    @Override
-                    public boolean shouldSkipClass(Class<?> clazz) {
-                        return false;
-                    }
-                })
-                .create();
-
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.interceptors().add(interceptor);
         OkHttpClient client = builder.build();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(APIConfigurationContext.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
         ServiceGenerator mServiceGenerator = new ServiceGenerator(retrofit);

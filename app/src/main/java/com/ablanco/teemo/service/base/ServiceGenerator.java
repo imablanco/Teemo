@@ -1,4 +1,4 @@
-package com.ablanco.teemo.service;
+package com.ablanco.teemo.service.base;
 
 import retrofit2.Retrofit;
 

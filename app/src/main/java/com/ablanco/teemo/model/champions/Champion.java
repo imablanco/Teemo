@@ -2,7 +2,7 @@ package com.ablanco.teemo.model.champions;
 
 import com.ablanco.teemo.model.BaseObject;
 
-public class Champion extends BaseObject {
+public class Champion extends BaseObject{
 
     private boolean botMmEnabled;
     private int id;
@@ -58,4 +58,6 @@ public class Champion extends BaseObject {
     public void setFreeToPlay(boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
     }
+
+
 }

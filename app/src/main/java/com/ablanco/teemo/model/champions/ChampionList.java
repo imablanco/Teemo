@@ -1,21 +1,24 @@
 package com.ablanco.teemo.model.champions;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
+import com.ablanco.teemo.model.BaseObject;
+
+import java.util.List;
 
 /**
  * Created by Álvaro Blanco on 20/03/2016.
  * Teemo
  */
-public class ChampionList extends RealmObject {
+public class ChampionList extends BaseObject{
 
-    private RealmList<Champion> champions;
 
-    public RealmList<Champion> getChampions() {
+    private List<Champion> champions;
+
+    public List<Champion> getChampions() {
         return champions;
     }
 
-    public void setChampions(RealmList<Champion> champions) {
+    public void setChampions(List<Champion> champions) {
         this.champions = champions;
     }
+
 }

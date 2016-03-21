@@ -52,7 +52,7 @@ public class RateLimiter {
 
     public boolean isLimited() {
         if (mIsLimited && availableAt != null) {
-            if(System.currentTimeMillis() > availableAt.getTime()){
+            if(System.currentTimeMillis() > availableAt.getTime()) {
                 mIsLimited = false;
             }else {
                 mIsLimited = true;

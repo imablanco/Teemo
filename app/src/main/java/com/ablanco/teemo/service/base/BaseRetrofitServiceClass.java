@@ -1,4 +1,4 @@
-package com.ablanco.teemo.service;
+package com.ablanco.teemo.service.base;
 
 import android.content.Context;
 

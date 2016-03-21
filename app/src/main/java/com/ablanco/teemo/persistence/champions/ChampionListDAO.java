@@ -1,18 +1,12 @@
 package com.ablanco.teemo.persistence.champions;
 
-import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.ablanco.teemo.model.champions.Champion;
 import com.ablanco.teemo.model.champions.ChampionList;
 import com.ablanco.teemo.persistence.base.BaseDAO;
-import com.ablanco.teemo.persistence.base.DBContext;
 import com.ablanco.teemo.persistence.base.DBHelper;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,48 +23,18 @@ public class ChampionListDAO  extends BaseDAO<ChampionList>{
         expirationTime = DBHelper.REFRESH_FREQUENCY_MINUTE;
     }
 
+
     @Override
-    public String createTable() {
-        String base = super.createTable();
-        return base.substring(0, base.length() - 2) + ", " + FREE_TO_PLAY + " INTEGER )";
-    }
+    public long save(ChampionList object) {
+        long id = super.save(object);
+        if(id > -1){
+            ChampionDAO dao = new ChampionDAO();
+            List<Champion> champions = dao.findFromParent(object, CHAMPIONS);
+            dao.deleteAll(champions);
 
-
-    public long save(ChampionList object, boolean freeToPlay) {
-        long id = -1;
-        if(object != null) {
-
-            object.setLastUpdate(new Date());
-
-            List<Field> fields = new ArrayList<Field>();
-            fields = DBHelper.getClassFields(fields, type);
-            ContentValues values = new ContentValues();
-
-            for (Field column : fields) {
-                String columnType = DBHelper.getColumnType(column);
-                if (columnType != null) {
-                    DBHelper.addFieldValueToColumn(values, column, object);
-                }
-            }
-
-            values.put(FREE_TO_PLAY, freeToPlay ? 1 : 0);
-
-            SQLiteDatabase db = DBContext.getDB();
-            if(null != db) {
-                id = db.insertWithOnConflict(DBHelper.getTableName(type), null, values,
-                        SQLiteDatabase.CONFLICT_REPLACE);
-            }
-
-            object.set_id(id);
-
-            if(id > -1){
-                ChampionDAO dao = new ChampionDAO();
-                List<Champion> champions = dao.findFromParent(object, CHAMPIONS);
-                dao.deleteAll(champions);
-
-                dao.saveAll(object.getChampions(), object, CHAMPIONS);
-            }
+            dao.saveAll(object.getChampions(), object, CHAMPIONS);
         }
+
         return id;
     }
 

@@ -13,6 +13,8 @@ public class ChampionList extends BaseObject{
 
     private List<Champion> champions;
 
+    private boolean freeToPlay;
+
     public List<Champion> getChampions() {
         return champions;
     }
@@ -21,4 +23,11 @@ public class ChampionList extends BaseObject{
         this.champions = champions;
     }
 
+    public boolean isFreeToPlay() {
+        return freeToPlay;
+    }
+
+    public void setFreeToPlay(boolean freeToPlay) {
+        this.freeToPlay = freeToPlay;
+    }
 }

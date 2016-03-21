@@ -25,6 +25,7 @@ public class ChampionsServiceTest extends BaseServiceTest {
                 public void onResponse(ChampionList response) {
                     assertTrue(response != null);
                     assertTrue(response.getChampions() != null);
+                    assertFalse(response.isFreeToPlay());
 
                     countDownLatch.countDown();
                 }
@@ -55,6 +56,7 @@ public class ChampionsServiceTest extends BaseServiceTest {
                 public void onResponse(ChampionList response) {
                     assertTrue(response != null);
                     assertTrue(response.getChampions() != null);
+                    assertTrue(response.isFreeToPlay());
 
                     countDownLatch.countDown();
                 }

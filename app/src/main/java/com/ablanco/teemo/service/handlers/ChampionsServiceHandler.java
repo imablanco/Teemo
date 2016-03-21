@@ -57,7 +57,8 @@ public class ChampionsServiceHandler extends BaseRetrofitServiceClass<RetrofitCh
 
                         if(response.isSuccessful()){
 
-                            dao.save(response.body(), onlyFreeToPlay);
+                            response.body().setFreeToPlay(onlyFreeToPlay);
+                            dao.save(response.body());
 
                             return response.body();
 

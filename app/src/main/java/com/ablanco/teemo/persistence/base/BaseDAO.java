@@ -27,8 +27,12 @@ public abstract class BaseDAO<T extends BaseObject> {
     protected long expirationTime = DBHelper.REFRESH_FREQUENCY_ALWAYS;
 
 
-    protected BaseDAO(Class<T> clazz) {
+    public BaseDAO(Class<T> clazz) {
         this.type = clazz;
+
+        // TODO: 22/03/2016 add this in future
+        //this.type = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+
     }
 
 

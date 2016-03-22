@@ -13,6 +13,7 @@ public class ChampionList extends BaseObject{
 
     private List<Champion> champions;
 
+    //criteria fields
     private boolean freeToPlay;
 
     public List<Champion> getChampions() {

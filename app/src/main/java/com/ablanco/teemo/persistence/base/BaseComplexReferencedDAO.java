@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class BaseComplexReferencedDAO<T extends BaseObject> extends BaseDAO<T> {
 
-    protected BaseComplexReferencedDAO(Class<T> clazz) {
+    public BaseComplexReferencedDAO(Class<T> clazz) {
         super(clazz);
     }
 

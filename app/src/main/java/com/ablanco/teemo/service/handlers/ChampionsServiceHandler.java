@@ -52,13 +52,12 @@ public class ChampionsServiceHandler extends BaseRetrofitServiceClass<RetrofitCh
                             dao.delete(cache);
                         }
 
-                        Call<ChampionList> call = mHandler.getChampions(APIConfigurationContext.REGION(), onlyFreeToPlay);
+                        Call<ChampionList> call = mHandler.getChampions(APIConfigurationContext.REGION, onlyFreeToPlay);
                         final Response<ChampionList> response = call.execute();
 
                         if(response.isSuccessful()){
 
-                            response.body().setFreeToPlay(onlyFreeToPlay);
-                            dao.save(response.body());
+                            dao.save(response.body(), onlyFreeToPlay);
 
                             return response.body();
 
@@ -106,7 +105,7 @@ public class ChampionsServiceHandler extends BaseRetrofitServiceClass<RetrofitCh
                             dao.delete(cache);
                         }
 
-                        Call<Champion> call = mHandler.getChampionById(APIConfigurationContext.REGION(), id);
+                        Call<Champion> call = mHandler.getChampionById(APIConfigurationContext.REGION, id);
                         final Response<Champion> response = call.execute();
 
                         if(response.isSuccessful()){

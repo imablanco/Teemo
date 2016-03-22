@@ -112,7 +112,7 @@ public class Teemo {
     }
 
     public ChampionsServiceI getChampionsHandler() {
-        if(APIConfigurationContext.REGION() == null){
+        if(APIConfigurationContext.REGION == null){
             throw new IllegalStateException("Teemo not initialized, forgot to add region?");
         }
         return mChampionsServiceHandler;

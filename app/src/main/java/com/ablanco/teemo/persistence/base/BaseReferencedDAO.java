@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class BaseReferencedDAO<T extends BaseObject, K extends BaseObject> extends BaseDAO<T> {
 
-    protected BaseReferencedDAO(Class<T> clazz) {
+    public BaseReferencedDAO(Class<T> clazz) {
         super(clazz);
     }
 

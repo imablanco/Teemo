@@ -24,8 +24,8 @@ public class ChampionListDAO  extends BaseDAO<ChampionList>{
     }
 
 
-    @Override
-    public long save(ChampionList object) {
+    public long save(ChampionList object, boolean onlyFreeToPlay) {
+        object.setFreeToPlay(onlyFreeToPlay);
         long id = super.save(object);
         if(id > -1){
             ChampionDAO dao = new ChampionDAO();

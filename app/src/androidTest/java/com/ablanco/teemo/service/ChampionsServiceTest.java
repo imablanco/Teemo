@@ -1,10 +1,9 @@
-package com.ablanco.teemo.service.champions;
+package com.ablanco.teemo.service;
 
 import com.ablanco.teemo.Teemo;
 import com.ablanco.teemo.TeemoException;
 import com.ablanco.teemo.model.champions.Champion;
 import com.ablanco.teemo.model.champions.ChampionList;
-import com.ablanco.teemo.service.BaseServiceTest;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
 
 import java.util.concurrent.CountDownLatch;

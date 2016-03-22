@@ -1,4 +1,4 @@
-package com.ablanco.teemo.model.champions;
+package com.ablanco.teemo.model;
 
 import com.ablanco.teemo.model.BaseModelTest;
 import com.ablanco.teemo.model.currentgame.BannedChampion;

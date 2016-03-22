@@ -7,6 +7,7 @@ import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
 import com.ablanco.teemo.model.currentgame.CurrentGameParticipant;
 import com.ablanco.teemo.model.currentgame.Observer;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
 
     public CurrentGameInfoDAO() {
         super(CurrentGameInfo.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_MINUTE;
     }
 
 

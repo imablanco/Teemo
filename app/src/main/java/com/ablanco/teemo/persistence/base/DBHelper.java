@@ -26,6 +26,7 @@ public class DBHelper {
     public static final String FTABLE = "ftable"; //foreign table name
 
     public static final int REFRESH_FREQUENCY_ALWAYS = 0;
+    public static final int REFRESH_FREQUENCY_HALF_MINUTE = 30;
     public static final int REFRESH_FREQUENCY_MINUTE = 60;
     public static final int REFRESH_FREQUENCY_HALF_HOUR = 1800;
     public static final int REFRESH_FREQUENCY_HOUR = 3600;

@@ -1,6 +1,7 @@
-package com.ablanco.teemo.model.champions;
+package com.ablanco.teemo.model;
 
-import com.ablanco.teemo.model.BaseModelTest;
+import com.ablanco.teemo.model.champions.Champion;
+import com.ablanco.teemo.model.champions.ChampionList;
 import com.ablanco.teemo.persistence.champions.ChampionDAO;
 import com.ablanco.teemo.persistence.champions.ChampionListDAO;
 

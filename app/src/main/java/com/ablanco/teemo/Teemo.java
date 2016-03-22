@@ -8,8 +8,11 @@ import android.os.Bundle;
 import com.ablanco.teemo.persistence.base.DBContext;
 import com.ablanco.teemo.service.base.ServiceGenerator;
 import com.ablanco.teemo.service.handlers.ChampionsServiceHandler;
+import com.ablanco.teemo.service.handlers.CurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
+import com.ablanco.teemo.service.interfaces.CurrentGameInfoServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitCurrentGameInfoServiceHandler;
 
 import java.io.IOException;
 
@@ -33,7 +36,9 @@ public class Teemo {
 
     private static Teemo mInstance;
     private Retrofit retrofit;
+
     private ChampionsServiceI mChampionsServiceHandler;
+    private CurrentGameInfoServiceI mCurrentGameInfoHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -108,6 +113,7 @@ public class Teemo {
         ServiceGenerator mServiceGenerator = new ServiceGenerator(retrofit);
 
         mChampionsServiceHandler = new ChampionsServiceHandler(context, mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
+        mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(context, mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
 
     }
 
@@ -116,6 +122,10 @@ public class Teemo {
             throw new IllegalStateException("Teemo not initialized, forgot to add region?");
         }
         return mChampionsServiceHandler;
+    }
+
+    public CurrentGameInfoServiceI getCurrentGameInfoHandler() {
+        return mCurrentGameInfoHandler;
     }
 
 }

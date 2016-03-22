@@ -1,15 +1,16 @@
-package com.ablanco.teemo.model.currentgame;
+package com.ablanco.teemo.model.featuredgames;
 
 import com.ablanco.teemo.model.BaseObject;
 import com.ablanco.teemo.model.common.BannedChampion;
+import com.ablanco.teemo.model.currentgame.Observer;
 
 import java.util.List;
 
 /**
- * Created by Álvaro Blanco on 22/03/2016.
+ * Created by Álvaro Blanco Cabrero on 22/3/16
  * Teemo
  */
-public class CurrentGameInfo extends BaseObject {
+public class FeaturedGameInfo extends BaseObject {
 
     private List<BannedChampion> bannedChampions;
     private long gameId;
@@ -20,11 +21,8 @@ public class CurrentGameInfo extends BaseObject {
     private String gameType;
     private long mapId;
     private Observer observers;
-    private List<CurrentGameParticipant> participants;
+    private List<Participant> participants;
     private String platformId;
-
-    //search criteria fields
-    private long summonerId;
 
     public List<BannedChampion> getBannedChampions() {
         return bannedChampions;
@@ -98,11 +96,11 @@ public class CurrentGameInfo extends BaseObject {
         this.observers = observers;
     }
 
-    public List<CurrentGameParticipant> getParticipants() {
+    public List<Participant> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<CurrentGameParticipant> participants) {
+    public void setParticipants(List<Participant> participants) {
         this.participants = participants;
     }
 
@@ -112,13 +110,5 @@ public class CurrentGameInfo extends BaseObject {
 
     public void setPlatformId(String platformId) {
         this.platformId = platformId;
-    }
-
-    public long getSummonerId() {
-        return summonerId;
-    }
-
-    public void setSummonerId(long summonerId) {
-        this.summonerId = summonerId;
     }
 }

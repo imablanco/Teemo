@@ -1,6 +1,6 @@
-package com.ablanco.teemo.persistence.currentgame;
+package com.ablanco.teemo.persistence.common;
 
-import com.ablanco.teemo.model.currentgame.BannedChampion;
+import com.ablanco.teemo.model.common.BannedChampion;
 import com.ablanco.teemo.persistence.base.BaseComplexReferencedDAO;
 
 /**

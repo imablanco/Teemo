@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ablanco.teemo.persistence.champions.ChampionDAO;
 import com.ablanco.teemo.persistence.champions.ChampionListDAO;
-import com.ablanco.teemo.persistence.currentgame.BannedChampionDAO;
+import com.ablanco.teemo.persistence.common.BannedChampionDAO;
 import com.ablanco.teemo.persistence.currentgame.CurrentGameInfoDAO;
 import com.ablanco.teemo.persistence.currentgame.CurrentGameParticipantDAO;
 import com.ablanco.teemo.persistence.currentgame.MasteryDAO;

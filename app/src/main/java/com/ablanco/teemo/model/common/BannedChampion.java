@@ -1,4 +1,4 @@
-package com.ablanco.teemo.model.currentgame;
+package com.ablanco.teemo.model.common;
 
 import com.ablanco.teemo.model.BaseObject;
 

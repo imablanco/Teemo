@@ -2,12 +2,13 @@ package com.ablanco.teemo.persistence.currentgame;
 
 import android.database.Cursor;
 
-import com.ablanco.teemo.model.currentgame.BannedChampion;
+import com.ablanco.teemo.model.common.BannedChampion;
 import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
 import com.ablanco.teemo.model.currentgame.CurrentGameParticipant;
 import com.ablanco.teemo.model.currentgame.Observer;
 import com.ablanco.teemo.persistence.base.BaseDAO;
 import com.ablanco.teemo.persistence.base.DBHelper;
+import com.ablanco.teemo.persistence.common.BannedChampionDAO;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.ablanco.teemo.model;
 
-import com.ablanco.teemo.model.BaseModelTest;
-import com.ablanco.teemo.model.currentgame.BannedChampion;
+import com.ablanco.teemo.model.common.BannedChampion;
 import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
 import com.ablanco.teemo.model.currentgame.CurrentGameParticipant;
 import com.ablanco.teemo.persistence.currentgame.CurrentGameInfoDAO;

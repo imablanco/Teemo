@@ -7,6 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ablanco.teemo.persistence.champions.ChampionDAO;
 import com.ablanco.teemo.persistence.champions.ChampionListDAO;
+import com.ablanco.teemo.persistence.currentgame.BannedChampionDAO;
+import com.ablanco.teemo.persistence.currentgame.CurrentGameInfoDAO;
+import com.ablanco.teemo.persistence.currentgame.CurrentGameParticipantDAO;
+import com.ablanco.teemo.persistence.currentgame.MasteryDAO;
+import com.ablanco.teemo.persistence.currentgame.ObserverDAO;
+import com.ablanco.teemo.persistence.currentgame.RuneDAO;
 
 
 /**
@@ -37,6 +43,12 @@ public class DBContext extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(new ChampionListDAO().createTable());
         sqLiteDatabase.execSQL(new ChampionDAO().createTable());
+        sqLiteDatabase.execSQL(new BannedChampionDAO().createTable());
+        sqLiteDatabase.execSQL(new CurrentGameInfoDAO().createTable());
+        sqLiteDatabase.execSQL(new CurrentGameParticipantDAO().createTable());
+        sqLiteDatabase.execSQL(new MasteryDAO().createTable());
+        sqLiteDatabase.execSQL(new ObserverDAO().createTable());
+        sqLiteDatabase.execSQL(new RuneDAO().createTable());
 
     }
 
@@ -45,6 +57,12 @@ public class DBContext extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL(new ChampionListDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new ChampionDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new BannedChampionDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new CurrentGameInfoDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new CurrentGameParticipantDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MasteryDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ObserverDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RuneDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -83,6 +101,12 @@ public class DBContext extends SQLiteOpenHelper {
     public synchronized static void clearDb() {
         new ChampionListDAO().clearTable();
         new ChampionDAO().clearTable();
+        new BannedChampionDAO().clearTable();
+        new CurrentGameInfoDAO().clearTable();
+        new CurrentGameParticipantDAO().clearTable();
+        new MasteryDAO().clearTable();
+        new ObserverDAO().clearTable();
+        new RuneDAO().clearTable();
 
     }//clearDb
 

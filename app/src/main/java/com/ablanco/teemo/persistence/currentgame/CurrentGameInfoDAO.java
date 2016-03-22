@@ -43,11 +43,10 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
             observerDAO.save(object.getObservers());
 
             CurrentGameParticipantDAO participantDAO = new CurrentGameParticipantDAO();
-
             List<CurrentGameParticipant> participants = participantDAO.findFromParent(object);
 
             participantDAO.deleteAll(participants);
-            participantDAO.saveAll(participants, object);
+            participantDAO.saveAll(object.getParticipants(), object);
 
         }
 

@@ -1,6 +1,6 @@
-package com.ablanco.teemo.persistence.currentgame;
+package com.ablanco.teemo.persistence.currentgames;
 
-import com.ablanco.teemo.model.currentgame.Mastery;
+import com.ablanco.teemo.model.currentgames.Mastery;
 import com.ablanco.teemo.persistence.base.BaseComplexReferencedDAO;
 
 /**

@@ -1,6 +1,6 @@
-package com.ablanco.teemo.persistence.currentgame;
+package com.ablanco.teemo.persistence.currentgames;
 
-import com.ablanco.teemo.model.currentgame.Observer;
+import com.ablanco.teemo.model.currentgames.Observer;
 import com.ablanco.teemo.persistence.base.BaseComplexReferencedDAO;
 
 /**

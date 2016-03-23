@@ -3,12 +3,12 @@ package com.ablanco.teemo.persistence.featuredgames;
 import android.database.Cursor;
 
 import com.ablanco.teemo.model.common.BannedChampion;
-import com.ablanco.teemo.model.currentgame.Observer;
+import com.ablanco.teemo.model.currentgames.Observer;
 import com.ablanco.teemo.model.featuredgames.FeaturedGameInfo;
 import com.ablanco.teemo.model.featuredgames.Participant;
 import com.ablanco.teemo.persistence.base.BaseDAO;
 import com.ablanco.teemo.persistence.common.BannedChampionDAO;
-import com.ablanco.teemo.persistence.currentgame.ObserverDAO;
+import com.ablanco.teemo.persistence.currentgames.ObserverDAO;
 
 import java.util.List;
 
@@ -84,7 +84,7 @@ public class FeaturedGameInfoDAO extends BaseDAO<FeaturedGameInfo>{
             object.setParticipants(participants);
 
             ObserverDAO observerDAO = new ObserverDAO();
-            Observer observers = observerDAO.findLastFromParent(object, OBSERVER);
+            Observer observers = observerDAO.findFirstFromParent(object, OBSERVER);
             object.setObservers(observers);
         }
 

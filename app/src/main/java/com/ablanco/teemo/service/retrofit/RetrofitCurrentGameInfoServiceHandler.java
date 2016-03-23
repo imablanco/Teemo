@@ -1,7 +1,7 @@
 package com.ablanco.teemo.service.retrofit;
 
 
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

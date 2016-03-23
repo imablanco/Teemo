@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import com.ablanco.teemo.APIConfigurationContext;
 import com.ablanco.teemo.RateLimiter;
 import com.ablanco.teemo.TeemoException;
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
-import com.ablanco.teemo.persistence.currentgame.CurrentGameInfoDAO;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
+import com.ablanco.teemo.persistence.currentgames.CurrentGameInfoDAO;
 import com.ablanco.teemo.service.base.BaseRetrofitServiceClass;
 import com.ablanco.teemo.service.base.BaseServiceAsyncTask;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
@@ -38,7 +38,7 @@ public class CurrentGameInfoServiceHandler extends BaseRetrofitServiceClass<Retr
 
                     CurrentGameInfoDAO dao = new CurrentGameInfoDAO();
 
-                    CurrentGameInfo cache = dao.findLastByPlatformAndSummonerId(platformId, summonerId);
+                    CurrentGameInfo cache = dao.findFirstByPlatformAndSummonerId(platformId, summonerId);
 
                     if(cache != null && !dao.hasExpired(cache)){
                         return cache;

@@ -218,11 +218,11 @@ public abstract class BaseDAO<T extends BaseObject> {
      * @return
      */
     public List<T> findAll() {
-        return find(null, null, null, null, null);
+        return find(null, null, null, null);
     }
 
     public T findFirst() {
-        List<T> results =  find(null, null, null, null, null);
+        List<T> results =  find(null, null, null, null);
         if(results.isEmpty()){
             return null;
         }else {
@@ -231,7 +231,7 @@ public abstract class BaseDAO<T extends BaseObject> {
     }
 
     public T findLast() {
-        List<T> results =  find(null, null, null, null, null);
+        List<T> results =  find(null, null, null, null);
         if(results.isEmpty()){
             return null;
         }else {
@@ -245,11 +245,10 @@ public abstract class BaseDAO<T extends BaseObject> {
      * @param whereClause
      * @param whereArgs
      * @param groupBy
-     * @param orderBy
      * @param limit
      * @return
      */
-    public List<T> find(String whereClause, String[] whereArgs, String groupBy, String orderBy, String limit) {
+    public List<T> find(String whereClause, String[] whereArgs, String groupBy, String limit) {
 
         SQLiteDatabase sqLiteDatabase = DBContext.getDB();
         List<T> toRet = new ArrayList<T>();
@@ -257,7 +256,7 @@ public abstract class BaseDAO<T extends BaseObject> {
         if(null != sqLiteDatabase) {
             try {
                 c = sqLiteDatabase.query(DBHelper.getTableName(type), null, whereClause, whereArgs,
-                        groupBy, null, orderBy, limit);
+                        groupBy, null, "lastUpdate DESC", limit);
             } catch (Exception e) {
                 String msg = e.getClass().getName() + " " + e.getMessage();
                 e.printStackTrace();
@@ -278,6 +277,73 @@ public abstract class BaseDAO<T extends BaseObject> {
         return toRet;
     }//find
 
+    /**
+     * Generic SQL query method
+     *
+     * @param whereClause
+     * @param whereArgs
+     * @param groupBy
+     * @param limit
+     * @return
+     */
+    public T findLast(String whereClause, String[] whereArgs, String groupBy, String limit) {
+
+        SQLiteDatabase sqLiteDatabase = DBContext.getDB();
+        List<T> toRet = new ArrayList<T>();
+        Cursor c = null;
+        if(null != sqLiteDatabase) {
+            try {
+                c = sqLiteDatabase.query(DBHelper.getTableName(type), null, whereClause, whereArgs,
+                        groupBy, null, "lastUpdate DESC", limit);
+            } catch (Exception e) {
+                String msg = e.getClass().getName() + " " + e.getMessage();
+                e.printStackTrace();
+            }
+            try {
+                if (c != null) {
+                    while (c.moveToNext()) {
+                        toRet.add(fromCursor(c));
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (null != c)
+                    c.close();
+            }
+        }
+        return toRet.isEmpty() ? null : toRet.get(toRet.size() - 1);
+    }//find
+
+    public T findFirst(String whereClause, String[] whereArgs, String groupBy, String limit) {
+
+        SQLiteDatabase sqLiteDatabase = DBContext.getDB();
+        List<T> toRet = new ArrayList<T>();
+        Cursor c = null;
+        if(null != sqLiteDatabase) {
+            try {
+                c = sqLiteDatabase.query(DBHelper.getTableName(type), null, whereClause, whereArgs,
+                        groupBy, null, "lastUpdate DESC", limit);
+            } catch (Exception e) {
+                String msg = e.getClass().getName() + " " + e.getMessage();
+                e.printStackTrace();
+            }
+            try {
+                if (c != null) {
+                    while (c.moveToNext()) {
+                        toRet.add(fromCursor(c));
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (null != c)
+                    c.close();
+            }
+        }
+        return toRet.isEmpty() ? null : toRet.get(0);
+    }//find
+
     public boolean hasExpired(BaseObject obj) {
         if (obj.getLastUpdate() == null) {
             return true;
@@ -292,7 +358,7 @@ public abstract class BaseDAO<T extends BaseObject> {
         if (list != null && list.size() > 0) {
             int i = 0;
             while (!expired && i < list.size()) {
-                expired = expired || hasExpired(list.get(i));
+                expired = hasExpired(list.get(i));
                 i++;
             }
         } else {

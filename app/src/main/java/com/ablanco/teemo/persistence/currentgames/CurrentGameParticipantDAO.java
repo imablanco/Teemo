@@ -1,7 +1,7 @@
-package com.ablanco.teemo.persistence.currentgame;
+package com.ablanco.teemo.persistence.currentgames;
 
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
-import com.ablanco.teemo.model.currentgame.CurrentGameParticipant;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
+import com.ablanco.teemo.model.currentgames.CurrentGameParticipant;
 import com.ablanco.teemo.persistence.base.BaseReferencedDAO;
 
 /**

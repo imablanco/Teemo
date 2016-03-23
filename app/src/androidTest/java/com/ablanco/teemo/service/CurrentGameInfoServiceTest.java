@@ -3,7 +3,7 @@ package com.ablanco.teemo.service;
 import com.ablanco.teemo.Teemo;
 import com.ablanco.teemo.TeemoException;
 import com.ablanco.teemo.TestConstants;
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
 
 import java.util.concurrent.CountDownLatch;

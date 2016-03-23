@@ -1,6 +1,6 @@
 package com.ablanco.teemo.service.interfaces;
 
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
 
 /**

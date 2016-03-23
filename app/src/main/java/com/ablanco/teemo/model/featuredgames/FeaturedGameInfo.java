@@ -2,7 +2,7 @@ package com.ablanco.teemo.model.featuredgames;
 
 import com.ablanco.teemo.model.BaseObject;
 import com.ablanco.teemo.model.common.BannedChampion;
-import com.ablanco.teemo.model.currentgame.Observer;
+import com.ablanco.teemo.model.currentgames.Observer;
 
 import java.util.List;
 

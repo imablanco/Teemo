@@ -1,7 +1,7 @@
 package com.ablanco.teemo.model;
 
 import com.ablanco.teemo.model.common.BannedChampion;
-import com.ablanco.teemo.model.currentgame.Observer;
+import com.ablanco.teemo.model.currentgames.Observer;
 import com.ablanco.teemo.model.featuredgames.FeaturedGameInfo;
 import com.ablanco.teemo.model.featuredgames.FeaturedGames;
 import com.ablanco.teemo.model.featuredgames.Participant;

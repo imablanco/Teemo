@@ -1,11 +1,11 @@
-package com.ablanco.teemo.persistence.currentgame;
+package com.ablanco.teemo.persistence.currentgames;
 
 import android.database.Cursor;
 
 import com.ablanco.teemo.model.common.BannedChampion;
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
-import com.ablanco.teemo.model.currentgame.CurrentGameParticipant;
-import com.ablanco.teemo.model.currentgame.Observer;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
+import com.ablanco.teemo.model.currentgames.CurrentGameParticipant;
+import com.ablanco.teemo.model.currentgames.Observer;
 import com.ablanco.teemo.persistence.base.BaseDAO;
 import com.ablanco.teemo.persistence.base.DBHelper;
 import com.ablanco.teemo.persistence.common.BannedChampionDAO;
@@ -82,7 +82,7 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
 
         if(currentGameInfo != null){
             currentGameInfo.setBannedChampions(new BannedChampionDAO().findFromParent(currentGameInfo, BANNED_CHAMPIONS));
-            currentGameInfo.setObservers(new ObserverDAO().findLastFromParent(currentGameInfo, OBSERVER));
+            currentGameInfo.setObservers(new ObserverDAO().findFirstFromParent(currentGameInfo, OBSERVER));
             currentGameInfo.setParticipants(new CurrentGameParticipantDAO().findFromParent(currentGameInfo));
         }
 
@@ -90,11 +90,11 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
     }
 
     public List<CurrentGameInfo> findByPlatformAndSummonerId(String platformId, long summonerId){
-        return find("platformId LIKE ? AND summonerId = ?", new String[]{platformId, String.valueOf(summonerId)}, null, null, null);
+        return find("platformId LIKE ? AND summonerId = ?", new String[]{platformId, String.valueOf(summonerId)}, null, null);
     }
 
-    public CurrentGameInfo findLastByPlatformAndSummonerId(String platformId, long summonerId){
+    public CurrentGameInfo findFirstByPlatformAndSummonerId(String platformId, long summonerId){
         List<CurrentGameInfo> currentGameInfos = findByPlatformAndSummonerId(platformId, summonerId);
-        return currentGameInfos.isEmpty() ? null : currentGameInfos.get(currentGameInfos.size() -1);
+        return currentGameInfos.isEmpty() ? null : currentGameInfos.get(0);
     }
 }

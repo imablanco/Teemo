@@ -1,10 +1,10 @@
 package com.ablanco.teemo.model;
 
 import com.ablanco.teemo.model.common.BannedChampion;
-import com.ablanco.teemo.model.currentgame.CurrentGameInfo;
-import com.ablanco.teemo.model.currentgame.CurrentGameParticipant;
-import com.ablanco.teemo.model.currentgame.Observer;
-import com.ablanco.teemo.persistence.currentgame.CurrentGameInfoDAO;
+import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
+import com.ablanco.teemo.model.currentgames.CurrentGameParticipant;
+import com.ablanco.teemo.model.currentgames.Observer;
+import com.ablanco.teemo.persistence.currentgames.CurrentGameInfoDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class CurrentGameInfoModelTest extends BaseModelTest {
 
         assertTrue(!dao.findByPlatformAndSummonerId(platformId, summonerId).isEmpty());
 
-        currentGameInfo = dao.findLastByPlatformAndSummonerId(platformId, summonerId);
+        currentGameInfo = dao.findFirstByPlatformAndSummonerId(platformId, summonerId);
 
         assertTrue(currentGameInfo != null);
 

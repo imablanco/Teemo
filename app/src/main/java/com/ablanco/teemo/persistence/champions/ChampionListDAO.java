@@ -64,11 +64,6 @@ public class ChampionListDAO  extends BaseDAO<ChampionList>{
 
     public ChampionList findByFreeToPlay(boolean freeToPlay){
         int convertedValue = freeToPlay ? 1 : 0;
-        List<ChampionList> championLists = find(FREE_TO_PLAY + " = ?", new String[]{String.valueOf(convertedValue)},null,null,null);
-        if(!championLists.isEmpty()){
-            return championLists.get(0);
-        }else {
-            return null;
-        }
+        return findFirst(FREE_TO_PLAY + " = ?", new String[]{String.valueOf(convertedValue)},null,null);
     }
 }

@@ -97,7 +97,21 @@ public class BaseReferencedDAO<T extends BaseObject, K extends BaseObject> exten
      * @return
      */
     public List<T> findFromParent(K parent) {
-        return find(DBHelper.FK + "=?", new String[]{String.valueOf(parent.get_id())}, null, null, null);
+        return find(DBHelper.FK + "=?", new String[]{String.valueOf(parent.get_id())}, null, null);
+    }
+
+    /**
+     * Retrieve the list of objects referenced by the given field of the given parent
+     * @param parent
+     * @return
+     */
+    public T findFirstFromParent(K parent) {
+        List<T> data = findFromParent(parent);
+        if(!data.isEmpty()){
+            return data.get(0);
+        }else {
+            return null;
+        }
     }
 
 }

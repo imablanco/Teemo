@@ -103,7 +103,7 @@ public class BaseComplexReferencedDAO<T extends BaseObject> extends BaseDAO<T> {
      */
     public List<T> findFromParent(BaseObject parent, String field) {
         return find(DBHelper.FK + "= ? AND " + DBHelper.FTABLE + " LIKE ? AND " + DBHelper.FFIELD + " LIKE ?",
-                new String[]{String.valueOf(parent.get_id()), DBHelper.getTableName(parent.getClass()), field}, null, null, null);
+                new String[]{String.valueOf(parent.get_id()), DBHelper.getTableName(parent.getClass()), field}, null, null);
     }
 
 
@@ -113,10 +113,10 @@ public class BaseComplexReferencedDAO<T extends BaseObject> extends BaseDAO<T> {
      * @param field
      * @return
      */
-    public T findLastFromParent(BaseObject parent, String field) {
+    public T findFirstFromParent(BaseObject parent, String field) {
         List<T> data = findFromParent(parent, field);
         if(!data.isEmpty()){
-            return data.get(data.size() -1);
+            return data.get(0);
         }else {
             return null;
         }

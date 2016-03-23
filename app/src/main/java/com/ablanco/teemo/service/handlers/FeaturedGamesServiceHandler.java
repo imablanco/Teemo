@@ -36,7 +36,7 @@ public class FeaturedGamesServiceHandler extends BaseRetrofitServiceClass<Retrof
 
                     FeaturedGamesDAO dao = new FeaturedGamesDAO();
 
-                    FeaturedGames cache = dao.findLast();
+                    FeaturedGames cache = dao.findFirst();
 
                     if(cache != null && !dao.hasExpired(cache)){
                         return cache;

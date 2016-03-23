@@ -30,7 +30,7 @@ public class RecentGamesDAO extends BaseDAO<RecentGames>{
             List<Game> games = gameDAO.findFromParent(object);
 
             gameDAO.deleteAll(games);
-            gameDAO.saveAll(games, object);
+            gameDAO.saveAll(object.getGames(), object);
         }
 
         return id;

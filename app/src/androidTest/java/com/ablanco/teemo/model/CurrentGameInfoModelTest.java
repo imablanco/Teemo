@@ -29,6 +29,7 @@ public class CurrentGameInfoModelTest extends BaseModelTest {
         participants.add(new CurrentGameParticipant());
 
         Observer observer = new Observer();
+        observer.setEncryptionKey(getClass().getSimpleName());
 
 
         CurrentGameInfo currentGameInfo = new CurrentGameInfo();
@@ -46,7 +47,8 @@ public class CurrentGameInfoModelTest extends BaseModelTest {
         currentGameInfo = dao.findFirstByPlatformAndSummonerId(platformId, summonerId);
 
         assertTrue(currentGameInfo != null);
-
+        assertTrue(currentGameInfo.getSummonerId() == 1);
+        assertTrue(currentGameInfo.getObservers().getEncryptionKey().equals(getClass().getSimpleName()));
         assertTrue(!currentGameInfo.getBannedChampions().isEmpty() && currentGameInfo.getBannedChampions().size() == 2);
         assertTrue(!currentGameInfo.getParticipants().isEmpty() && currentGameInfo.getParticipants().size() == 2);
         assertTrue(currentGameInfo.getObservers() != null);

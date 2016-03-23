@@ -17,7 +17,7 @@ public class CurrentGameInfoServiceTest extends BaseServiceTest {
     /**
      * Only correctly testable when user is playing a game
      */
-    public void testGetCurrentGameInfo() {
+    /*public void testGetCurrentGameInfo() {
 
         final CountDownLatch countDownLatch = new CountDownLatch(1);
 
@@ -43,7 +43,7 @@ public class CurrentGameInfoServiceTest extends BaseServiceTest {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     public void testNotFoundGetCurrentGameInfo() {
 

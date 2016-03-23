@@ -16,6 +16,10 @@ import com.ablanco.teemo.persistence.currentgames.RuneDAO;
 import com.ablanco.teemo.persistence.featuredgames.FeaturedGameInfoDAO;
 import com.ablanco.teemo.persistence.featuredgames.FeaturedGamesDAO;
 import com.ablanco.teemo.persistence.featuredgames.ParticipantDAO;
+import com.ablanco.teemo.persistence.games.GameDAO;
+import com.ablanco.teemo.persistence.games.PlayerDAO;
+import com.ablanco.teemo.persistence.games.RawStatsDAO;
+import com.ablanco.teemo.persistence.games.RecentGamesDAO;
 
 
 /**
@@ -55,6 +59,10 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new FeaturedGamesDAO().createTable());
         sqLiteDatabase.execSQL(new FeaturedGameInfoDAO().createTable());
         sqLiteDatabase.execSQL(new ParticipantDAO().createTable());
+        sqLiteDatabase.execSQL(new RecentGamesDAO().createTable());
+        sqLiteDatabase.execSQL(new GameDAO().createTable());
+        sqLiteDatabase.execSQL(new PlayerDAO().createTable());
+        sqLiteDatabase.execSQL(new RawStatsDAO().createTable());
 
     }
 
@@ -72,6 +80,10 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new FeaturedGamesDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new FeaturedGameInfoDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new ParticipantDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RecentGamesDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new PlayerDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new GameDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RawStatsDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -119,6 +131,10 @@ public class DBContext extends SQLiteOpenHelper {
         new FeaturedGamesDAO().clearTable();
         new FeaturedGameInfoDAO().clearTable();
         new ParticipantDAO().clearTable();
+        new RecentGamesDAO().clearTable();
+        new GameDAO().clearTable();
+        new PlayerDAO().clearTable();
+        new RawStatsDAO().clearTable();
 
     }//clearDb
 

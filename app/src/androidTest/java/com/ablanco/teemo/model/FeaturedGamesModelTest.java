@@ -21,6 +21,7 @@ public class FeaturedGamesModelTest extends BaseModelTest{
     public void testFeaturedGames(){
 
         FeaturedGames featuredGames = new FeaturedGames();
+        featuredGames.setClientRefreshInterval(200);
 
         List<FeaturedGameInfo> featuredGameInfos = new ArrayList<>();
         featuredGameInfos.add(new FeaturedGameInfo());
@@ -30,8 +31,9 @@ public class FeaturedGamesModelTest extends BaseModelTest{
         FeaturedGamesDAO featuredGamesDAO = new FeaturedGamesDAO();
         featuredGamesDAO.save(featuredGames);
 
-        assertTrue(featuredGamesDAO.findLast() != null);
-        assertTrue(!featuredGamesDAO.findLast().getGameList().isEmpty());
+        assertTrue(featuredGamesDAO.findFirst() != null);
+        assertTrue(featuredGamesDAO.findFirst().getClientRefreshInterval() == 200);
+        assertTrue(!featuredGamesDAO.findFirst().getGameList().isEmpty());
 
         featuredGamesDAO.deleteAll(featuredGamesDAO.findAll());
 
@@ -60,7 +62,7 @@ public class FeaturedGamesModelTest extends BaseModelTest{
 
         featuredGameInfoDAO.save(featuredGameInfo);
 
-        featuredGameInfo = featuredGameInfoDAO.findLast();
+        featuredGameInfo = featuredGameInfoDAO.findFirst();
 
         assertTrue(!featuredGameInfo.getBannedChampions().isEmpty() && featuredGameInfo.getBannedChampions().size() == 2);
         assertTrue(!featuredGameInfo.getParticipants().isEmpty() && featuredGameInfo.getParticipants().size() == 2);

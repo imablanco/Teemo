@@ -36,10 +36,12 @@ public class ChampionModelTest extends BaseModelTest{
 
     public void testChampion(){
         Champion champion = new Champion();
+        champion.setId(1);
         ChampionDAO dao = new ChampionDAO();
         dao.save(champion);
 
         assertFalse(dao.findAll().isEmpty());
+        assertTrue(dao.findById(1) != null);
 
         dao.deleteAll(dao.findAll());
 

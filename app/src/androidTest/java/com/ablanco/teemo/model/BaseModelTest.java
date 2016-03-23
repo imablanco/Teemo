@@ -15,4 +15,9 @@ public class BaseModelTest extends AndroidTestCase {
         super.setUp();
         DBContext.initDb(getContext());
     }
+
+    @Override
+    protected void tearDown() throws Exception {
+        DBContext.finishDb();
+    }
 }

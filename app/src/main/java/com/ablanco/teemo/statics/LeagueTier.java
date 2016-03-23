@@ -6,13 +6,13 @@ package com.ablanco.teemo.statics;
  */
 public class LeagueTier {
 
-    private final static String CHALLENGER = "CHALLENGER";
-    private final static String MASTER = "MASTER";
-    private final static String DIAMOND = "DIAMOND";
-    private final static String PLATINUM = "PLATINUM";
-    private final static String GOLD = "GOLD";
-    private final static String SILVER = "SILVER";
-    private final static String BRONZE = "BRONZE";
+    public final static String CHALLENGER = "CHALLENGER";
+    public final static String MASTER = "MASTER";
+    public final static String DIAMOND = "DIAMOND";
+    public final static String PLATINUM = "PLATINUM";
+    public final static String GOLD = "GOLD";
+    public final static String SILVER = "SILVER";
+    public final static String BRONZE = "BRONZE";
 
 
 }

@@ -6,6 +6,6 @@ package com.ablanco.teemo.statics;
  */
 public class TeamID {
 
-    private final static int BLUE_TEAM = 100;
-    private final static int BURPLE_TEAM = 200;
+    public final static int BLUE_TEAM = 100;
+    public final static int BURPLE_TEAM = 200;
 }

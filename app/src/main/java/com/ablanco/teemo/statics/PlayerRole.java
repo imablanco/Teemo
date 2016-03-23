@@ -6,8 +6,8 @@ package com.ablanco.teemo.statics;
  */
 public class PlayerRole {
 
-    private final static int DUO = 1;
-    private final static int SUPPORT = 2;
-    private final static int CARRY = 3;
-    private final static int SOLO = 4;
+    public final static int DUO = 1;
+    public final static int SUPPORT = 2;
+    public final static int CARRY = 3;
+    public final static int SOLO = 4;
 }

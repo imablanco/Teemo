@@ -16,6 +16,10 @@ public class League extends BaseObject {
     private String queue;
     private String tier;
 
+    //search criteria
+    private String summonerOrTeamId;
+    private boolean onlyEntry;
+
     public List<LeagueEntry> getEntries() {
         return entries;
     }
@@ -55,4 +59,21 @@ public class League extends BaseObject {
     public void setTier(String tier) {
         this.tier = tier;
     }
+
+    public String getSummonerOrTeamId() {
+        return summonerOrTeamId;
+    }
+
+    public void setSummonerOrTeamId(String summonerOrTeamId) {
+        this.summonerOrTeamId = summonerOrTeamId;
+    }
+
+    public boolean isOnlyEntry() {
+        return onlyEntry;
+    }
+
+    public void setOnlyEntry(boolean onlyEntry) {
+        this.onlyEntry = onlyEntry;
+    }
 }
+

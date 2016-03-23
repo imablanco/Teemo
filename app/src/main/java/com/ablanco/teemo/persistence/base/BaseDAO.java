@@ -160,7 +160,7 @@ public abstract class BaseDAO<T extends BaseObject> {
      */
     public void delete(T object) {
         SQLiteDatabase db = DBContext.getDB();
-        if(null != db) db.delete(DBHelper.getTableName(type), DBHelper.ID + "=?", new String[]{object.get_id().toString()});
+        if(null != db && object != null) db.delete(DBHelper.getTableName(type), DBHelper.ID + "=?", new String[]{object.get_id().toString()});
     }//delete
 
 

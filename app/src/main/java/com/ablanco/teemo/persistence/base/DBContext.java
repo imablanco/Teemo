@@ -20,6 +20,9 @@ import com.ablanco.teemo.persistence.games.GameDAO;
 import com.ablanco.teemo.persistence.games.PlayerDAO;
 import com.ablanco.teemo.persistence.games.RawStatsDAO;
 import com.ablanco.teemo.persistence.games.RecentGamesDAO;
+import com.ablanco.teemo.persistence.leagues.LeagueDAO;
+import com.ablanco.teemo.persistence.leagues.LeagueEntryDAO;
+import com.ablanco.teemo.persistence.leagues.MiniSeriesDAO;
 
 
 /**
@@ -63,6 +66,9 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new GameDAO().createTable());
         sqLiteDatabase.execSQL(new PlayerDAO().createTable());
         sqLiteDatabase.execSQL(new RawStatsDAO().createTable());
+        sqLiteDatabase.execSQL(new LeagueDAO().createTable());
+        sqLiteDatabase.execSQL(new LeagueEntryDAO().createTable());
+        sqLiteDatabase.execSQL(new MiniSeriesDAO().createTable());
 
     }
 
@@ -84,6 +90,9 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new PlayerDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new GameDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new RawStatsDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new LeagueDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new LeagueEntryDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MiniSeriesDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -135,6 +144,9 @@ public class DBContext extends SQLiteOpenHelper {
         new GameDAO().clearTable();
         new PlayerDAO().clearTable();
         new RawStatsDAO().clearTable();
+        new LeagueDAO().clearTable();
+        new LeagueEntryDAO().clearTable();
+        new MiniSeriesDAO().clearTable();
 
     }//clearDb
 

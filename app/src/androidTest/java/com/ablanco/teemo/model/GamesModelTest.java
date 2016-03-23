@@ -39,6 +39,11 @@ public class GamesModelTest extends BaseModelTest{
 
     public void testGameModel(){
 
+        RecentGames recentGames = new RecentGames();
+        recentGames.setSummonerId(1);
+
+        List<Game> games = new ArrayList<>();
+
         Game game = new Game();
         game.setStats(new RawStats());
         game.setGameId(1);
@@ -48,9 +53,12 @@ public class GamesModelTest extends BaseModelTest{
 
         game.setFellowPlayers(players);
 
-        GameDAO gameDAO = new GameDAO();
+        games.add(game);
+        recentGames.setGames(games);
 
-        gameDAO.save(game);
+        new RecentGamesDAO().save(recentGames);
+
+        GameDAO gameDAO = new GameDAO();
 
         assertTrue(gameDAO.findFirst() != null);
         assertTrue(gameDAO.findFirst().getGameId() == 1);
@@ -58,9 +66,6 @@ public class GamesModelTest extends BaseModelTest{
         assertTrue(gameDAO.findFirst().getFellowPlayers().size() == 2);
         assertTrue(gameDAO.findFirst().getStats() != null);
 
-        gameDAO.delete(game);
-
-        assertTrue(gameDAO.findAll().isEmpty());
     }
 
 }

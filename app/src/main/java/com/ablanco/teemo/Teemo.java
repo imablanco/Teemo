@@ -11,14 +11,17 @@ import com.ablanco.teemo.service.handlers.ChampionsServiceHandler;
 import com.ablanco.teemo.service.handlers.CurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.handlers.FeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.handlers.GamesServiceHandler;
+import com.ablanco.teemo.service.handlers.LeaguesServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
 import com.ablanco.teemo.service.interfaces.CurrentGameInfoServiceI;
 import com.ablanco.teemo.service.interfaces.FeaturedGamesServiceI;
 import com.ablanco.teemo.service.interfaces.GamesServiceI;
+import com.ablanco.teemo.service.interfaces.LeaguesServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitCurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitFeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitGamesServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitLeaguesServiceHandler;
 
 import java.io.IOException;
 
@@ -43,10 +46,11 @@ public class Teemo {
     private static Teemo mInstance;
     private Retrofit retrofit;
 
-    private ChampionsServiceI mChampionsServiceHandler;
+    private ChampionsServiceI mChampionsHandler;
     private CurrentGameInfoServiceI mCurrentGameInfoHandler;
     private FeaturedGamesServiceI mFeaturedGamesHandler;
     private GamesServiceI mGamesHandler;
+    private LeaguesServiceI mLeaguesHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -120,17 +124,18 @@ public class Teemo {
                 .build();
         ServiceGenerator mServiceGenerator = new ServiceGenerator(retrofit);
 
-        mChampionsServiceHandler = new ChampionsServiceHandler(context, mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
+        mChampionsHandler = new ChampionsServiceHandler(context, mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
         mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(context, mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
         mFeaturedGamesHandler = new FeaturedGamesServiceHandler(context, mServiceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
         mGamesHandler = new GamesServiceHandler(context, mServiceGenerator.createService(RetrofitGamesServiceHandler.class));
+        mLeaguesHandler = new LeaguesServiceHandler(context, mServiceGenerator.createService(RetrofitLeaguesServiceHandler.class));
     }
 
     public ChampionsServiceI getChampionsHandler() {
         if(APIConfigurationContext.REGION == null){
             throw new IllegalStateException("Teemo not initialized, forgot to add region?");
         }
-        return mChampionsServiceHandler;
+        return mChampionsHandler;
     }
 
     public CurrentGameInfoServiceI getCurrentGameInfoHandler() {
@@ -152,6 +157,13 @@ public class Teemo {
             throw new IllegalStateException("Teemo not initialized, forgot to add region?");
         }
         return mGamesHandler;
+    }
+
+    public LeaguesServiceI getLeaguesHandler(){
+        if(APIConfigurationContext.REGION == null){
+            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
+        }
+        return mLeaguesHandler;
     }
 
 

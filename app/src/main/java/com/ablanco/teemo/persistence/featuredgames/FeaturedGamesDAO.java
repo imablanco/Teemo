@@ -5,6 +5,7 @@ import android.database.Cursor;
 import com.ablanco.teemo.model.featuredgames.FeaturedGameInfo;
 import com.ablanco.teemo.model.featuredgames.FeaturedGames;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class FeaturedGamesDAO  extends BaseDAO<FeaturedGames>{
 
     public FeaturedGamesDAO() {
         super(FeaturedGames.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_MINUTE;
     }
 
     @Override
@@ -23,11 +25,13 @@ public class FeaturedGamesDAO  extends BaseDAO<FeaturedGames>{
         long id = super.save(object);
 
         if(id > -1){
+            //expirationTime = object.getClientRefreshInterval();
+
             FeaturedGameInfoDAO featuredGameInfoDAO = new FeaturedGameInfoDAO();
             List<FeaturedGameInfo> featuredGameInfos = featuredGameInfoDAO.findAll();
 
             featuredGameInfoDAO.deleteAll(featuredGameInfos);
-            featuredGameInfoDAO.saveAll(featuredGameInfos);
+            featuredGameInfoDAO.saveAll(object.getGameList());
         }
 
         return id;

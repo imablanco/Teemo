@@ -106,4 +106,19 @@ public class BaseComplexReferencedDAO<T extends BaseObject> extends BaseDAO<T> {
                 new String[]{String.valueOf(parent.get_id()), DBHelper.getTableName(parent.getClass()), field}, null, null, null);
     }
 
+
+    /**
+     * Retrieve the list of objects referenced by the given field of the given parent
+     * @param parent
+     * @param field
+     * @return
+     */
+    public T findLastFromParent(BaseObject parent, String field) {
+        List<T> data = findFromParent(parent, field);
+        if(!data.isEmpty()){
+            return data.get(data.size() -1);
+        }else {
+            return null;
+        }
+    }
 }

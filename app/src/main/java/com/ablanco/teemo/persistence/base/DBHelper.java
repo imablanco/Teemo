@@ -25,13 +25,13 @@ public class DBHelper {
     public static final String FFIELD = "ffield"; //foreign field name
     public static final String FTABLE = "ftable"; //foreign table name
 
-    public static final int REFRESH_FREQUENCY_ALWAYS = 0;
-    public static final int REFRESH_FREQUENCY_HALF_MINUTE = 30;
-    public static final int REFRESH_FREQUENCY_MINUTE = 60;
-    public static final int REFRESH_FREQUENCY_HALF_HOUR = 1800;
-    public static final int REFRESH_FREQUENCY_HOUR = 3600;
-    public static final int REFRESH_FREQUENCY_DAY = 86400;
-    public static final int REFRESH_FREQUENCY_NEVER = 86400*30;
+    public static final long REFRESH_FREQUENCY_ALWAYS = 0;
+    public static final long REFRESH_FREQUENCY_HALF_MINUTE = 30000;
+    public static final long REFRESH_FREQUENCY_MINUTE = 60000;
+    public static final long REFRESH_FREQUENCY_HALF_HOUR = 1800000;
+    public static final long REFRESH_FREQUENCY_HOUR = 3600000;
+    public static final long REFRESH_FREQUENCY_DAY = 86400000;
+    public static final long REFRESH_FREQUENCY_NEVER = 2592000000l;
 
     /**
      * Remove all the objects from the given table

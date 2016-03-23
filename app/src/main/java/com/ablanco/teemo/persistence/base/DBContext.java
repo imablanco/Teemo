@@ -13,6 +13,9 @@ import com.ablanco.teemo.persistence.currentgame.CurrentGameParticipantDAO;
 import com.ablanco.teemo.persistence.currentgame.MasteryDAO;
 import com.ablanco.teemo.persistence.currentgame.ObserverDAO;
 import com.ablanco.teemo.persistence.currentgame.RuneDAO;
+import com.ablanco.teemo.persistence.featuredgames.FeaturedGameInfoDAO;
+import com.ablanco.teemo.persistence.featuredgames.FeaturedGamesDAO;
+import com.ablanco.teemo.persistence.featuredgames.ParticipantDAO;
 
 
 /**
@@ -49,6 +52,9 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new MasteryDAO().createTable());
         sqLiteDatabase.execSQL(new ObserverDAO().createTable());
         sqLiteDatabase.execSQL(new RuneDAO().createTable());
+        sqLiteDatabase.execSQL(new FeaturedGamesDAO().createTable());
+        sqLiteDatabase.execSQL(new FeaturedGameInfoDAO().createTable());
+        sqLiteDatabase.execSQL(new ParticipantDAO().createTable());
 
     }
 
@@ -63,6 +69,9 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new MasteryDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new ObserverDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new RuneDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new FeaturedGamesDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new FeaturedGameInfoDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -107,6 +116,9 @@ public class DBContext extends SQLiteOpenHelper {
         new MasteryDAO().clearTable();
         new ObserverDAO().clearTable();
         new RuneDAO().clearTable();
+        new FeaturedGamesDAO().clearTable();
+        new FeaturedGameInfoDAO().clearTable();
+        new ParticipantDAO().clearTable();
 
     }//clearDb
 

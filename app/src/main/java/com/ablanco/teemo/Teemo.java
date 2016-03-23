@@ -9,10 +9,13 @@ import com.ablanco.teemo.persistence.base.DBContext;
 import com.ablanco.teemo.service.base.ServiceGenerator;
 import com.ablanco.teemo.service.handlers.ChampionsServiceHandler;
 import com.ablanco.teemo.service.handlers.CurrentGameInfoServiceHandler;
+import com.ablanco.teemo.service.handlers.FeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
 import com.ablanco.teemo.service.interfaces.CurrentGameInfoServiceI;
+import com.ablanco.teemo.service.interfaces.FeaturedGamesServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitCurrentGameInfoServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitFeaturedGamesServiceHandler;
 
 import java.io.IOException;
 
@@ -39,6 +42,7 @@ public class Teemo {
 
     private ChampionsServiceI mChampionsServiceHandler;
     private CurrentGameInfoServiceI mCurrentGameInfoHandler;
+    private FeaturedGamesServiceI mFeaturedGamesHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -114,6 +118,7 @@ public class Teemo {
 
         mChampionsServiceHandler = new ChampionsServiceHandler(context, mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
         mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(context, mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
+        mFeaturedGamesHandler = new FeaturedGamesServiceHandler(context, mServiceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
 
     }
 
@@ -125,7 +130,17 @@ public class Teemo {
     }
 
     public CurrentGameInfoServiceI getCurrentGameInfoHandler() {
+        if(APIConfigurationContext.REGION == null){
+            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
+        }
         return mCurrentGameInfoHandler;
+    }
+
+    public FeaturedGamesServiceI getFeaturedGamesHandler(){
+        if(APIConfigurationContext.REGION == null){
+            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
+        }
+        return mFeaturedGamesHandler;
     }
 
 }

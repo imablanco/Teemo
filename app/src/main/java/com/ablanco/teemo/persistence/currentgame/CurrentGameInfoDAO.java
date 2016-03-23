@@ -19,6 +19,7 @@ import java.util.List;
 public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
 
     private static final String BANNED_CHAMPIONS = "bannedChampioms";
+    private static final String OBSERVER = "observers";
 
     public CurrentGameInfoDAO() {
         super(CurrentGameInfo.class);
@@ -40,10 +41,10 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
             bannedChampionDAO.saveAll(object.getBannedChampions(), object, BANNED_CHAMPIONS);
 
             ObserverDAO observerDAO = new ObserverDAO();
-            List<Observer> observers = observerDAO.findFromParent(object);
+            List<Observer> observers = observerDAO.findFromParent(object, OBSERVER);
 
             observerDAO.deleteAll(observers);
-            observerDAO.save(object.getObservers());
+            observerDAO.save(object.getObservers(), object, OBSERVER);
 
             CurrentGameParticipantDAO participantDAO = new CurrentGameParticipantDAO();
             List<CurrentGameParticipant> participants = participantDAO.findFromParent(object);
@@ -64,7 +65,7 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
         bannedChampionDAO.deleteAll(bannedChampions);
 
         ObserverDAO observerDAO = new ObserverDAO();
-        List<Observer> observers = observerDAO.findFromParent(object);
+        List<Observer> observers = observerDAO.findFromParent(object, OBSERVER);
         observerDAO.deleteAll(observers);
 
         CurrentGameParticipantDAO participantDAO = new CurrentGameParticipantDAO();
@@ -81,7 +82,7 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
 
         if(currentGameInfo != null){
             currentGameInfo.setBannedChampions(new BannedChampionDAO().findFromParent(currentGameInfo, BANNED_CHAMPIONS));
-            currentGameInfo.setObservers(new ObserverDAO().findLast());
+            currentGameInfo.setObservers(new ObserverDAO().findLastFromParent(currentGameInfo, OBSERVER));
             currentGameInfo.setParticipants(new CurrentGameParticipantDAO().findFromParent(currentGameInfo));
         }
 

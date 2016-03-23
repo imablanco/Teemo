@@ -283,7 +283,7 @@ public abstract class BaseDAO<T extends BaseObject> {
             return true;
         } else {
             Date d = new Date();
-            return d.getTime() - obj.getLastUpdate().getTime() > (expirationTime * 1000);
+            return d.getTime() - obj.getLastUpdate().getTime() > expirationTime;
         }
     }//hasExpired
 

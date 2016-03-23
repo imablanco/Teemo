@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Álvaro Blanco Cabrero on 23/3/16
  * Teemo
  */
-public class RecentGamesModelTest extends BaseModelTest{
+public class GamesModelTest extends BaseModelTest{
 
     public void testRecentGameModel(){
 

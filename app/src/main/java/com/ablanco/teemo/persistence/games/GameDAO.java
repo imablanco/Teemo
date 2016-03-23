@@ -21,8 +21,8 @@ public class GameDAO extends BaseReferencedDAO<Game, RecentGames> {
     }
 
     @Override
-    public long save(Game object) {
-        long id = super.save(object);
+    public long save(Game object, RecentGames parent) {
+        long id = super.save(object,parent);
 
         if(id > -1){
 

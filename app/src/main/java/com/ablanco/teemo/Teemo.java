@@ -10,12 +10,15 @@ import com.ablanco.teemo.service.base.ServiceGenerator;
 import com.ablanco.teemo.service.handlers.ChampionsServiceHandler;
 import com.ablanco.teemo.service.handlers.CurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.handlers.FeaturedGamesServiceHandler;
+import com.ablanco.teemo.service.handlers.GamesServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
 import com.ablanco.teemo.service.interfaces.CurrentGameInfoServiceI;
 import com.ablanco.teemo.service.interfaces.FeaturedGamesServiceI;
+import com.ablanco.teemo.service.interfaces.GamesServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitCurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitFeaturedGamesServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitGamesServiceHandler;
 
 import java.io.IOException;
 
@@ -43,6 +46,7 @@ public class Teemo {
     private ChampionsServiceI mChampionsServiceHandler;
     private CurrentGameInfoServiceI mCurrentGameInfoHandler;
     private FeaturedGamesServiceI mFeaturedGamesHandler;
+    private GamesServiceI mGamesHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -119,7 +123,7 @@ public class Teemo {
         mChampionsServiceHandler = new ChampionsServiceHandler(context, mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
         mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(context, mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
         mFeaturedGamesHandler = new FeaturedGamesServiceHandler(context, mServiceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
-
+        mGamesHandler = new GamesServiceHandler(context, mServiceGenerator.createService(RetrofitGamesServiceHandler.class));
     }
 
     public ChampionsServiceI getChampionsHandler() {
@@ -142,5 +146,13 @@ public class Teemo {
         }
         return mFeaturedGamesHandler;
     }
+
+    public GamesServiceI getGamesHandler(){
+        if(APIConfigurationContext.REGION == null){
+            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
+        }
+        return mGamesHandler;
+    }
+
 
 }

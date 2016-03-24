@@ -4,7 +4,7 @@ import android.test.AndroidTestCase;
 
 import com.ablanco.teemo.Teemo;
 import com.ablanco.teemo.TestConstants;
-import com.ablanco.teemo.statics.Regions;
+import com.ablanco.teemo.constants.Regions;
 
 /**
  * Created by Álvaro Blanco on 20/03/2016.

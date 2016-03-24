@@ -1,4 +1,4 @@
-package com.ablanco.teemo.statics;
+package com.ablanco.teemo.constants;
 
 /**
  * Created by Álvaro Blanco on 22/03/2016.

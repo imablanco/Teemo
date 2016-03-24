@@ -31,4 +31,5 @@ public class ChampionList extends BaseObject{
     public void setFreeToPlay(boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
     }
+
 }

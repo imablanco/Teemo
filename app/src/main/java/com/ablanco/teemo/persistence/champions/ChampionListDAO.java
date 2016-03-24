@@ -16,7 +16,6 @@ import java.util.List;
 public class ChampionListDAO  extends BaseDAO<ChampionList>{
 
     private final static String CHAMPIONS = "champions";
-    private final static String FREE_TO_PLAY = "freeToPlay";
 
     public ChampionListDAO() {
         super(ChampionList.class);
@@ -24,8 +23,10 @@ public class ChampionListDAO  extends BaseDAO<ChampionList>{
     }
 
 
-    public long save(ChampionList object, boolean onlyFreeToPlay) {
+    public long save(ChampionList object,boolean onlyFreeToPlay) {
+
         object.setFreeToPlay(onlyFreeToPlay);
+
         long id = super.save(object);
         if(id > -1){
             ChampionDAO dao = new ChampionDAO();
@@ -64,6 +65,6 @@ public class ChampionListDAO  extends BaseDAO<ChampionList>{
 
     public ChampionList findByFreeToPlay(boolean freeToPlay){
         int convertedValue = freeToPlay ? 1 : 0;
-        return findFirst(FREE_TO_PLAY + " = ?", new String[]{String.valueOf(convertedValue)},null,null);
+        return findFirst("freeToPlay = ?", new String[]{String.valueOf(convertedValue)},null,null);
     }
 }

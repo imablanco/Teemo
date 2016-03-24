@@ -79,10 +79,4 @@ public class CurrentGameInfoServiceHandler extends BaseRetrofitServiceClass<Retr
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    @Override
-    public void getCurrentGameInfo(final long summonerId, ServiceResponseListener<CurrentGameInfo> listener) {
-
-        getCurrentGameInfoByPlatform(APIConfigurationContext.PLATFORM, summonerId, listener);
-
-    }
 }

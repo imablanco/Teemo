@@ -18,6 +18,7 @@ public class BaseModelTest extends AndroidTestCase {
 
     @Override
     protected void tearDown() throws Exception {
+        DBContext.clearDb();
         DBContext.finishDb();
     }
 }

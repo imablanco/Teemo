@@ -5,6 +5,8 @@ import com.ablanco.teemo.model.champions.ChampionList;
 import com.ablanco.teemo.persistence.champions.ChampionDAO;
 import com.ablanco.teemo.persistence.champions.ChampionListDAO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -15,19 +17,24 @@ public class ChampionModelTest extends BaseModelTest{
 
     public void testChampionList(){
         ChampionList championList = new ChampionList();
-        championList.setFreeToPlay(true);
         ChampionListDAO dao = new ChampionListDAO();
-        dao.save(championList);
 
-        assertTrue(championList.getChampions() == null);
+        List<Champion> champions = new ArrayList<>();
+        champions.add(new Champion());
+
+        championList.setChampions(champions);
+
+        dao.save(championList, true);
+
+        assertTrue(!dao.findByFreeToPlay(true).getChampions().isEmpty());
         assertTrue(dao.findByFreeToPlay(true).isFreeToPlay());
-        assertFalse(dao.findAll().isEmpty());
+        assertTrue(!dao.findAll().isEmpty());
 
         championList.setFreeToPlay(false);
         dao.save(championList);
 
         assertTrue(!dao.findByFreeToPlay(false).isFreeToPlay());
-        assertFalse(dao.findAll().isEmpty());
+        assertTrue(!dao.findAll().isEmpty());
 
         dao.deleteAll(dao.findAll());
 
@@ -66,7 +73,7 @@ public class ChampionModelTest extends BaseModelTest{
                 dao.save(firstChampion);
 
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

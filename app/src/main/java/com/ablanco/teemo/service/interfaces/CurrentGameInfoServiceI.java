@@ -11,6 +11,4 @@ public interface CurrentGameInfoServiceI {
 
     //Get current game information for the given summoner ID. (REST)
     void getCurrentGameInfoByPlatform(String platformId, long summonerId, ServiceResponseListener<CurrentGameInfo> listener);
-
-    void getCurrentGameInfo(long summonerId, ServiceResponseListener<CurrentGameInfo> listener);
 }

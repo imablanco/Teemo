@@ -17,7 +17,6 @@ public class LeagueModelTest extends BaseModelTest {
     public void testLeague(){
 
         League league = new League();
-        league.setSummonerOrTeamId("1");
 
         List<LeagueEntry> entries = new ArrayList<>();
 
@@ -31,9 +30,9 @@ public class LeagueModelTest extends BaseModelTest {
 
         LeagueDAO leagueDAO = new LeagueDAO();
 
-        leagueDAO.save(league);
+        leagueDAO.save(league, "1", true);
 
-        /*List<League>  leagues= leagueDAO.findBySummonerOrTeamIdAndOnlyEntry("1",false);
+        List<League>  leagues= leagueDAO.findBySummonerOrTeamIdAndOnlyEntry("1",true);
 
         assertTrue(!leagues.isEmpty());
         assertTrue(!leagues.get(0).getEntries().isEmpty());
@@ -42,6 +41,6 @@ public class LeagueModelTest extends BaseModelTest {
 
         leagueDAO.deleteAll(leagues);
 
-        assertTrue(leagueDAO.findBySummonerOrTeamIdAndOnlyEntry("1",true) == null); // TODO: 23/3/16 refactor this test*/
+        assertTrue(leagueDAO.findBySummonerOrTeamIdAndOnlyEntry("1",true).isEmpty());
     }
 }

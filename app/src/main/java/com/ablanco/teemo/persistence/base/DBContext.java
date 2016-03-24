@@ -28,6 +28,11 @@ import com.ablanco.teemo.persistence.stats.ChampionStatsDAO;
 import com.ablanco.teemo.persistence.stats.PlayerStatsSummaryDAO;
 import com.ablanco.teemo.persistence.stats.PlayerStatsSummaryListDAO;
 import com.ablanco.teemo.persistence.stats.RankedStatsDAO;
+import com.ablanco.teemo.persistence.teams.MatchHistorySummaryDAO;
+import com.ablanco.teemo.persistence.teams.RosterDAO;
+import com.ablanco.teemo.persistence.teams.TeamDAO;
+import com.ablanco.teemo.persistence.teams.TeamMemberInfoDAO;
+import com.ablanco.teemo.persistence.teams.TeamStatDetailDAO;
 
 
 /**
@@ -37,7 +42,7 @@ import com.ablanco.teemo.persistence.stats.RankedStatsDAO;
 public class DBContext extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Teemo";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     /**
      * Singleton
@@ -79,6 +84,11 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new PlayerStatsSummaryDAO().createTable());
         sqLiteDatabase.execSQL(new RankedStatsDAO().createTable());
         sqLiteDatabase.execSQL(new PlayerStatsSummaryListDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchHistorySummaryDAO().createTable());
+        sqLiteDatabase.execSQL(new RosterDAO().createTable());
+        sqLiteDatabase.execSQL(new TeamDAO().createTable());
+        sqLiteDatabase.execSQL(new TeamMemberInfoDAO().createTable());
+        sqLiteDatabase.execSQL(new TeamStatDetailDAO().createTable());
 
     }
 
@@ -108,6 +118,11 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new PlayerStatsSummaryDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new PlayerStatsSummaryListDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new RankedStatsDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchHistorySummaryDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RosterDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new TeamMemberInfoDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new TeamDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new TeamStatDetailDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -167,6 +182,11 @@ public class DBContext extends SQLiteOpenHelper {
         new PlayerStatsSummaryDAO().clearTable();
         new PlayerStatsSummaryListDAO().clearTable();
         new RawStatsDAO().clearTable();
+        new MatchHistorySummaryDAO().clearTable();
+        new RosterDAO().clearTable();
+        new TeamDAO().clearTable();
+        new TeamMemberInfoDAO().clearTable();
+        new TeamStatDetailDAO().clearTable();
 
     }//clearDb
 

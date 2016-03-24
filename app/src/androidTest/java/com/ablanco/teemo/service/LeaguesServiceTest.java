@@ -22,12 +22,12 @@ public class LeaguesServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getLeaguesHandler().getLeaguesBySummoners(Collections.singletonList(TestConstants.SUMMONER_ID_FOR_LEAGUE),true, new ServiceResponseListener<Map<String, List<League>>>() {
+            Teemo.getInstance(getContext()).getLeaguesHandler().getLeaguesBySummoners(Collections.singletonList(TestConstants.SUMMONER_ID_STRING),true, new ServiceResponseListener<Map<String, List<League>>>() {
                 @Override
                 public void onResponse(Map<String, List<League>> response) {
                     assertTrue(response != null);
                     assertTrue(response.size() == 1);
-                    assertTrue(response.get(TestConstants.SUMMONER_ID_FOR_LEAGUE).get(0).getEntries().size() == 1);
+                    assertTrue(response.get(TestConstants.SUMMONER_ID_STRING).get(0).getEntries().size() == 1);
                     countDownLatch.countDown();
                 }
 
@@ -50,12 +50,12 @@ public class LeaguesServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getLeaguesHandler().getLeaguesBySummoners(Collections.singletonList(TestConstants.SUMMONER_ID_FOR_LEAGUE),false, new ServiceResponseListener<Map<String, List<League>>>() {
+            Teemo.getInstance(getContext()).getLeaguesHandler().getLeaguesBySummoners(Collections.singletonList(TestConstants.SUMMONER_ID_STRING),false, new ServiceResponseListener<Map<String, List<League>>>() {
                 @Override
                 public void onResponse(Map<String, List<League>> response) {
                     assertTrue(response != null);
                     assertTrue(response.size() == 1);
-                    assertTrue(response.get(TestConstants.SUMMONER_ID_FOR_LEAGUE).get(0).getEntries().size() > 1);
+                    assertTrue(response.get(TestConstants.SUMMONER_ID_STRING).get(0).getEntries().size() > 1);
                     countDownLatch.countDown();
                 }
 

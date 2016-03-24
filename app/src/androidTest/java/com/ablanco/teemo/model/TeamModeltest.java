@@ -88,7 +88,7 @@ public class TeamModelTest extends BaseModelTest {
 
         teamDAO.save(team);
 
-        team = teamDAO.findByTeamId(TestConstants.TEAM_ID).get(0);
+        team = teamDAO.findByTeamId(TestConstants.TEAM_ID);
 
         assertTrue(team.getFullId().equals(TestConstants.TEAM_ID));
         assertTrue(team.getSummonerId() == null);
@@ -100,7 +100,7 @@ public class TeamModelTest extends BaseModelTest {
         assertTrue(team.getMatchHistory().size() == 1);
         assertTrue(team.getMatchHistory().get(0).getAssists() == 13);
 
-        teamDAO.deleteAll(teamDAO.findByTeamId(TestConstants.TEAM_ID));
+        teamDAO.delete(teamDAO.findByTeamId(TestConstants.TEAM_ID));
 
         assertTrue(teamDAO.findAll().size() == 0);
 

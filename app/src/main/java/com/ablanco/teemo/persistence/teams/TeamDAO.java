@@ -100,7 +100,7 @@ public class TeamDAO extends BaseDAO<Team> {
         return find("summonerId LIKE ?", new String[]{summonerId}, null, null);
     }
 
-    public List<Team> findByTeamId(String teamId){
-        return find("fullId LIKE ?", new String[]{teamId}, null, null);
+    public Team findByTeamId(String teamId){
+        return findFirst("fullId LIKE ?", new String[]{teamId}, null, null);
     }
 }

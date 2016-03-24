@@ -89,4 +89,8 @@ public class TeemoException extends Exception{
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof TeemoException && ((TeemoException) o).getCode() == mCode && ((TeemoException) o).getMessage().equals(mMessage);
+    }
 }

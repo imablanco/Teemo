@@ -12,7 +12,7 @@ public class CurrentGameParticipant extends BaseObject {
 
     private boolean bot;
     private long championId;
-    private List<Mastery> masteries;
+    private List<CurrentGamesMastery> masteries;
     private long profileIconId;
     private List<Rune> runes;
     private long spell1Id;
@@ -37,11 +37,11 @@ public class CurrentGameParticipant extends BaseObject {
         this.championId = championId;
     }
 
-    public List<Mastery> getMasteries() {
+    public List<CurrentGamesMastery> getMasteries() {
         return masteries;
     }
 
-    public void setMasteries(List<Mastery> masteries) {
+    public void setMasteries(List<CurrentGamesMastery> masteries) {
         this.masteries = masteries;
     }
 

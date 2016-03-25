@@ -6,7 +6,7 @@ import com.ablanco.teemo.model.BaseObject;
  * Created by Álvaro Blanco on 22/03/2016.
  * Teemo
  */
-public class Mastery extends BaseObject {
+public class CurrentGamesMastery extends BaseObject {
 
     private long masteryId;
     private int rank;

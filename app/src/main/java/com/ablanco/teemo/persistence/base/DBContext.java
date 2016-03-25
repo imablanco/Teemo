@@ -10,7 +10,7 @@ import com.ablanco.teemo.persistence.champions.ChampionListDAO;
 import com.ablanco.teemo.persistence.common.BannedChampionDAO;
 import com.ablanco.teemo.persistence.currentgames.CurrentGameInfoDAO;
 import com.ablanco.teemo.persistence.currentgames.CurrentGameParticipantDAO;
-import com.ablanco.teemo.persistence.currentgames.MasteryDAO;
+import com.ablanco.teemo.persistence.currentgames.CurrentGamesMasteryDAO;
 import com.ablanco.teemo.persistence.currentgames.ObserverDAO;
 import com.ablanco.teemo.persistence.currentgames.RuneDAO;
 import com.ablanco.teemo.persistence.featuredgames.FeaturedGameInfoDAO;
@@ -28,6 +28,13 @@ import com.ablanco.teemo.persistence.stats.ChampionStatsDAO;
 import com.ablanco.teemo.persistence.stats.PlayerStatsSummaryDAO;
 import com.ablanco.teemo.persistence.stats.PlayerStatsSummaryListDAO;
 import com.ablanco.teemo.persistence.stats.RankedStatsDAO;
+import com.ablanco.teemo.persistence.summoners.MasteryDAO;
+import com.ablanco.teemo.persistence.summoners.MasteryPageDAO;
+import com.ablanco.teemo.persistence.summoners.MasteryPagesDAO;
+import com.ablanco.teemo.persistence.summoners.RunePageDAO;
+import com.ablanco.teemo.persistence.summoners.RunePagesDAO;
+import com.ablanco.teemo.persistence.summoners.RuneSlotDAO;
+import com.ablanco.teemo.persistence.summoners.SummonerDAO;
 import com.ablanco.teemo.persistence.teams.MatchHistorySummaryDAO;
 import com.ablanco.teemo.persistence.teams.RosterDAO;
 import com.ablanco.teemo.persistence.teams.TeamDAO;
@@ -42,7 +49,7 @@ import com.ablanco.teemo.persistence.teams.TeamStatDetailDAO;
 public class DBContext extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Teemo";
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
 
     /**
      * Singleton
@@ -66,7 +73,7 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new BannedChampionDAO().createTable());
         sqLiteDatabase.execSQL(new CurrentGameInfoDAO().createTable());
         sqLiteDatabase.execSQL(new CurrentGameParticipantDAO().createTable());
-        sqLiteDatabase.execSQL(new MasteryDAO().createTable());
+        sqLiteDatabase.execSQL(new CurrentGamesMasteryDAO().createTable());
         sqLiteDatabase.execSQL(new ObserverDAO().createTable());
         sqLiteDatabase.execSQL(new RuneDAO().createTable());
         sqLiteDatabase.execSQL(new FeaturedGamesDAO().createTable());
@@ -89,6 +96,13 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new TeamDAO().createTable());
         sqLiteDatabase.execSQL(new TeamMemberInfoDAO().createTable());
         sqLiteDatabase.execSQL(new TeamStatDetailDAO().createTable());
+        sqLiteDatabase.execSQL(new RuneSlotDAO().createTable());
+        sqLiteDatabase.execSQL(new RunePageDAO().createTable());
+        sqLiteDatabase.execSQL(new RunePagesDAO().createTable());
+        sqLiteDatabase.execSQL(new MasteryDAO().createTable());
+        sqLiteDatabase.execSQL(new MasteryPageDAO().createTable());
+        sqLiteDatabase.execSQL(new MasteryPagesDAO().createTable());
+        sqLiteDatabase.execSQL(new SummonerDAO().createTable());
 
     }
 
@@ -100,7 +114,7 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new BannedChampionDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new CurrentGameInfoDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new CurrentGameParticipantDAO().upgradeTable(oldVersion, newVersion));
-        sqLiteDatabase.execSQL(new MasteryDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new CurrentGamesMasteryDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new ObserverDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new RuneDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new FeaturedGamesDAO().upgradeTable(oldVersion, newVersion));
@@ -123,6 +137,13 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new TeamMemberInfoDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new TeamDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new TeamStatDetailDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RuneSlotDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RunePageDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new RunePagesDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MasteryDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MasteryPageDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MasteryPagesDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new SummonerDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -164,7 +185,7 @@ public class DBContext extends SQLiteOpenHelper {
         new BannedChampionDAO().clearTable();
         new CurrentGameInfoDAO().clearTable();
         new CurrentGameParticipantDAO().clearTable();
-        new MasteryDAO().clearTable();
+        new CurrentGamesMasteryDAO().clearTable();
         new ObserverDAO().clearTable();
         new RuneDAO().clearTable();
         new FeaturedGamesDAO().clearTable();
@@ -187,6 +208,13 @@ public class DBContext extends SQLiteOpenHelper {
         new TeamDAO().clearTable();
         new TeamMemberInfoDAO().clearTable();
         new TeamStatDetailDAO().clearTable();
+        new RuneSlotDAO().clearTable();
+        new RunePageDAO().clearTable();
+        new RunePagesDAO().clearTable();
+        new MasteryDAO().clearTable();
+        new MasteryPageDAO().clearTable();
+        new MasteryPagesDAO().clearTable();
+        new SummonerDAO().clearTable();
 
     }//clearDb
 

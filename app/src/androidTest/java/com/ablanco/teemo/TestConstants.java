@@ -10,6 +10,7 @@ public class TestConstants {
     public final static long SUMMONER_ID = 20525008;
     public final static String SUMMONER_ID_STRING = "41675335";
     public final static String TEAM_ID = "TEAM-4e4d8770-6800-11e4-b7b9-c81f66db96d8";
+    public final static String SUMMONER_NAME = "Sympherion";
 
 
 }

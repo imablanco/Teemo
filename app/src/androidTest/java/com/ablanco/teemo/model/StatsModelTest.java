@@ -1,7 +1,7 @@
 package com.ablanco.teemo.model;
 
 import com.ablanco.teemo.TestConstants;
-import com.ablanco.teemo.constants.Seasons;
+import com.ablanco.teemo.constants.Season;
 import com.ablanco.teemo.model.stats.AggregatedStats;
 import com.ablanco.teemo.model.stats.ChampionStats;
 import com.ablanco.teemo.model.stats.PlayerStatsSummary;
@@ -37,9 +37,9 @@ public class StatsModelTest extends BaseModelTest{
 
         RankedStatsDAO rankedStatsDAO = new RankedStatsDAO();
 
-        rankedStatsDAO.save(rankedStats, Seasons.SEASON2016);
+        rankedStatsDAO.save(rankedStats, Season.SEASON2016);
 
-        rankedStats = rankedStatsDAO.findBySummonerIdandSeason(TestConstants.SUMMONER_ID, Seasons.SEASON2016);
+        rankedStats = rankedStatsDAO.findBySummonerIdandSeason(TestConstants.SUMMONER_ID, Season.SEASON2016);
         assertTrue(rankedStats != null);
         assertTrue(!rankedStats.getChampions().isEmpty());
         assertTrue(rankedStats.getChampions().size() == 1);
@@ -64,9 +64,9 @@ public class StatsModelTest extends BaseModelTest{
 
         PlayerStatsSummaryListDAO dao = new PlayerStatsSummaryListDAO();
 
-        dao.save(playerStatsSummaryList, Seasons.SEASON2016);
+        dao.save(playerStatsSummaryList, Season.SEASON2016);
 
-        playerStatsSummaryList = dao.findBySummonerIdandSeason(TestConstants.SUMMONER_ID, Seasons.SEASON2016);
+        playerStatsSummaryList = dao.findBySummonerIdandSeason(TestConstants.SUMMONER_ID, Season.SEASON2016);
         assertTrue(playerStatsSummaryList != null);
         assertTrue(!playerStatsSummaryList.getPlayerStatSummaries().isEmpty());
         assertTrue(playerStatsSummaryList.getPlayerStatSummaries().size() == 1);

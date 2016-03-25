@@ -3,7 +3,7 @@ package com.ablanco.teemo.service;
 import com.ablanco.teemo.Teemo;
 import com.ablanco.teemo.TeemoException;
 import com.ablanco.teemo.TestConstants;
-import com.ablanco.teemo.constants.Seasons;
+import com.ablanco.teemo.constants.Season;
 import com.ablanco.teemo.model.stats.PlayerStatsSummaryList;
 import com.ablanco.teemo.model.stats.RankedStats;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
@@ -21,11 +21,11 @@ public class StatsServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getStatsHandler().getRankedStatsBySummonerAndSeason(TestConstants.SUMMONER_ID, Seasons.SEASON2014, new ServiceResponseListener<RankedStats>() {
+            Teemo.getInstance(getContext()).getStatsHandler().getRankedStatsBySummonerAndSeason(TestConstants.SUMMONER_ID, Season.SEASON2014, new ServiceResponseListener<RankedStats>() {
                 @Override
                 public void onResponse(RankedStats response) {
                     assertTrue(response != null);
-                    assertTrue(response.getSeason().equals(Seasons.SEASON2014));
+                    assertTrue(response.getSeason().equals(Season.SEASON2014));
                     assertTrue(response.getSummonerId() == TestConstants.SUMMONER_ID);
                     countDownLatch.countDown();
                 }
@@ -49,11 +49,11 @@ public class StatsServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getStatsHandler().getPlayerStatsSummaryBySummonerAndSeason(TestConstants.SUMMONER_ID, Seasons.SEASON2014, new ServiceResponseListener<PlayerStatsSummaryList>() {
+            Teemo.getInstance(getContext()).getStatsHandler().getPlayerStatsSummaryBySummonerAndSeason(TestConstants.SUMMONER_ID, Season.SEASON2014, new ServiceResponseListener<PlayerStatsSummaryList>() {
                 @Override
                 public void onResponse(PlayerStatsSummaryList response) {
                     assertTrue(response != null);
-                    assertTrue(response.getSeason().equals(Seasons.SEASON2014));
+                    assertTrue(response.getSeason().equals(Season.SEASON2014));
                     assertTrue(response.getSummonerId() == TestConstants.SUMMONER_ID);
                     countDownLatch.countDown();
                 }

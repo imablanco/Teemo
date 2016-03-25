@@ -366,4 +366,54 @@ public abstract class BaseDAO<T extends BaseObject> {
         }
         return expired;
     }//hasExpired
+
+    public class QueryBuilder{
+
+        private List<String> mWhereClauses;
+        private List<String> mWhereArgs;
+
+        public QueryBuilder(){
+            this.mWhereArgs = new ArrayList<>();
+            this.mWhereClauses = new ArrayList<>();
+        }
+
+        public QueryBuilder where(String whereClause, String whereArg){
+            this.mWhereClauses.add(whereClause);
+            this.mWhereArgs.add(whereArg);
+            return this;
+        }
+
+        public List<T> findAll(){
+
+            StringBuilder mWhereClauseBuilder = new StringBuilder();
+
+            for (int i = 0; i < mWhereClauses.size(); i++){
+                if(i != 0){
+                    mWhereClauseBuilder.append(" AND ");
+                }
+
+                mWhereClauseBuilder.append(mWhereClauses.get(i));
+                mWhereClauseBuilder.append(" = ?");
+            }
+
+
+            String[] array = new String[mWhereArgs.size()];
+            mWhereArgs.toArray(array);
+
+            return find(mWhereClauseBuilder.toString(), array, null, null);
+        }
+
+        public T findFirst(){
+
+            List<T> results = findAll();
+            if(results.isEmpty()){
+                return null;
+            }else {
+                return results.get(0);
+            }
+
+        }
+
+    }
+
 }

@@ -23,6 +23,22 @@ import com.ablanco.teemo.persistence.games.RecentGamesDAO;
 import com.ablanco.teemo.persistence.leagues.LeagueDAO;
 import com.ablanco.teemo.persistence.leagues.LeagueEntryDAO;
 import com.ablanco.teemo.persistence.leagues.MiniSeriesDAO;
+import com.ablanco.teemo.persistence.matches.EventDAO;
+import com.ablanco.teemo.persistence.matches.FrameDAO;
+import com.ablanco.teemo.persistence.matches.MatchBannedChampionDAO;
+import com.ablanco.teemo.persistence.matches.MatchDetailDAO;
+import com.ablanco.teemo.persistence.matches.MatchMasteryDAO;
+import com.ablanco.teemo.persistence.matches.MatchParticipantDAO;
+import com.ablanco.teemo.persistence.matches.MatchPlayerDAO;
+import com.ablanco.teemo.persistence.matches.MatchRuneDAO;
+import com.ablanco.teemo.persistence.matches.MatchTeamDAO;
+import com.ablanco.teemo.persistence.matches.ParticipantFrameDAO;
+import com.ablanco.teemo.persistence.matches.ParticipantIdentityDAO;
+import com.ablanco.teemo.persistence.matches.ParticipantStatsDAO;
+import com.ablanco.teemo.persistence.matches.ParticipantTimelineDAO;
+import com.ablanco.teemo.persistence.matches.ParticipantTimelineDataDAO;
+import com.ablanco.teemo.persistence.matches.PositionDAO;
+import com.ablanco.teemo.persistence.matches.TimelineDAO;
 import com.ablanco.teemo.persistence.matchlist.MatchListDAO;
 import com.ablanco.teemo.persistence.matchlist.MatchReferenceDAO;
 import com.ablanco.teemo.persistence.stats.AggregatedStatsDAO;
@@ -51,7 +67,7 @@ import com.ablanco.teemo.persistence.teams.TeamStatDetailDAO;
 public class DBContext extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Teemo";
-    private static final int DB_VERSION = 4;
+    private static final int DB_VERSION = 7;
 
     /**
      * Singleton
@@ -107,6 +123,22 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new SummonerDAO().createTable());
         sqLiteDatabase.execSQL(new MatchListDAO().createTable());
         sqLiteDatabase.execSQL(new MatchReferenceDAO().createTable());
+        sqLiteDatabase.execSQL(new EventDAO().createTable());
+        sqLiteDatabase.execSQL(new FrameDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchBannedChampionDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchDetailDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchMasteryDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchParticipantDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchPlayerDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchRuneDAO().createTable());
+        sqLiteDatabase.execSQL(new ParticipantFrameDAO().createTable());
+        sqLiteDatabase.execSQL(new ParticipantIdentityDAO().createTable());
+        sqLiteDatabase.execSQL(new ParticipantStatsDAO().createTable());
+        sqLiteDatabase.execSQL(new ParticipantTimelineDAO().createTable());
+        sqLiteDatabase.execSQL(new ParticipantTimelineDataDAO().createTable());
+        sqLiteDatabase.execSQL(new PositionDAO().createTable());
+        sqLiteDatabase.execSQL(new TimelineDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchTeamDAO().createTable());
 
     }
 
@@ -150,6 +182,26 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new SummonerDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new MatchListDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new MatchReferenceDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new EventDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new FrameDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantFrameDAO().upgradeTable(oldVersion, newVersion));
+
+        sqLiteDatabase.execSQL(new EventDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new FrameDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchBannedChampionDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchDetailDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchMasteryDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchParticipantDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchPlayerDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchRuneDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantFrameDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantIdentityDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantStatsDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantTimelineDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ParticipantTimelineDataDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new PositionDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new TimelineDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchTeamDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -223,6 +275,24 @@ public class DBContext extends SQLiteOpenHelper {
         new SummonerDAO().clearTable();
         new MatchListDAO().clearTable();
         new MatchReferenceDAO().clearTable();
+        new EventDAO().clearTable();
+        new FrameDAO().clearTable();
+        new ParticipantFrameDAO().clearTable();
+        new EventDAO().clearTable();
+        new FrameDAO().clearTable();
+        new MatchBannedChampionDAO().clearTable();
+        new MatchDetailDAO().clearTable();
+        new MatchMasteryDAO().clearTable();
+        new MatchParticipantDAO().clearTable();
+        new MatchPlayerDAO().clearTable();
+        new MatchRuneDAO().clearTable();
+        new MatchTeamDAO().clearTable();
+        new ParticipantFrameDAO().clearTable();
+        new ParticipantIdentityDAO().clearTable();
+        new ParticipantStatsDAO().clearTable();
+        new ParticipantTimelineDAO().clearTable();
+        new PositionDAO().clearTable();
+        new TimelineDAO().clearTable();
 
     }//clearDb
 

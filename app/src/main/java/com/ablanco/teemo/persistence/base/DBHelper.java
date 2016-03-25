@@ -273,5 +273,47 @@ public class DBHelper {
         }
     }
 
+    public static <T> String storeDataArray(List<T> data){
+        if( data == null){
+            return null;
+        }else if( data.size() == 0){
+            return "";
+        }else{
+            String res = "";
+            for( int i = 0; i < data.size(); i++){
+                res += data.get(i);
+                if( i < data.size()-1){
+                    res += ",";
+                }
+            }
+            return res;
+        }
+    }
+
+    public static List<Integer> retrieveIntArray(String data){
+        if( data == null){
+            return null;
+        }else{
+            String[] parts = data.split(",");
+            ArrayList<Integer> res = new ArrayList<Integer>();
+            for( int i = 0; i < parts.length; i++){
+                res.add(Integer.parseInt(parts[i]));
+            }
+            return res;
+        }
+    }
+
+    public static List<Long> retrieveLongArray(String data){
+        if( data == null){
+            return null;
+        }else{
+            String[] parts = data.split(",");
+            ArrayList<Long> res = new ArrayList<Long>();
+            for( int i = 0; i < parts.length; i++){
+                res.add(Long.parseLong(parts[i]));
+            }
+            return res;
+        }
+    }
 
 }

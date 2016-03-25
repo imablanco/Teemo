@@ -5,6 +5,7 @@ import android.database.Cursor;
 import com.ablanco.teemo.model.stats.ChampionStats;
 import com.ablanco.teemo.model.stats.RankedStats;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class RankedStatsDAO extends BaseDAO<RankedStats> {
 
     public RankedStatsDAO() {
         super(RankedStats.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
     }
 
     public long save(RankedStats object, String season) {

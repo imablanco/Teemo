@@ -5,6 +5,7 @@ import android.database.Cursor;
 import com.ablanco.teemo.model.summoners.MasteryPage;
 import com.ablanco.teemo.model.summoners.MasteryPages;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class MasteryPagesDAO extends BaseDAO<MasteryPages> {
 
     public MasteryPagesDAO() {
         super(MasteryPages.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
     }
 
     @Override

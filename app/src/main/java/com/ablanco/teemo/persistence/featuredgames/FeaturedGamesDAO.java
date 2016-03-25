@@ -17,7 +17,7 @@ public class FeaturedGamesDAO  extends BaseDAO<FeaturedGames>{
 
     public FeaturedGamesDAO() {
         super(FeaturedGames.class);
-        expirationTime = DBHelper.REFRESH_FREQUENCY_MINUTE;
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
     }
 
     @Override

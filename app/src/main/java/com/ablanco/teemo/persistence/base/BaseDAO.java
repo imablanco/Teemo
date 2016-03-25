@@ -345,7 +345,7 @@ public abstract class BaseDAO<T extends BaseObject> {
     }//find
 
     public boolean hasExpired(BaseObject obj) {
-        if (obj.getLastUpdate() == null) {
+        if (obj == null || obj.getLastUpdate() == null) {
             return true;
         } else {
             Date d = new Date();
@@ -362,7 +362,7 @@ public abstract class BaseDAO<T extends BaseObject> {
                 i++;
             }
         } else {
-            return true;
+            expired = true;
         }
         return expired;
     }//hasExpired

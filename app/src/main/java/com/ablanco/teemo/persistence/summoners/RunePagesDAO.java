@@ -5,6 +5,7 @@ import android.database.Cursor;
 import com.ablanco.teemo.model.summoners.RunePage;
 import com.ablanco.teemo.model.summoners.RunePages;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class RunePagesDAO extends BaseDAO<RunePages> {
 
     public RunePagesDAO() {
         super(RunePages.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_MINUTE;
     }
 
     @Override

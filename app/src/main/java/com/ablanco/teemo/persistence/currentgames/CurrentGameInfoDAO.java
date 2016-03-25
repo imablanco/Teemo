@@ -23,7 +23,7 @@ public class CurrentGameInfoDAO extends BaseDAO<CurrentGameInfo> {
 
     public CurrentGameInfoDAO() {
         super(CurrentGameInfo.class);
-        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_MINUTE;
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
     }
 
 

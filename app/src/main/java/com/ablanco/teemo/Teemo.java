@@ -13,6 +13,7 @@ import com.ablanco.teemo.service.handlers.FeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.handlers.GamesServiceHandler;
 import com.ablanco.teemo.service.handlers.LeaguesServiceHandler;
 import com.ablanco.teemo.service.handlers.StatsServiceHandler;
+import com.ablanco.teemo.service.handlers.SummonersServiceHandler;
 import com.ablanco.teemo.service.handlers.TeamsServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
 import com.ablanco.teemo.service.interfaces.CurrentGameInfoServiceI;
@@ -20,6 +21,7 @@ import com.ablanco.teemo.service.interfaces.FeaturedGamesServiceI;
 import com.ablanco.teemo.service.interfaces.GamesServiceI;
 import com.ablanco.teemo.service.interfaces.LeaguesServiceI;
 import com.ablanco.teemo.service.interfaces.StatsServiceI;
+import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.interfaces.TeamsServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitCurrentGameInfoServiceHandler;
@@ -27,6 +29,7 @@ import com.ablanco.teemo.service.retrofit.RetrofitFeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitLeaguesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitStatsServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitSummonerServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitTeamsServiceHandler;
 
 import java.io.IOException;
@@ -59,6 +62,7 @@ public class Teemo {
     private LeaguesServiceI mLeaguesHandler;
     private StatsServiceI mStatsHandler;
     private TeamsServiceI mTeamsHandler;
+    private SummonerServiceI mSummonersHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -139,55 +143,52 @@ public class Teemo {
         mLeaguesHandler = new LeaguesServiceHandler(context, mServiceGenerator.createService(RetrofitLeaguesServiceHandler.class));
         mStatsHandler = new StatsServiceHandler(context, mServiceGenerator.createService(RetrofitStatsServiceHandler.class));
         mTeamsHandler = new TeamsServiceHandler(context, mServiceGenerator.createService(RetrofitTeamsServiceHandler.class));
+        mSummonersHandler = new SummonersServiceHandler(context, mServiceGenerator.createService(RetrofitSummonerServiceHandler.class));
     }
 
-    public ChampionsServiceI getChampionsHandler() {
+    private void checkRegion(){
         if(APIConfigurationContext.REGION == null){
             throw new IllegalStateException("Teemo not initialized, forgot to add region?");
         }
+    }
+
+    public ChampionsServiceI getChampionsHandler() {
+        checkRegion();
         return mChampionsHandler;
     }
 
     public CurrentGameInfoServiceI getCurrentGameInfoHandler() {
-        if(APIConfigurationContext.REGION == null){
-            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
-        }
+        checkRegion();
         return mCurrentGameInfoHandler;
     }
 
     public FeaturedGamesServiceI getFeaturedGamesHandler(){
-        if(APIConfigurationContext.REGION == null){
-            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
-        }
+        checkRegion();
         return mFeaturedGamesHandler;
     }
 
     public GamesServiceI getGamesHandler(){
-        if(APIConfigurationContext.REGION == null){
-            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
-        }
+        checkRegion();
         return mGamesHandler;
     }
 
     public LeaguesServiceI getLeaguesHandler(){
-        if(APIConfigurationContext.REGION == null){
-            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
-        }
+        checkRegion();
         return mLeaguesHandler;
     }
 
     public StatsServiceI getStatsHandler(){
-        if(APIConfigurationContext.REGION == null){
-            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
-        }
+        checkRegion();
         return mStatsHandler;
     }
 
     public TeamsServiceI getTeamsHandler(){
-        if(APIConfigurationContext.REGION == null){
-            throw new IllegalStateException("Teemo not initialized, forgot to add region?");
-        }
+        checkRegion();
         return mTeamsHandler;
     }
 
+    public SummonerServiceI getSummonersHandler(){
+        checkRegion();
+        return mSummonersHandler;
+    }
 }

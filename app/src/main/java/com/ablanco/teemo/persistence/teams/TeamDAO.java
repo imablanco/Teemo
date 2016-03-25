@@ -7,6 +7,7 @@ import com.ablanco.teemo.model.teams.Roster;
 import com.ablanco.teemo.model.teams.Team;
 import com.ablanco.teemo.model.teams.TeamStatDetail;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class TeamDAO extends BaseDAO<Team> {
 
     public TeamDAO() {
         super(Team.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
     }
 
     @Override

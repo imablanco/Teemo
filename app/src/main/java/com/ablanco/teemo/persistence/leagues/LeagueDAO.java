@@ -17,7 +17,7 @@ public class LeagueDAO extends BaseDAO<League> {
 
     public LeagueDAO() {
         super(League.class);
-        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
+        expirationTime = DBHelper.REFRESH_FREQUENCY_HOUR;
     }
 
     public long save(League object, String summonerId, boolean onlyEntry) {

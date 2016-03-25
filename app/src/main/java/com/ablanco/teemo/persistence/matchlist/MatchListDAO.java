@@ -19,9 +19,7 @@ public class MatchListDAO extends BaseDAO<MatchList> {
     }
 
     public long save(MatchList object, String championIds, long beginTime, long endTime) {
-        object.setChampionIds(championIds);
-        object.setBeginTime(beginTime);
-        object.setEndTime(endTime);
+
         long id = super.save(object);
 
         if(id > -1){

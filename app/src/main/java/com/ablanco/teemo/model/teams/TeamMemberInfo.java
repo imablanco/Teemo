@@ -8,33 +8,33 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class TeamMemberInfo extends BaseObject {
 
-    private long inviteDate;
-    private long joinDate;
-    private long playerId;
+    private Long inviteDate;
+    private Long joinDate;
+    private Long playerId;
 
     private String status;
 
-    public long getInviteDate() {
+    public Long getInviteDate() {
         return inviteDate;
     }
 
-    public void setInviteDate(long inviteDate) {
+    public void setInviteDate(Long inviteDate) {
         this.inviteDate = inviteDate;
     }
 
-    public long getJoinDate() {
+    public Long getJoinDate() {
         return joinDate;
     }
 
-    public void setJoinDate(long joinDate) {
+    public void setJoinDate(Long joinDate) {
         this.joinDate = joinDate;
     }
 
-    public long getPlayerId() {
+    public Long getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(long playerId) {
+    public void setPlayerId(Long playerId) {
         this.playerId = playerId;
     }
 

@@ -19,10 +19,10 @@ public class TeamModelTest extends BaseModelTest {
     public void testTeamModelBySummoner(){
 
         TeamMemberInfo teamMemberInfo = new TeamMemberInfo();
-        teamMemberInfo.setPlayerId(1);
+        teamMemberInfo.setPlayerId(1l);
 
         Roster roster = new Roster();
-        roster.setOwnerId(2);
+        roster.setOwnerId(2l);
 
         roster.setMemberList(Collections.singletonList(teamMemberInfo));
 
@@ -63,10 +63,10 @@ public class TeamModelTest extends BaseModelTest {
     public void testTeamModelByTeamId(){
 
         TeamMemberInfo teamMemberInfo = new TeamMemberInfo();
-        teamMemberInfo.setPlayerId(10);
+        teamMemberInfo.setPlayerId(10l);
 
         Roster roster = new Roster();
-        roster.setOwnerId(11);
+        roster.setOwnerId(11l);
 
         roster.setMemberList(Collections.singletonList(teamMemberInfo));
 

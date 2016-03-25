@@ -11,7 +11,7 @@ import java.util.List;
 public class MasteryPages extends BaseObject {
 
     private List<MasteryPage> pages;
-    private long summonerId;
+    private Long summonerId;
 
     public List<MasteryPage> getPages() {
         return pages;
@@ -21,11 +21,11 @@ public class MasteryPages extends BaseObject {
         this.pages = pages;
     }
 
-    public long getSummonerId() {
+    public Long getSummonerId() {
         return summonerId;
     }
 
-    public void setSummonerId(long summonerId) {
+    public void setSummonerId(Long summonerId) {
         this.summonerId = summonerId;
     }
 }

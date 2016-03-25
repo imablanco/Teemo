@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class FeaturedGames extends BaseObject {
 
-    private long clientRefreshInterval;
+    private Long clientRefreshInterval;
     private List<FeaturedGameInfo> gameList;
 
-    public long getClientRefreshInterval() {
+    public Long getClientRefreshInterval() {
         return clientRefreshInterval;
     }
 
-    public void setClientRefreshInterval(long clientRefreshInterval) {
+    public void setClientRefreshInterval(Long clientRefreshInterval) {
         this.clientRefreshInterval = clientRefreshInterval;
     }
 

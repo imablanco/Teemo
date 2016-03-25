@@ -8,22 +8,22 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class RuneSlot extends BaseObject {
 
-    private int runeId;
-    private int runeSlotId;
+    private Integer runeId;
+    private Integer runeSlotId;
 
-    public int getRuneId() {
+    public Integer getRuneId() {
         return runeId;
     }
 
-    public void setRuneId(int runeId) {
+    public void setRuneId(Integer runeId) {
         this.runeId = runeId;
     }
 
-    public int getRuneSlotId() {
+    public Integer getRuneSlotId() {
         return runeSlotId;
     }
 
-    public void setRuneSlotId(int runeSlotId) {
+    public void setRuneSlotId(Integer runeSlotId) {
         this.runeSlotId = runeSlotId;
     }
 }

@@ -10,21 +10,21 @@ import java.util.List;
  */
 public class MatchList extends BaseObject {
 
-    private int endIndex;
+    private Integer endIndex;
     private List<MatchReference> matches;
-    private int startIndex;
-    private int totalGames;
+    private Integer startIndex;
+    private Integer totalGames;
 
     //search criteria fields
     private String championIds;
-    private long beginTime;
+    private long begIntegerime;
     private long endTime;
 
-    public int getEndIndex() {
+    public Integer getEndIndex() {
         return endIndex;
     }
 
-    public void setEndIndex(int endIndex) {
+    public void setEndIndex(Integer endIndex) {
         this.endIndex = endIndex;
     }
 
@@ -36,19 +36,19 @@ public class MatchList extends BaseObject {
         this.matches = matches;
     }
 
-    public int getStartIndex() {
+    public Integer getStartIndex() {
         return startIndex;
     }
 
-    public void setStartIndex(int startIndex) {
+    public void setStartIndex(Integer startIndex) {
         this.startIndex = startIndex;
     }
 
-    public int getTotalGames() {
+    public Integer getTotalGames() {
         return totalGames;
     }
 
-    public void setTotalGames(int totalGames) {
+    public void setTotalGames(Integer totalGames) {
         this.totalGames = totalGames;
     }
 
@@ -60,12 +60,12 @@ public class MatchList extends BaseObject {
         this.championIds = championIds;
     }
 
-    public long getBeginTime() {
-        return beginTime;
+    public long getBegIntegerime() {
+        return begIntegerime;
     }
 
-    public void setBeginTime(long beginTime) {
-        this.beginTime = beginTime;
+    public void setBegIntegerime(long begIntegerime) {
+        this.begIntegerime = begIntegerime;
     }
 
     public long getEndTime() {

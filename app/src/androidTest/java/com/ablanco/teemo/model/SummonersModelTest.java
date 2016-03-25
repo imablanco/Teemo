@@ -35,7 +35,7 @@ public class SummonersModelTest extends BaseModelTest{
 
         assertTrue(dao.findById(TestConstants.SUMMONER_ID).getName() == null);
         assertTrue(dao.findById(TestConstants.SUMMONER_ID).getId() == TestConstants.SUMMONER_ID);
-        assertTrue(dao.findByName(TestConstants.SUMMONER_NAME).getId() == 0);
+        assertTrue(dao.findByName(TestConstants.SUMMONER_NAME).getId() == null);
         assertTrue(dao.findByName(TestConstants.SUMMONER_NAME).getName().equals(TestConstants.SUMMONER_NAME));
     }
 
@@ -46,7 +46,7 @@ public class SummonersModelTest extends BaseModelTest{
 
         MasteryPage masteryPage = new MasteryPage();
 
-        masteryPage.setId(2);
+        masteryPage.setId(2l);
         masteryPage.setMasteries(Collections.singletonList(mastery));
 
         MasteryPages masteryPages = new MasteryPages();
@@ -76,7 +76,7 @@ public class SummonersModelTest extends BaseModelTest{
 
         RunePage runePage = new RunePage();
 
-        runePage.setId(2);
+        runePage.setId(2l);
         runePage.setSlots(Collections.singletonList(runeSlot));
 
         RunePages runePages = new RunePages();

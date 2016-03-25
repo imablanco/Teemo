@@ -9,15 +9,15 @@ import com.ablanco.teemo.model.BaseObject;
 public class ChampionStats extends BaseObject {
 
     //id 0 represent the combined stats for all champions
-    private int id;
+    private Integer id;
 
     private AggregatedStats stats;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

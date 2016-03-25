@@ -11,7 +11,7 @@ import java.util.List;
 public class RunePages extends BaseObject {
 
     private List<RunePage> pages;
-    private long summonerId;
+    private Long summonerId;
 
     public List<RunePage> getPages() {
         return pages;
@@ -21,11 +21,11 @@ public class RunePages extends BaseObject {
         this.pages = pages;
     }
 
-    public long getSummonerId() {
+    public Long getSummonerId() {
         return summonerId;
     }
 
-    public void setSummonerId(long summonerId) {
+    public void setSummonerId(Long summonerId) {
         this.summonerId = summonerId;
     }
 }

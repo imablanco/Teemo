@@ -8,16 +8,16 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class MiniSeries extends BaseObject {
 
-    private int losses;
+    private Integer losses;
     private String progress;
-    private int target;
-    private int wins;
+    private Integer target;
+    private Integer wins;
 
-    public int getLosses() {
+    public Integer getLosses() {
         return losses;
     }
 
-    public void setLosses(int losses) {
+    public void setLosses(Integer losses) {
         this.losses = losses;
     }
 
@@ -29,19 +29,19 @@ public class MiniSeries extends BaseObject {
         this.progress = progress;
     }
 
-    public int getTarget() {
+    public Integer getTarget() {
         return target;
     }
 
-    public void setTarget(int target) {
+    public void setTarget(Integer target) {
         this.target = target;
     }
 
-    public int getWins() {
+    public Integer getWins() {
         return wins;
     }
 
-    public void setWins(int wins) {
+    public void setWins(Integer wins) {
         this.wins = wins;
     }
 }

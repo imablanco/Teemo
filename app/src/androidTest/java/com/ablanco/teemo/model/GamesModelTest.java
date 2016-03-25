@@ -19,7 +19,7 @@ public class GamesModelTest extends BaseModelTest{
     public void testRecentGameModel(){
 
         RecentGames recentGames = new RecentGames();
-        recentGames.setSummonerId(1);
+        recentGames.setSummonerId(1l);
 
         List<Game> games = new ArrayList<>();
         games.add(new Game());
@@ -40,13 +40,13 @@ public class GamesModelTest extends BaseModelTest{
     public void testGameModel(){
 
         RecentGames recentGames = new RecentGames();
-        recentGames.setSummonerId(1);
+        recentGames.setSummonerId(1l);
 
         List<Game> games = new ArrayList<>();
 
         Game game = new Game();
         game.setStats(new RawStats());
-        game.setGameId(1);
+        game.setGameId(1l);
         List<Player> players = new ArrayList<>();
         players.add(new Player());
         players.add(new Player());

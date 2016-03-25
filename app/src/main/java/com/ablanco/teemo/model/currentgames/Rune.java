@@ -8,22 +8,22 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class Rune extends BaseObject {
 
-    private long runeId;
-    private int count;
+    private Long runeId;
+    private Integer count;
 
-    public long getRuneId() {
+    public Long getRuneId() {
         return runeId;
     }
 
-    public void setRuneId(long runeId) {
+    public void setRuneId(Long runeId) {
         this.runeId = runeId;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 }

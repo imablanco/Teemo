@@ -12,7 +12,7 @@ public class PlayerStatsSummaryList extends BaseObject {
 
     private List<PlayerStatsSummary> playerStatSummaries;
 
-    private long summonerId;
+    private Long summonerId;
 
     //search criteria fields
     private String season;
@@ -25,11 +25,11 @@ public class PlayerStatsSummaryList extends BaseObject {
         this.playerStatSummaries = playerStatSummaries;
     }
 
-    public long getSummonerId() {
+    public Long getSummonerId() {
         return summonerId;
     }
 
-    public void setSummonerId(long summonerId) {
+    public void setSummonerId(Long summonerId) {
         this.summonerId = summonerId;
     }
 

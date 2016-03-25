@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class Team extends BaseObject {
 
-    private long createDate;
-    private long astGameDate;
-    private long lastJoinDate;
-    private long lastJoinedRankedTeamQueueDate;
-    private long modifyDate;
-    private long secondLastJoinDate;
-    private long thirdLastJoinDate;
+    private Long createDate;
+    private Long astGameDate;
+    private Long lastJoinDate;
+    private Long lastJoinedRankedTeamQueueDate;
+    private Long modifyDate;
+    private Long secondLastJoinDate;
+    private Long thirdLastJoinDate;
     private String fullId;
     private List<MatchHistorySummary> matchHistory;
     private String name, status, tag;
@@ -26,59 +26,59 @@ public class Team extends BaseObject {
     //search criteria
     private String summonerId;
 
-    public long getCreateDate() {
+    public Long getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(long createDate) {
+    public void setCreateDate(Long createDate) {
         this.createDate = createDate;
     }
 
-    public long getAstGameDate() {
+    public Long getAstGameDate() {
         return astGameDate;
     }
 
-    public void setAstGameDate(long astGameDate) {
+    public void setAstGameDate(Long astGameDate) {
         this.astGameDate = astGameDate;
     }
 
-    public long getLastJoinDate() {
+    public Long getLastJoinDate() {
         return lastJoinDate;
     }
 
-    public void setLastJoinDate(long lastJoinDate) {
+    public void setLastJoinDate(Long lastJoinDate) {
         this.lastJoinDate = lastJoinDate;
     }
 
-    public long getLastJoinedRankedTeamQueueDate() {
+    public Long getLastJoinedRankedTeamQueueDate() {
         return lastJoinedRankedTeamQueueDate;
     }
 
-    public void setLastJoinedRankedTeamQueueDate(long lastJoinedRankedTeamQueueDate) {
+    public void setLastJoinedRankedTeamQueueDate(Long lastJoinedRankedTeamQueueDate) {
         this.lastJoinedRankedTeamQueueDate = lastJoinedRankedTeamQueueDate;
     }
 
-    public long getModifyDate() {
+    public Long getModifyDate() {
         return modifyDate;
     }
 
-    public void setModifyDate(long modifyDate) {
+    public void setModifyDate(Long modifyDate) {
         this.modifyDate = modifyDate;
     }
 
-    public long getSecondLastJoinDate() {
+    public Long getSecondLastJoinDate() {
         return secondLastJoinDate;
     }
 
-    public void setSecondLastJoinDate(long secondLastJoinDate) {
+    public void setSecondLastJoinDate(Long secondLastJoinDate) {
         this.secondLastJoinDate = secondLastJoinDate;
     }
 
-    public long getThirdLastJoinDate() {
+    public Long getThirdLastJoinDate() {
         return thirdLastJoinDate;
     }
 
-    public void setThirdLastJoinDate(long thirdLastJoinDate) {
+    public void setThirdLastJoinDate(Long thirdLastJoinDate) {
         this.thirdLastJoinDate = thirdLastJoinDate;
     }
 

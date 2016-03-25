@@ -8,22 +8,22 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class CurrentGamesMastery extends BaseObject {
 
-    private long masteryId;
-    private int rank;
+    private Long masteryId;
+    private Integer rank;
 
-    public long getMasteryId() {
+    public Long getMasteryId() {
         return masteryId;
     }
 
-    public void setMasteryId(long masteryId) {
+    public void setMasteryId(Long masteryId) {
         this.masteryId = masteryId;
     }
 
-    public int getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 }

@@ -8,7 +8,31 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class Player extends BaseObject {
 
-    private int championId;
-    private long summonerId;
-    private int teamId;
+    private Integer championId;
+    private Long summonerId;
+    private Integer teamId;
+
+    public Integer getChampionId() {
+        return championId;
+    }
+
+    public void setChampionId(Integer championId) {
+        this.championId = championId;
+    }
+
+    public Long getSummonerId() {
+        return summonerId;
+    }
+
+    public void setSummonerId(Long summonerId) {
+        this.summonerId = summonerId;
+    }
+
+    public Integer getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
+    }
 }

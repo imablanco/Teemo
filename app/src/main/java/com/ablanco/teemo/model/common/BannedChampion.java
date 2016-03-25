@@ -8,31 +8,32 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class BannedChampion extends BaseObject {
 
-    private long championId;
-    private int pickTurn;
-    private long teamId;
+    private Long championId;
+    private Integer pickTurn;
+    private Long teamId;
 
-    public long getChampionId() {
+    public Long getChampionId() {
         return championId;
     }
 
-    public void setChampionId(long championId) {
+    public void setChampionId(Long championId) {
         this.championId = championId;
     }
 
-    public int getPickTurn() {
+    public Integer getPickTurn() {
         return pickTurn;
     }
 
-    public void setPickTurn(int pickTurn) {
+    public void setPickTurn(Integer pickTurn) {
         this.pickTurn = pickTurn;
     }
 
-    public long getTeamId() {
+    public Long getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(long teamId) {
+    public void setTeamId(Long teamId) {
         this.teamId = teamId;
     }
+
 }

@@ -11,8 +11,8 @@ import java.util.List;
 public class RankedStats extends BaseObject {
 
     private List<ChampionStats> champions;
-    private long modifyDate;
-    private long summonerId;
+    private Long modifyDate;
+    private Long summonerId;
 
     //search criteria fields
     private String season;
@@ -25,19 +25,19 @@ public class RankedStats extends BaseObject {
         this.champions = champions;
     }
 
-    public long getModifyDate() {
+    public Long getModifyDate() {
         return modifyDate;
     }
 
-    public void setModifyDate(long modifyDate) {
+    public void setModifyDate(Long modifyDate) {
         this.modifyDate = modifyDate;
     }
 
-    public long getSummonerId() {
+    public Long getSummonerId() {
         return summonerId;
     }
 
-    public void setSummonerId(long summonerId) {
+    public void setSummonerId(Long summonerId) {
         this.summonerId = summonerId;
     }
 

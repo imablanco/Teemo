@@ -10,35 +10,35 @@ import java.util.List;
  */
 public class Game extends BaseObject {
 
-    private int championId;
-    private long createDate;
+    private Integer championId;
+    private Long createDate;
     private List<Player> fellowPlayers;
-    private long gameId;
+    private Long gameId;
     private String gameMode;
     private String gameType;
-    private boolean invalid;
-    private int ipEarned;
-    private int level;
-    private int mapId;
-    private int spell1;
-    private int spell2;
+    private Boolean invalid;
+    private Integer ipEarned;
+    private Integer level;
+    private Integer mapId;
+    private Integer spell1;
+    private Integer spell2;
     private RawStats stats;
     private String subType;
-    private int teamId;
+    private Integer teamId;
 
-    public int getChampionId() {
+    public Integer getChampionId() {
         return championId;
     }
 
-    public void setChampionId(int championId) {
+    public void setChampionId(Integer championId) {
         this.championId = championId;
     }
 
-    public long getCreateDate() {
+    public Long getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(long createDate) {
+    public void setCreateDate(Long createDate) {
         this.createDate = createDate;
     }
 
@@ -50,11 +50,11 @@ public class Game extends BaseObject {
         this.fellowPlayers = fellowPlayers;
     }
 
-    public long getGameId() {
+    public Long getGameId() {
         return gameId;
     }
 
-    public void setGameId(long gameId) {
+    public void setGameId(Long gameId) {
         this.gameId = gameId;
     }
 
@@ -74,51 +74,51 @@ public class Game extends BaseObject {
         this.gameType = gameType;
     }
 
-    public boolean isInvalid() {
+    public Boolean isInvalid() {
         return invalid;
     }
 
-    public void setInvalid(boolean invalid) {
+    public void setInvalid(Boolean invalid) {
         this.invalid = invalid;
     }
 
-    public int getIpEarned() {
+    public Integer getIpEarned() {
         return ipEarned;
     }
 
-    public void setIpEarned(int ipEarned) {
+    public void setIpEarned(Integer ipEarned) {
         this.ipEarned = ipEarned;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public int getMapId() {
+    public Integer getMapId() {
         return mapId;
     }
 
-    public void setMapId(int mapId) {
+    public void setMapId(Integer mapId) {
         this.mapId = mapId;
     }
 
-    public int getSpell1() {
+    public Integer getSpell1() {
         return spell1;
     }
 
-    public void setSpell1(int spell1) {
+    public void setSpell1(Integer spell1) {
         this.spell1 = spell1;
     }
 
-    public int getSpell2() {
+    public Integer getSpell2() {
         return spell2;
     }
 
-    public void setSpell2(int spell2) {
+    public void setSpell2(Integer spell2) {
         this.spell2 = spell2;
     }
 
@@ -138,11 +138,11 @@ public class Game extends BaseObject {
         this.subType = subType;
     }
 
-    public int getTeamId() {
+    public Integer getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(Integer teamId) {
         this.teamId = teamId;
     }
 }

@@ -8,400 +8,400 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class RawStats extends BaseObject{
 
-    private int totalDamageDealtToChampions;
-    private int item2;
-    private int goldEarned;
-    private int item1;
-    private int wardPlaced;
-    private int item0;
-    private int totalDamageTaken;
-    private int trueDamageDealtPlayer;
-    private int physicalDamageDealtPlayer;
-    private int trueDamageDealtToChampions;
-    private int killingSprees;
-    private int playerRole;
-    private int totalUnitsHealed;
-    private int playerPosition;
-    private int largestCriticalStrike;
-    private int level;
-    private int doubleKills;
-    private int neutralMinionsKilledYourJungle;
-    private int magicDamageDealtToChampions;
-    private int magicDamageDealtPlayer;
-    private int neutralMinionsKilledEnemyJungle;
-    private int assists;
-    private int magicDamageTaken;
-    private int numDeaths;
-    private int totalTimeCrowdControlDealt;
-    private int largestMultiKill;
-    private int physicalDamageTaken;
-    private int team;
-    private boolean win;
-    private int totalDamageDealt;
-    private int largestKillingSpree;
-    private int totalHeal;
-    private int item4;
-    private int item3;
-    private int item6;
-    private int item5;
-    private int minionsKilled;
-    private int timePlayed;
-    private int wardKilled;
-    private int physicalDamageDealtToChampions;
-    private int championsKilled;
-    private int trueDamageTaken;
-    private int goldSpent;
-    private int neutralMinionsKilled;
+    private Integer totalDamageDealtToChampions;
+    private Integer item2;
+    private Integer goldEarned;
+    private Integer item1;
+    private Integer wardPlaced;
+    private Integer item0;
+    private Integer totalDamageTaken;
+    private Integer trueDamageDealtPlayer;
+    private Integer physicalDamageDealtPlayer;
+    private Integer trueDamageDealtToChampions;
+    private Integer killingSprees;
+    private Integer playerRole;
+    private Integer totalUnitsHealed;
+    private Integer playerPosition;
+    private Integer largestCriticalStrike;
+    private Integer level;
+    private Integer doubleKills;
+    private Integer neutralMinionsKilledYourJungle;
+    private Integer magicDamageDealtToChampions;
+    private Integer magicDamageDealtPlayer;
+    private Integer neutralMinionsKilledEnemyJungle;
+    private Integer assists;
+    private Integer magicDamageTaken;
+    private Integer numDeaths;
+    private Integer totalTimeCrowdControlDealt;
+    private Integer largestMultiKill;
+    private Integer physicalDamageTaken;
+    private Integer team;
+    private Boolean win;
+    private Integer totalDamageDealt;
+    private Integer largestKillingSpree;
+    private Integer totalHeal;
+    private Integer item4;
+    private Integer item3;
+    private Integer item6;
+    private Integer item5;
+    private Integer minionsKilled;
+    private Integer timePlayed;
+    private Integer wardKilled;
+    private Integer physicalDamageDealtToChampions;
+    private Integer championsKilled;
+    private Integer trueDamageTaken;
+    private Integer goldSpent;
+    private Integer neutralMinionsKilled;
 
-    public int getTotalDamageDealtToChampions() {
+    public Integer getTotalDamageDealtToChampions() {
         return totalDamageDealtToChampions;
     }
 
-    public void setTotalDamageDealtToChampions(int totalDamageDealtToChampions) {
+    public void setTotalDamageDealtToChampions(Integer totalDamageDealtToChampions) {
         this.totalDamageDealtToChampions = totalDamageDealtToChampions;
     }
 
-    public int getItem2() {
+    public Integer getItem2() {
         return item2;
     }
 
-    public void setItem2(int item2) {
+    public void setItem2(Integer item2) {
         this.item2 = item2;
     }
 
-    public int getGoldEarned() {
+    public Integer getGoldEarned() {
         return goldEarned;
     }
 
-    public void setGoldEarned(int goldEarned) {
+    public void setGoldEarned(Integer goldEarned) {
         this.goldEarned = goldEarned;
     }
 
-    public int getItem1() {
+    public Integer getItem1() {
         return item1;
     }
 
-    public void setItem1(int item1) {
+    public void setItem1(Integer item1) {
         this.item1 = item1;
     }
 
-    public int getWardPlaced() {
+    public Integer getWardPlaced() {
         return wardPlaced;
     }
 
-    public void setWardPlaced(int wardPlaced) {
+    public void setWardPlaced(Integer wardPlaced) {
         this.wardPlaced = wardPlaced;
     }
 
-    public int getItem0() {
+    public Integer getItem0() {
         return item0;
     }
 
-    public void setItem0(int item0) {
+    public void setItem0(Integer item0) {
         this.item0 = item0;
     }
 
-    public int getTotalDamageTaken() {
+    public Integer getTotalDamageTaken() {
         return totalDamageTaken;
     }
 
-    public void setTotalDamageTaken(int totalDamageTaken) {
+    public void setTotalDamageTaken(Integer totalDamageTaken) {
         this.totalDamageTaken = totalDamageTaken;
     }
 
-    public int getTrueDamageDealtPlayer() {
+    public Integer getTrueDamageDealtPlayer() {
         return trueDamageDealtPlayer;
     }
 
-    public void setTrueDamageDealtPlayer(int trueDamageDealtPlayer) {
+    public void setTrueDamageDealtPlayer(Integer trueDamageDealtPlayer) {
         this.trueDamageDealtPlayer = trueDamageDealtPlayer;
     }
 
-    public int getPhysicalDamageDealtPlayer() {
+    public Integer getPhysicalDamageDealtPlayer() {
         return physicalDamageDealtPlayer;
     }
 
-    public void setPhysicalDamageDealtPlayer(int physicalDamageDealtPlayer) {
+    public void setPhysicalDamageDealtPlayer(Integer physicalDamageDealtPlayer) {
         this.physicalDamageDealtPlayer = physicalDamageDealtPlayer;
     }
 
-    public int getTrueDamageDealtToChampions() {
+    public Integer getTrueDamageDealtToChampions() {
         return trueDamageDealtToChampions;
     }
 
-    public void setTrueDamageDealtToChampions(int trueDamageDealtToChampions) {
+    public void setTrueDamageDealtToChampions(Integer trueDamageDealtToChampions) {
         this.trueDamageDealtToChampions = trueDamageDealtToChampions;
     }
 
-    public int getKillingSprees() {
+    public Integer getKillingSprees() {
         return killingSprees;
     }
 
-    public void setKillingSprees(int killingSprees) {
+    public void setKillingSprees(Integer killingSprees) {
         this.killingSprees = killingSprees;
     }
 
-    public int getPlayerRole() {
+    public Integer getPlayerRole() {
         return playerRole;
     }
 
-    public void setPlayerRole(int playerRole) {
+    public void setPlayerRole(Integer playerRole) {
         this.playerRole = playerRole;
     }
 
-    public int getTotalUnitsHealed() {
+    public Integer getTotalUnitsHealed() {
         return totalUnitsHealed;
     }
 
-    public void setTotalUnitsHealed(int totalUnitsHealed) {
+    public void setTotalUnitsHealed(Integer totalUnitsHealed) {
         this.totalUnitsHealed = totalUnitsHealed;
     }
 
-    public int getPlayerPosition() {
+    public Integer getPlayerPosition() {
         return playerPosition;
     }
 
-    public void setPlayerPosition(int playerPosition) {
+    public void setPlayerPosition(Integer playerPosition) {
         this.playerPosition = playerPosition;
     }
 
-    public int getLargestCriticalStrike() {
+    public Integer getLargestCriticalStrike() {
         return largestCriticalStrike;
     }
 
-    public void setLargestCriticalStrike(int largestCriticalStrike) {
+    public void setLargestCriticalStrike(Integer largestCriticalStrike) {
         this.largestCriticalStrike = largestCriticalStrike;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public int getDoubleKills() {
+    public Integer getDoubleKills() {
         return doubleKills;
     }
 
-    public void setDoubleKills(int doubleKills) {
+    public void setDoubleKills(Integer doubleKills) {
         this.doubleKills = doubleKills;
     }
 
-    public int getNeutralMinionsKilledYourJungle() {
+    public Integer getNeutralMinionsKilledYourJungle() {
         return neutralMinionsKilledYourJungle;
     }
 
-    public void setNeutralMinionsKilledYourJungle(int neutralMinionsKilledYourJungle) {
+    public void setNeutralMinionsKilledYourJungle(Integer neutralMinionsKilledYourJungle) {
         this.neutralMinionsKilledYourJungle = neutralMinionsKilledYourJungle;
     }
 
-    public int getMagicDamageDealtToChampions() {
+    public Integer getMagicDamageDealtToChampions() {
         return magicDamageDealtToChampions;
     }
 
-    public void setMagicDamageDealtToChampions(int magicDamageDealtToChampions) {
+    public void setMagicDamageDealtToChampions(Integer magicDamageDealtToChampions) {
         this.magicDamageDealtToChampions = magicDamageDealtToChampions;
     }
 
-    public int getMagicDamageDealtPlayer() {
+    public Integer getMagicDamageDealtPlayer() {
         return magicDamageDealtPlayer;
     }
 
-    public void setMagicDamageDealtPlayer(int magicDamageDealtPlayer) {
+    public void setMagicDamageDealtPlayer(Integer magicDamageDealtPlayer) {
         this.magicDamageDealtPlayer = magicDamageDealtPlayer;
     }
 
-    public int getNeutralMinionsKilledEnemyJungle() {
+    public Integer getNeutralMinionsKilledEnemyJungle() {
         return neutralMinionsKilledEnemyJungle;
     }
 
-    public void setNeutralMinionsKilledEnemyJungle(int neutralMinionsKilledEnemyJungle) {
+    public void setNeutralMinionsKilledEnemyJungle(Integer neutralMinionsKilledEnemyJungle) {
         this.neutralMinionsKilledEnemyJungle = neutralMinionsKilledEnemyJungle;
     }
 
-    public int getAssists() {
+    public Integer getAssists() {
         return assists;
     }
 
-    public void setAssists(int assists) {
+    public void setAssists(Integer assists) {
         this.assists = assists;
     }
 
-    public int getMagicDamageTaken() {
+    public Integer getMagicDamageTaken() {
         return magicDamageTaken;
     }
 
-    public void setMagicDamageTaken(int magicDamageTaken) {
+    public void setMagicDamageTaken(Integer magicDamageTaken) {
         this.magicDamageTaken = magicDamageTaken;
     }
 
-    public int getNumDeaths() {
+    public Integer getNumDeaths() {
         return numDeaths;
     }
 
-    public void setNumDeaths(int numDeaths) {
+    public void setNumDeaths(Integer numDeaths) {
         this.numDeaths = numDeaths;
     }
 
-    public int getTotalTimeCrowdControlDealt() {
+    public Integer getTotalTimeCrowdControlDealt() {
         return totalTimeCrowdControlDealt;
     }
 
-    public void setTotalTimeCrowdControlDealt(int totalTimeCrowdControlDealt) {
+    public void setTotalTimeCrowdControlDealt(Integer totalTimeCrowdControlDealt) {
         this.totalTimeCrowdControlDealt = totalTimeCrowdControlDealt;
     }
 
-    public int getLargestMultiKill() {
+    public Integer getLargestMultiKill() {
         return largestMultiKill;
     }
 
-    public void setLargestMultiKill(int largestMultiKill) {
+    public void setLargestMultiKill(Integer largestMultiKill) {
         this.largestMultiKill = largestMultiKill;
     }
 
-    public int getPhysicalDamageTaken() {
+    public Integer getPhysicalDamageTaken() {
         return physicalDamageTaken;
     }
 
-    public void setPhysicalDamageTaken(int physicalDamageTaken) {
+    public void setPhysicalDamageTaken(Integer physicalDamageTaken) {
         this.physicalDamageTaken = physicalDamageTaken;
     }
 
-    public int getTeam() {
+    public Integer getTeam() {
         return team;
     }
 
-    public void setTeam(int team) {
+    public void setTeam(Integer team) {
         this.team = team;
     }
 
-    public boolean isWin() {
+    public Boolean isWin() {
         return win;
     }
 
-    public void setWin(boolean win) {
+    public void setWin(Boolean win) {
         this.win = win;
     }
 
-    public int getTotalDamageDealt() {
+    public Integer getTotalDamageDealt() {
         return totalDamageDealt;
     }
 
-    public void setTotalDamageDealt(int totalDamageDealt) {
+    public void setTotalDamageDealt(Integer totalDamageDealt) {
         this.totalDamageDealt = totalDamageDealt;
     }
 
-    public int getLargestKillingSpree() {
+    public Integer getLargestKillingSpree() {
         return largestKillingSpree;
     }
 
-    public void setLargestKillingSpree(int largestKillingSpree) {
+    public void setLargestKillingSpree(Integer largestKillingSpree) {
         this.largestKillingSpree = largestKillingSpree;
     }
 
-    public int getTotalHeal() {
+    public Integer getTotalHeal() {
         return totalHeal;
     }
 
-    public void setTotalHeal(int totalHeal) {
+    public void setTotalHeal(Integer totalHeal) {
         this.totalHeal = totalHeal;
     }
 
-    public int getItem4() {
+    public Integer getItem4() {
         return item4;
     }
 
-    public void setItem4(int item4) {
+    public void setItem4(Integer item4) {
         this.item4 = item4;
     }
 
-    public int getItem3() {
+    public Integer getItem3() {
         return item3;
     }
 
-    public void setItem3(int item3) {
+    public void setItem3(Integer item3) {
         this.item3 = item3;
     }
 
-    public int getItem6() {
+    public Integer getItem6() {
         return item6;
     }
 
-    public void setItem6(int item6) {
+    public void setItem6(Integer item6) {
         this.item6 = item6;
     }
 
-    public int getItem5() {
+    public Integer getItem5() {
         return item5;
     }
 
-    public void setItem5(int item5) {
+    public void setItem5(Integer item5) {
         this.item5 = item5;
     }
 
-    public int getMinionsKilled() {
+    public Integer getMinionsKilled() {
         return minionsKilled;
     }
 
-    public void setMinionsKilled(int minionsKilled) {
+    public void setMinionsKilled(Integer minionsKilled) {
         this.minionsKilled = minionsKilled;
     }
 
-    public int getTimePlayed() {
+    public Integer getTimePlayed() {
         return timePlayed;
     }
 
-    public void setTimePlayed(int timePlayed) {
+    public void setTimePlayed(Integer timePlayed) {
         this.timePlayed = timePlayed;
     }
 
-    public int getWardKilled() {
+    public Integer getWardKilled() {
         return wardKilled;
     }
 
-    public void setWardKilled(int wardKilled) {
+    public void setWardKilled(Integer wardKilled) {
         this.wardKilled = wardKilled;
     }
 
-    public int getPhysicalDamageDealtToChampions() {
+    public Integer getPhysicalDamageDealtToChampions() {
         return physicalDamageDealtToChampions;
     }
 
-    public void setPhysicalDamageDealtToChampions(int physicalDamageDealtToChampions) {
+    public void setPhysicalDamageDealtToChampions(Integer physicalDamageDealtToChampions) {
         this.physicalDamageDealtToChampions = physicalDamageDealtToChampions;
     }
 
-    public int getChampionsKilled() {
+    public Integer getChampionsKilled() {
         return championsKilled;
     }
 
-    public void setChampionsKilled(int championsKilled) {
+    public void setChampionsKilled(Integer championsKilled) {
         this.championsKilled = championsKilled;
     }
 
-    public int getTrueDamageTaken() {
+    public Integer getTrueDamageTaken() {
         return trueDamageTaken;
     }
 
-    public void setTrueDamageTaken(int trueDamageTaken) {
+    public void setTrueDamageTaken(Integer trueDamageTaken) {
         this.trueDamageTaken = trueDamageTaken;
     }
 
-    public int getGoldSpent() {
+    public Integer getGoldSpent() {
         return goldSpent;
     }
 
-    public void setGoldSpent(int goldSpent) {
+    public void setGoldSpent(Integer goldSpent) {
         this.goldSpent = goldSpent;
     }
 
-    public int getNeutralMinionsKilled() {
+    public Integer getNeutralMinionsKilled() {
         return neutralMinionsKilled;
     }
 
-    public void setNeutralMinionsKilled(int neutralMinionsKilled) {
+    public void setNeutralMinionsKilled(Integer neutralMinionsKilled) {
         this.neutralMinionsKilled = neutralMinionsKilled;
     }
 }

@@ -4,60 +4,58 @@ import com.ablanco.teemo.model.BaseObject;
 
 public class Champion extends BaseObject{
 
-    private boolean botMmEnabled;
-    private int id;
-    private boolean rankedPlayEnabled;
-    private boolean botEnabled;
-    private boolean active;
-    private boolean freeToPlay;
+    private Boolean botMmEnabled;
+    private Integer id;
+    private Boolean rankedPlayEnabled;
+    private Boolean botEnabled;
+    private Boolean active;
+    private Boolean freeToPlay;
 
-    public boolean isBotMmEnabled() {
+    public Boolean getBotMmEnabled() {
         return botMmEnabled;
     }
 
-    public void setBotMmEnabled(boolean botMmEnabled) {
+    public void setBotMmEnabled(Boolean botMmEnabled) {
         this.botMmEnabled = botMmEnabled;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public boolean isRankedPlayEnabled() {
+    public Boolean getRankedPlayEnabled() {
         return rankedPlayEnabled;
     }
 
-    public void setRankedPlayEnabled(boolean rankedPlayEnabled) {
+    public void setRankedPlayEnabled(Boolean rankedPlayEnabled) {
         this.rankedPlayEnabled = rankedPlayEnabled;
     }
 
-    public boolean isBotEnabled() {
+    public Boolean getBotEnabled() {
         return botEnabled;
     }
 
-    public void setBotEnabled(boolean botEnabled) {
+    public void setBotEnabled(Boolean botEnabled) {
         this.botEnabled = botEnabled;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 
-    public boolean isFreeToPlay() {
+    public Boolean getFreeToPlay() {
         return freeToPlay;
     }
 
-    public void setFreeToPlay(boolean freeToPlay) {
+    public void setFreeToPlay(Boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
     }
-
-
 }

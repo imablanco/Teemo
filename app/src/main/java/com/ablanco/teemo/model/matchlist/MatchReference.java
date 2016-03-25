@@ -9,14 +9,14 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class MatchReference extends BaseObject {
 
-    private long champion;
+    private Long champion;
 
     /**
      * {@link com.ablanco.teemo.constants.Lane}
      */
     private String lane;
 
-    private long matchId;
+    private Long matchId;
 
     private String platformId;
 
@@ -37,13 +37,13 @@ public class MatchReference extends BaseObject {
      */
     private String season;
 
-    private long timestamp;
+    private Long timestamp;
 
-    public long getChampion() {
+    public Long getChampion() {
         return champion;
     }
 
-    public void setChampion(long champion) {
+    public void setChampion(Long champion) {
         this.champion = champion;
     }
 
@@ -55,11 +55,11 @@ public class MatchReference extends BaseObject {
         this.lane = lane;
     }
 
-    public long getMatchId() {
+    public Long getMatchId() {
         return matchId;
     }
 
-    public void setMatchId(long matchId) {
+    public void setMatchId(Long matchId) {
         this.matchId = matchId;
     }
 
@@ -103,11 +103,11 @@ public class MatchReference extends BaseObject {
         this.season = season;
     }
 
-    public long getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 }

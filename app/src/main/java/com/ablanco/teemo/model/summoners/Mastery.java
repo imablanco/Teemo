@@ -8,22 +8,22 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class Mastery extends BaseObject {
 
-    private int id;
-    private int rank;
+    private Integer id;
+    private Integer rank;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 }

@@ -8,32 +8,32 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class TeamStatDetail extends BaseObject {
 
-    private int averageGamesPlayed;
-    private int losses;
-    private int wins;
+    private Integer averageGamesPlayed;
+    private Integer losses;
+    private Integer wins;
     private String teamStatType;
 
-    public int getAverageGamesPlayed() {
+    public Integer getAverageGamesPlayed() {
         return averageGamesPlayed;
     }
 
-    public void setAverageGamesPlayed(int averageGamesPlayed) {
+    public void setAverageGamesPlayed(Integer averageGamesPlayed) {
         this.averageGamesPlayed = averageGamesPlayed;
     }
 
-    public int getLosses() {
+    public Integer getLosses() {
         return losses;
     }
 
-    public void setLosses(int losses) {
+    public void setLosses(Integer losses) {
         this.losses = losses;
     }
 
-    public int getWins() {
+    public Integer getWins() {
         return wins;
     }
 
-    public void setWins(int wins) {
+    public void setWins(Integer wins) {
         this.wins = wins;
     }
 

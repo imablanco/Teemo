@@ -21,7 +21,7 @@ public class FeaturedGamesModelTest extends BaseModelTest{
     public void testFeaturedGames(){
 
         FeaturedGames featuredGames = new FeaturedGames();
-        featuredGames.setClientRefreshInterval(200);
+        featuredGames.setClientRefreshInterval(200l);
 
         List<FeaturedGameInfo> featuredGameInfos = new ArrayList<>();
         featuredGameInfos.add(new FeaturedGameInfo());

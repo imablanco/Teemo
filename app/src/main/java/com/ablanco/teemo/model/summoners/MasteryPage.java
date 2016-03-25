@@ -10,24 +10,24 @@ import java.util.List;
  */
 public class MasteryPage extends BaseObject {
 
-    private boolean current;
-    private long id;
+    private Boolean current;
+    private Long id;
     private List<Mastery> masteries;
     private String name;
 
-    public boolean isCurrent() {
+    public Boolean isCurrent() {
         return current;
     }
 
-    public void setCurrent(boolean current) {
+    public void setCurrent(Boolean current) {
         this.current = current;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

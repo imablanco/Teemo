@@ -13,13 +13,13 @@ import java.util.List;
 public class FeaturedGameInfo extends BaseObject {
 
     private List<BannedChampion> bannedChampions;
-    private long gameId;
-    private long gameLength;
+    private Long gameId;
+    private Long gameLength;
     private String gameMode;
-    private long gameQueueConfigId;
-    private long gameStartTime;
+    private Long gameQueueConfigId;
+    private Long gameStartTime;
     private String gameType;
-    private long mapId;
+    private Long mapId;
     private Observer observers;
     private List<Participant> participants;
     private String platformId;
@@ -32,19 +32,19 @@ public class FeaturedGameInfo extends BaseObject {
         this.bannedChampions = bannedChampions;
     }
 
-    public long getGameId() {
+    public Long getGameId() {
         return gameId;
     }
 
-    public void setGameId(long gameId) {
+    public void setGameId(Long gameId) {
         this.gameId = gameId;
     }
 
-    public long getGameLength() {
+    public Long getGameLength() {
         return gameLength;
     }
 
-    public void setGameLength(long gameLength) {
+    public void setGameLength(Long gameLength) {
         this.gameLength = gameLength;
     }
 
@@ -56,19 +56,19 @@ public class FeaturedGameInfo extends BaseObject {
         this.gameMode = gameMode;
     }
 
-    public long getGameQueueConfigId() {
+    public Long getGameQueueConfigId() {
         return gameQueueConfigId;
     }
 
-    public void setGameQueueConfigId(long gameQueueConfigId) {
+    public void setGameQueueConfigId(Long gameQueueConfigId) {
         this.gameQueueConfigId = gameQueueConfigId;
     }
 
-    public long getGameStartTime() {
+    public Long getGameStartTime() {
         return gameStartTime;
     }
 
-    public void setGameStartTime(long gameStartTime) {
+    public void setGameStartTime(Long gameStartTime) {
         this.gameStartTime = gameStartTime;
     }
 
@@ -80,11 +80,11 @@ public class FeaturedGameInfo extends BaseObject {
         this.gameType = gameType;
     }
 
-    public long getMapId() {
+    public Long getMapId() {
         return mapId;
     }
 
-    public void setMapId(long mapId) {
+    public void setMapId(Long mapId) {
         this.mapId = mapId;
     }
 

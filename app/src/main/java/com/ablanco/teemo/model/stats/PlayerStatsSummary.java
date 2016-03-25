@@ -9,8 +9,8 @@ import com.ablanco.teemo.model.BaseObject;
 public class PlayerStatsSummary extends BaseObject {
 
     private AggregatedStats aggregatedStats;
-    private int losses;
-    private long modifyDate;
+    private Integer losses;
+    private Long modifyDate;
 
     /**
      * Legal values {@link com.ablanco.teemo.constants.PlayerStatSummaryType}
@@ -25,19 +25,19 @@ public class PlayerStatsSummary extends BaseObject {
         this.aggregatedStats = aggregatedStats;
     }
 
-    public int getLosses() {
+    public Integer getLosses() {
         return losses;
     }
 
-    public void setLosses(int losses) {
+    public void setLosses(Integer losses) {
         this.losses = losses;
     }
 
-    public long getModifyDate() {
+    public Long getModifyDate() {
         return modifyDate;
     }
 
-    public void setModifyDate(long modifyDate) {
+    public void setModifyDate(Long modifyDate) {
         this.modifyDate = modifyDate;
     }
 

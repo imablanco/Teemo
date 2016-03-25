@@ -8,18 +8,18 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class Summoner extends BaseObject {
 
-    private long id;
+    private Long id;
     private String name;
-    private int profileIconId;
+    private Integer profileIconId;
 
-    private long revisionDate;
-    private long summonerLevel;
+    private Long revisionDate;
+    private Long summonerLevel;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -31,27 +31,27 @@ public class Summoner extends BaseObject {
         this.name = name;
     }
 
-    public int getProfileIconId() {
+    public Integer getProfileIconId() {
         return profileIconId;
     }
 
-    public void setProfileIconId(int profileIconId) {
+    public void setProfileIconId(Integer profileIconId) {
         this.profileIconId = profileIconId;
     }
 
-    public long getRevisionDate() {
+    public Long getRevisionDate() {
         return revisionDate;
     }
 
-    public void setRevisionDate(long revisionDate) {
+    public void setRevisionDate(Long revisionDate) {
         this.revisionDate = revisionDate;
     }
 
-    public long getSummonerLevel() {
+    public Long getSummonerLevel() {
         return summonerLevel;
     }
 
-    public void setSummonerLevel(long summonerLevel) {
+    public void setSummonerLevel(Long summonerLevel) {
         this.summonerLevel = summonerLevel;
     }
 }

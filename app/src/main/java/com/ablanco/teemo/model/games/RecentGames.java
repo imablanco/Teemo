@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class RecentGames extends BaseObject {
 
-    private long summonerId;
+    private Long summonerId;
     private List<Game> games;
 
-    public long getSummonerId() {
+    public Long getSummonerId() {
         return summonerId;
     }
 
-    public void setSummonerId(long summonerId) {
+    public void setSummonerId(Long summonerId) {
         this.summonerId = summonerId;
     }
 

@@ -8,71 +8,71 @@ import com.ablanco.teemo.model.BaseObject;
  */
 public class MatchHistorySummary extends BaseObject {
 
-    private int assists;
-    private int deaths;
-    private int kills;
-    private int mapId;
-    private int opposingTeamKills;
-    private long date;
-    private long gameId;
+    private Integer assists;
+    private Integer deaths;
+    private Integer kills;
+    private Integer mapId;
+    private Integer opposingTeamKills;
+    private Long date;
+    private Long gameId;
     private String gameMode;
     private String opposingTeamName;
-    private boolean invalid;
-    private boolean win;
+    private Boolean invalid;
+    private Boolean win;
 
-    public int getAssists() {
+    public Integer getAssists() {
         return assists;
     }
 
-    public void setAssists(int assists) {
+    public void setAssists(Integer assists) {
         this.assists = assists;
     }
 
-    public int getDeaths() {
+    public Integer getDeaths() {
         return deaths;
     }
 
-    public void setDeaths(int deaths) {
+    public void setDeaths(Integer deaths) {
         this.deaths = deaths;
     }
 
-    public int getKills() {
+    public Integer getKills() {
         return kills;
     }
 
-    public void setKills(int kills) {
+    public void setKills(Integer kills) {
         this.kills = kills;
     }
 
-    public int getMapId() {
+    public Integer getMapId() {
         return mapId;
     }
 
-    public void setMapId(int mapId) {
+    public void setMapId(Integer mapId) {
         this.mapId = mapId;
     }
 
-    public int getOpposingTeamKills() {
+    public Integer getOpposingTeamKills() {
         return opposingTeamKills;
     }
 
-    public void setOpposingTeamKills(int opposingTeamKills) {
+    public void setOpposingTeamKills(Integer opposingTeamKills) {
         this.opposingTeamKills = opposingTeamKills;
     }
 
-    public long getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 
-    public long getGameId() {
+    public Long getGameId() {
         return gameId;
     }
 
-    public void setGameId(long gameId) {
+    public void setGameId(Long gameId) {
         this.gameId = gameId;
     }
 
@@ -92,19 +92,19 @@ public class MatchHistorySummary extends BaseObject {
         this.opposingTeamName = opposingTeamName;
     }
 
-    public boolean isInvalid() {
+    public Boolean isInvalid() {
         return invalid;
     }
 
-    public void setInvalid(boolean invalid) {
+    public void setInvalid(Boolean invalid) {
         this.invalid = invalid;
     }
 
-    public boolean isWin() {
+    public Boolean isWin() {
         return win;
     }
 
-    public void setWin(boolean win) {
+    public void setWin(Boolean win) {
         this.win = win;
     }
 }

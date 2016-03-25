@@ -9,16 +9,16 @@ import com.ablanco.teemo.model.BaseObject;
 public class LeagueEntry extends BaseObject {
 
     private String division;
-    private boolean isFreshBlood;
-    private boolean isHotStreak;
-    private boolean isInactive;
-    private boolean isVeteran;
-    private int leaguePoints;
-    private int losses;
+    private Boolean isFreshBlood;
+    private Boolean isHotStreak;
+    private Boolean isInactive;
+    private Boolean isVeteran;
+    private Integer leaguePoints;
+    private Integer losses;
     private MiniSeries miniSeries;
     private String playerOrTeamId;
     private String playerOrTeamName;
-    private int wins;
+    private Integer wins;
 
     public String getDivision() {
         return division;
@@ -28,51 +28,51 @@ public class LeagueEntry extends BaseObject {
         this.division = division;
     }
 
-    public boolean isFreshBlood() {
+    public Boolean isFreshBlood() {
         return isFreshBlood;
     }
 
-    public void setIsFreshBlood(boolean isFreshBlood) {
+    public void setIsFreshBlood(Boolean isFreshBlood) {
         this.isFreshBlood = isFreshBlood;
     }
 
-    public boolean isHotStreak() {
+    public Boolean isHotStreak() {
         return isHotStreak;
     }
 
-    public void setIsHotStreak(boolean isHotStreak) {
+    public void setIsHotStreak(Boolean isHotStreak) {
         this.isHotStreak = isHotStreak;
     }
 
-    public boolean isInactive() {
+    public Boolean isInactive() {
         return isInactive;
     }
 
-    public void setIsInactive(boolean isInactive) {
+    public void setIsInactive(Boolean isInactive) {
         this.isInactive = isInactive;
     }
 
-    public boolean isVeteran() {
+    public Boolean isVeteran() {
         return isVeteran;
     }
 
-    public void setIsVeteran(boolean isVeteran) {
+    public void setIsVeteran(Boolean isVeteran) {
         this.isVeteran = isVeteran;
     }
 
-    public int getLeaguePoints() {
+    public Integer getLeaguePoints() {
         return leaguePoints;
     }
 
-    public void setLeaguePoints(int leaguePoints) {
+    public void setLeaguePoints(Integer leaguePoints) {
         this.leaguePoints = leaguePoints;
     }
 
-    public int getLosses() {
+    public Integer getLosses() {
         return losses;
     }
 
-    public void setLosses(int losses) {
+    public void setLosses(Integer losses) {
         this.losses = losses;
     }
 
@@ -100,11 +100,11 @@ public class LeagueEntry extends BaseObject {
         this.playerOrTeamName = playerOrTeamName;
     }
 
-    public int getWins() {
+    public Integer getWins() {
         return wins;
     }
 
-    public void setWins(int wins) {
+    public void setWins(Integer wins) {
         this.wins = wins;
     }
 }

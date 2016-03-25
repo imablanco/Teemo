@@ -23,6 +23,8 @@ import com.ablanco.teemo.persistence.games.RecentGamesDAO;
 import com.ablanco.teemo.persistence.leagues.LeagueDAO;
 import com.ablanco.teemo.persistence.leagues.LeagueEntryDAO;
 import com.ablanco.teemo.persistence.leagues.MiniSeriesDAO;
+import com.ablanco.teemo.persistence.matchlist.MatchListDAO;
+import com.ablanco.teemo.persistence.matchlist.MatchReferenceDAO;
 import com.ablanco.teemo.persistence.stats.AggregatedStatsDAO;
 import com.ablanco.teemo.persistence.stats.ChampionStatsDAO;
 import com.ablanco.teemo.persistence.stats.PlayerStatsSummaryDAO;
@@ -49,7 +51,7 @@ import com.ablanco.teemo.persistence.teams.TeamStatDetailDAO;
 public class DBContext extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Teemo";
-    private static final int DB_VERSION = 3;
+    private static final int DB_VERSION = 4;
 
     /**
      * Singleton
@@ -103,6 +105,8 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new MasteryPageDAO().createTable());
         sqLiteDatabase.execSQL(new MasteryPagesDAO().createTable());
         sqLiteDatabase.execSQL(new SummonerDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchListDAO().createTable());
+        sqLiteDatabase.execSQL(new MatchReferenceDAO().createTable());
 
     }
 
@@ -144,6 +148,8 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new MasteryPageDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new MasteryPagesDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new SummonerDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchListDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new MatchReferenceDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -215,6 +221,8 @@ public class DBContext extends SQLiteOpenHelper {
         new MasteryPageDAO().clearTable();
         new MasteryPagesDAO().clearTable();
         new SummonerDAO().clearTable();
+        new MatchListDAO().clearTable();
+        new MatchReferenceDAO().clearTable();
 
     }//clearDb
 

@@ -367,40 +367,77 @@ public abstract class BaseDAO<T extends BaseObject> {
         return expired;
     }//hasExpired
 
-    public class QueryBuilder{
+    public static class QueryBuilder<T extends BaseObject>{
 
-        private List<String> mWhereClauses;
         private List<String> mWhereArgs;
 
-        public QueryBuilder(){
+        private StringBuilder mWhereClausesStringBuilder;
+        private Class<T> clazz;
+
+        public QueryBuilder(Class<T> tClass){
+            this.clazz = tClass;
+            this.mWhereClausesStringBuilder = new StringBuilder();
             this.mWhereArgs = new ArrayList<>();
-            this.mWhereClauses = new ArrayList<>();
         }
 
         public QueryBuilder where(String whereClause, String whereArg){
-            this.mWhereClauses.add(whereClause);
+            if(!mWhereClausesStringBuilder.toString().isEmpty()){
+                this.mWhereClausesStringBuilder.append(" AND ");
+
+            }
+            this.mWhereClausesStringBuilder.append(whereClause);
+            this.mWhereClausesStringBuilder.append(" LIKE ?");
             this.mWhereArgs.add(whereArg);
+            return this;
+        }
+
+        public QueryBuilder where(String whereClause, List<String> whereArgs){
+
+
+            for (int i = 0; i < whereArgs.size(); i++){
+                if(!mWhereClausesStringBuilder.toString().isEmpty()){
+                    this.mWhereClausesStringBuilder.append(" OR ");
+                }
+
+                this.mWhereClausesStringBuilder.append(whereClause);
+                this.mWhereClausesStringBuilder.append(" LIKE ?");
+                this.mWhereArgs.add(whereArgs.get(i));
+
+            }
+
             return this;
         }
 
         public List<T> findAll(){
 
-            StringBuilder mWhereClauseBuilder = new StringBuilder();
+            String[] argsArray = new String[mWhereArgs.size()];
+            mWhereArgs.toArray(argsArray);
 
-            for (int i = 0; i < mWhereClauses.size(); i++){
-                if(i != 0){
-                    mWhereClauseBuilder.append(" AND ");
+            SQLiteDatabase sqLiteDatabase = DBContext.getDB();
+            List<T> toRet = new ArrayList<T>();
+            Cursor c = null;
+            if(null != sqLiteDatabase) {
+                try {
+                    c = sqLiteDatabase.query(DBHelper.getTableName(clazz), null, mWhereClausesStringBuilder.toString(), argsArray,
+                            null, null, "lastUpdate DESC", null);
+                } catch (Exception e) {
+                    String msg = e.getClass().getName() + " " + e.getMessage();
+                    e.printStackTrace();
                 }
-
-                mWhereClauseBuilder.append(mWhereClauses.get(i));
-                mWhereClauseBuilder.append(" = ?");
+                try {
+                    if (c != null) {
+                        while (c.moveToNext()) {
+                            toRet.add(fromCursor(c));
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (null != c)
+                        c.close();
+                }
             }
-
-
-            String[] array = new String[mWhereArgs.size()];
-            mWhereArgs.toArray(array);
-
-            return find(mWhereClauseBuilder.toString(), array, null, null);
+            return toRet;
         }
 
         public T findFirst(){
@@ -412,6 +449,25 @@ public abstract class BaseDAO<T extends BaseObject> {
                 return results.get(0);
             }
 
+        }
+
+        private T fromCursor(Cursor c) {
+            try {
+                List<Field> columns = new ArrayList<Field>();
+                columns = DBHelper.getClassFields(columns, clazz);
+
+                T object = (T) clazz.getDeclaredConstructors()[0].newInstance();
+                for (Field column : columns) {
+                    String columnType = DBHelper.getColumnType(column);
+                    if (columnType != null) {
+                        DBHelper.setFieldValueFromCursor(c, column, object);
+                    }
+                }
+                return object;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
     }

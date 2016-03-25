@@ -17,8 +17,11 @@ public class MatchList extends BaseObject {
 
     //search criteria fields
     private String championIds;
-    private long begIntegerime;
-    private long endTime;
+    private String seasons;
+    private String rankedQueues;
+    private Long beginTime;
+    private Long endTime;
+    private Long summonerId;
 
     public Integer getEndIndex() {
         return endIndex;
@@ -60,19 +63,43 @@ public class MatchList extends BaseObject {
         this.championIds = championIds;
     }
 
-    public long getBegIntegerime() {
-        return begIntegerime;
+    public Long getBeginTime() {
+        return beginTime;
     }
 
-    public void setBegIntegerime(long begIntegerime) {
-        this.begIntegerime = begIntegerime;
+    public void setBeginTime(Long beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public long getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(long endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
+    }
+
+    public Long getSummonerId() {
+        return summonerId;
+    }
+
+    public void setSummonerId(Long summonerId) {
+        this.summonerId = summonerId;
+    }
+
+    public String getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(String seasons) {
+        this.seasons = seasons;
+    }
+
+    public String getRankedQueues() {
+        return rankedQueues;
+    }
+
+    public void setRankedQueues(String rankedQueues) {
+        this.rankedQueues = rankedQueues;
     }
 }

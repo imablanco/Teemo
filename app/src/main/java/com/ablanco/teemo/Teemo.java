@@ -14,7 +14,8 @@ import com.ablanco.teemo.service.handlers.GamesServiceHandler;
 import com.ablanco.teemo.service.handlers.LeaguesServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchListServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchesServiceHandler;
-import com.ablanco.teemo.service.handlers.ShardsServiceHandler;
+import com.ablanco.teemo.service.handlers.StaticDataServiceHandler;
+import com.ablanco.teemo.service.handlers.StatusServiceHandler;
 import com.ablanco.teemo.service.handlers.StatsServiceHandler;
 import com.ablanco.teemo.service.handlers.SummonersServiceHandler;
 import com.ablanco.teemo.service.handlers.TeamsServiceHandler;
@@ -25,7 +26,8 @@ import com.ablanco.teemo.service.interfaces.GamesServiceI;
 import com.ablanco.teemo.service.interfaces.LeaguesServiceI;
 import com.ablanco.teemo.service.interfaces.MatchListServiceI;
 import com.ablanco.teemo.service.interfaces.MatchesServiceI;
-import com.ablanco.teemo.service.interfaces.ShardsServiceI;
+import com.ablanco.teemo.service.interfaces.StaticDataServiceI;
+import com.ablanco.teemo.service.interfaces.StatusServiceI;
 import com.ablanco.teemo.service.interfaces.StatsServiceI;
 import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.interfaces.TeamsServiceI;
@@ -36,7 +38,8 @@ import com.ablanco.teemo.service.retrofit.RetrofitGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitLeaguesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchListServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchesServiceHandler;
-import com.ablanco.teemo.service.retrofit.RetrofitShardsServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitStaticDataServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitStatusServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitStatsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitSummonerServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitTeamsServiceHandler;
@@ -74,7 +77,8 @@ public class Teemo {
     private SummonerServiceI mSummonersHandler;
     private MatchListServiceI mMatchListHandler;
     private MatchesServiceI mMatchesHandler;
-    private ShardsServiceI mShardsHandler;
+    private StatusServiceI mStatusHandler;
+    private StaticDataServiceI mStaticDataHandler;
 
     private Converter.Factory converterFactory =  GsonConverterFactory.create();
 
@@ -151,7 +155,7 @@ public class Teemo {
 
         ServiceGenerator serviceGenerator = new ServiceGenerator(retrofitStatus);
 
-        mShardsHandler = new ShardsServiceHandler(serviceGenerator.createService(RetrofitShardsServiceHandler.class));
+        mStatusHandler = new StatusServiceHandler(serviceGenerator.createService(RetrofitStatusServiceHandler.class));
     }
 
     private void buildStaticRetrofit(){
@@ -163,6 +167,7 @@ public class Teemo {
 
         ServiceGenerator serviceGenerator = new ServiceGenerator(retrofitStatic);
 
+        mStaticDataHandler = new StaticDataServiceHandler(serviceGenerator.createService(RetrofitStaticDataServiceHandler.class));
 
     }
 
@@ -244,7 +249,12 @@ public class Teemo {
         return mMatchesHandler;
     }
 
-    public ShardsServiceI getShardsHandler(){
-        return mShardsHandler;
+    public StaticDataServiceI getStaticDataHandler(){
+        checkRegion();
+        return mStaticDataHandler;
+    }
+
+    public StatusServiceI getStatusHandler(){
+        return mStatusHandler;
     }
 }

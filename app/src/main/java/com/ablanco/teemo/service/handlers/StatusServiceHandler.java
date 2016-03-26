@@ -8,8 +8,8 @@ import com.ablanco.teemo.model.status.ShardStatus;
 import com.ablanco.teemo.service.base.BaseRetrofitServiceClass;
 import com.ablanco.teemo.service.base.BaseServiceAsyncTask;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
-import com.ablanco.teemo.service.interfaces.ShardsServiceI;
-import com.ablanco.teemo.service.retrofit.RetrofitShardsServiceHandler;
+import com.ablanco.teemo.service.interfaces.StatusServiceI;
+import com.ablanco.teemo.service.retrofit.RetrofitStatusServiceHandler;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ import retrofit2.Response;
  * <p/>
  * This API calls does not count on rate limit so they wont get cached
  */
-public class ShardsServiceHandler extends BaseRetrofitServiceClass<RetrofitShardsServiceHandler> implements ShardsServiceI {
+public class StatusServiceHandler extends BaseRetrofitServiceClass<RetrofitStatusServiceHandler> implements StatusServiceI {
 
 
-    public ShardsServiceHandler(RetrofitShardsServiceHandler handler) {
+    public StatusServiceHandler(RetrofitStatusServiceHandler handler) {
         super(handler);
     }
 

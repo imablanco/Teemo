@@ -13,7 +13,7 @@ import retrofit2.http.Path;
  * Created by Álvaro Blanco Cabrero on 26/3/16
  * Teemo
  */
-public interface RetrofitShardsServiceHandler {
+public interface RetrofitStatusServiceHandler {
 
     @GET("shards")
     Call<List<Shard>> getShards();

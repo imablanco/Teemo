@@ -13,14 +13,14 @@ import java.util.concurrent.CountDownLatch;
  * Created by Álvaro Blanco Cabrero on 26/3/16
  * Teemo
  */
-public class ShardServiceTest extends BaseServiceTest{
+public class StatusServiceTest extends BaseServiceTest{
 
     public void testGetShards(){
         final CountDownLatch countDownLatch = new CountDownLatch(1);
 
         try {
 
-            Teemo.getInstance(getContext()).getShardsHandler().getShards(new ServiceResponseListener<List<Shard>>() {
+            Teemo.getInstance(getContext()).getStatusHandler().getShards(new ServiceResponseListener<List<Shard>>() {
                 @Override
                 public void onResponse(List<Shard> response) {
                     assertTrue(response != null);
@@ -46,7 +46,7 @@ public class ShardServiceTest extends BaseServiceTest{
 
         try {
 
-            Teemo.getInstance(getContext()).getShardsHandler().getShardStatus("euw", new ServiceResponseListener<ShardStatus>() {
+            Teemo.getInstance(getContext()).getStatusHandler().getShardStatus("euw", new ServiceResponseListener<ShardStatus>() {
                 @Override
                 public void onResponse(ShardStatus response) {
                     assertTrue(response != null);

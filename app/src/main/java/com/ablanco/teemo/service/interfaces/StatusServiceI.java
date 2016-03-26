@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Álvaro Blanco Cabrero on 26/3/16
  * Teemo
  */
-public interface ShardsServiceI {
+public interface StatusServiceI {
 
     void getShards(ServiceResponseListener<List<Shard>> listener);
     void getShardStatus(String region, ServiceResponseListener<ShardStatus> listener);

@@ -7,6 +7,7 @@ package com.ablanco.teemo;
 public class APIConfigurationContext {
 
     public final static String STATUS_BASE_URL = "http://status.leagueoflegends.com/";
+    public final static String STATIC_BASE_URL = "https://global.api.pvp.net/";
     public static String BASE_URL = "https://{0}.api.pvp.net/";
     public static String API_KEY;
     public static String REGION;

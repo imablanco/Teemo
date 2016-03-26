@@ -47,6 +47,7 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -74,6 +75,20 @@ public class Teemo {
     private MatchListServiceI mMatchListHandler;
     private MatchesServiceI mMatchesHandler;
     private ShardsServiceI mShardsHandler;
+
+    private Converter.Factory converterFactory =  GsonConverterFactory.create();
+
+    private Interceptor apiInterceptor = new Interceptor() {
+        @Override
+        public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
+            Request request = chain.request();
+            HttpUrl url = request.url().newBuilder().addQueryParameter(API_KEY_PARAM, APIConfigurationContext.API_KEY).build();
+            request = request.newBuilder().url(url).build();
+            return chain.proceed(request);
+        }
+    };
+
+    private OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(apiInterceptor).build();
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -117,6 +132,7 @@ public class Teemo {
         buildStatusRetrofit();
 
         if(region != null){
+            buildStaticRetrofit();
             buildAPIRetrofit();
         }
     }
@@ -124,52 +140,52 @@ public class Teemo {
     public void setRegion(String region){
         APIConfigurationContext.setRegion(region);
         buildAPIRetrofit();
+        buildStaticRetrofit();
     }
 
     private void buildStatusRetrofit(){
-        Retrofit statusAPI = new Retrofit.Builder()
+        Retrofit retrofitStatus = new Retrofit.Builder()
                 .baseUrl(APIConfigurationContext.STATUS_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(converterFactory)
                 .build();
-        ServiceGenerator mServiceGenerator = new ServiceGenerator(statusAPI);
 
-        mShardsHandler = new ShardsServiceHandler(mServiceGenerator.createService(RetrofitShardsServiceHandler.class));
+        ServiceGenerator serviceGenerator = new ServiceGenerator(retrofitStatus);
+
+        mShardsHandler = new ShardsServiceHandler(serviceGenerator.createService(RetrofitShardsServiceHandler.class));
+    }
+
+    private void buildStaticRetrofit(){
+        Retrofit retrofitStatic = new Retrofit.Builder()
+                .baseUrl(APIConfigurationContext.STATIC_BASE_URL)
+                .addConverterFactory(converterFactory)
+                .client(okHttpClient)
+                .build();
+
+        ServiceGenerator serviceGenerator = new ServiceGenerator(retrofitStatic);
+
 
     }
 
     private void buildAPIRetrofit(){
 
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
-                Request request = chain.request();
-                HttpUrl url = request.url().newBuilder().addQueryParameter(API_KEY_PARAM, APIConfigurationContext.API_KEY).build();
-                request = request.newBuilder().url(url).build();
-                return chain.proceed(request);
-            }
-        };
-
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.interceptors().add(interceptor);
-        OkHttpClient client = builder.build();
-
         Retrofit retrofitAPI = new Retrofit.Builder()
                 .baseUrl(APIConfigurationContext.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
+                .addConverterFactory(converterFactory)
+                .client(okHttpClient)
                 .build();
-        ServiceGenerator mServiceGenerator = new ServiceGenerator(retrofitAPI);
 
-        mChampionsHandler = new ChampionsServiceHandler(mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
-        mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
-        mFeaturedGamesHandler = new FeaturedGamesServiceHandler(mServiceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
-        mGamesHandler = new GamesServiceHandler(mServiceGenerator.createService(RetrofitGamesServiceHandler.class));
-        mLeaguesHandler = new LeaguesServiceHandler(mServiceGenerator.createService(RetrofitLeaguesServiceHandler.class));
-        mStatsHandler = new StatsServiceHandler(mServiceGenerator.createService(RetrofitStatsServiceHandler.class));
-        mTeamsHandler = new TeamsServiceHandler(mServiceGenerator.createService(RetrofitTeamsServiceHandler.class));
-        mSummonersHandler = new SummonersServiceHandler(mServiceGenerator.createService(RetrofitSummonerServiceHandler.class));
-        mMatchListHandler = new MatchListServiceHandler(mServiceGenerator.createService(RetrofitMatchListServiceHandler.class));
-        mMatchesHandler = new MatchesServiceHandler(mServiceGenerator.createService(RetrofitMatchesServiceHandler.class));
+        ServiceGenerator serviceGenerator = new ServiceGenerator(retrofitAPI);
+
+        mChampionsHandler = new ChampionsServiceHandler(serviceGenerator.createService(RetrofitChampionsServiceHandler.class));
+        mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(serviceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
+        mFeaturedGamesHandler = new FeaturedGamesServiceHandler(serviceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
+        mGamesHandler = new GamesServiceHandler(serviceGenerator.createService(RetrofitGamesServiceHandler.class));
+        mLeaguesHandler = new LeaguesServiceHandler(serviceGenerator.createService(RetrofitLeaguesServiceHandler.class));
+        mStatsHandler = new StatsServiceHandler(serviceGenerator.createService(RetrofitStatsServiceHandler.class));
+        mTeamsHandler = new TeamsServiceHandler(serviceGenerator.createService(RetrofitTeamsServiceHandler.class));
+        mSummonersHandler = new SummonersServiceHandler(serviceGenerator.createService(RetrofitSummonerServiceHandler.class));
+        mMatchListHandler = new MatchListServiceHandler(serviceGenerator.createService(RetrofitMatchListServiceHandler.class));
+        mMatchesHandler = new MatchesServiceHandler(serviceGenerator.createService(RetrofitMatchesServiceHandler.class));
     }
 
     private void checkRegion(){
@@ -229,7 +245,6 @@ public class Teemo {
     }
 
     public ShardsServiceI getShardsHandler(){
-        checkRegion();
         return mShardsHandler;
     }
 }

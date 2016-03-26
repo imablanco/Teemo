@@ -13,6 +13,7 @@ import com.ablanco.teemo.service.handlers.FeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.handlers.GamesServiceHandler;
 import com.ablanco.teemo.service.handlers.LeaguesServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchListServiceHandler;
+import com.ablanco.teemo.service.handlers.MatchesServiceHandler;
 import com.ablanco.teemo.service.handlers.StatsServiceHandler;
 import com.ablanco.teemo.service.handlers.SummonersServiceHandler;
 import com.ablanco.teemo.service.handlers.TeamsServiceHandler;
@@ -22,6 +23,7 @@ import com.ablanco.teemo.service.interfaces.FeaturedGamesServiceI;
 import com.ablanco.teemo.service.interfaces.GamesServiceI;
 import com.ablanco.teemo.service.interfaces.LeaguesServiceI;
 import com.ablanco.teemo.service.interfaces.MatchListServiceI;
+import com.ablanco.teemo.service.interfaces.MatchesServiceI;
 import com.ablanco.teemo.service.interfaces.StatsServiceI;
 import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.interfaces.TeamsServiceI;
@@ -31,6 +33,7 @@ import com.ablanco.teemo.service.retrofit.RetrofitFeaturedGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitLeaguesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchListServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitMatchesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitStatsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitSummonerServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitTeamsServiceHandler;
@@ -67,6 +70,7 @@ public class Teemo {
     private TeamsServiceI mTeamsHandler;
     private SummonerServiceI mSummonersHandler;
     private MatchListServiceI mMatchListHandler;
+    private MatchesServiceI mMatchesHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -149,6 +153,7 @@ public class Teemo {
         mTeamsHandler = new TeamsServiceHandler(context, mServiceGenerator.createService(RetrofitTeamsServiceHandler.class));
         mSummonersHandler = new SummonersServiceHandler(context, mServiceGenerator.createService(RetrofitSummonerServiceHandler.class));
         mMatchListHandler = new MatchListServiceHandler(context, mServiceGenerator.createService(RetrofitMatchListServiceHandler.class));
+        mMatchesHandler = new MatchesServiceHandler(context, mServiceGenerator.createService(RetrofitMatchesServiceHandler.class));
     }
 
     private void checkRegion(){
@@ -200,5 +205,10 @@ public class Teemo {
     public MatchListServiceI getMatchListHandler(){
         checkRegion();
         return mMatchListHandler;
+    }
+
+    public MatchesServiceI getMatchesHandler(){
+        checkRegion();
+        return mMatchesHandler;
     }
 }

@@ -31,7 +31,7 @@ public class MatchListServiceHandler extends BaseRetrofitServiceClass<RetrofitMa
     }
 
     @Override
-    public void getMatchListBySummonerId(final Long summonerId, final List<String> championIds, final List<String> seasons, final List<String> rankedQueues, final Long beginTime, final Long endTime, final Integer beginIndex, final Integer endIndex, ServiceResponseListener<MatchList> listener) {
+    public void getMatchListBySummonerId(final long summonerId, final List<String> championIds, final List<String> seasons, final List<String> rankedQueues, final Long beginTime, final Long endTime, final Integer beginIndex, final Integer endIndex, ServiceResponseListener<MatchList> listener) {
         BaseServiceAsyncTask<MatchList> task = new BaseServiceAsyncTask<MatchList>(listener){
             @Override
             protected Object doInBackground(Void... params) {

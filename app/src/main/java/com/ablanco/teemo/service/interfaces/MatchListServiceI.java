@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface MatchListServiceI {
 
-    void getMatchListBySummonerId(Long summonerId, List<String> championIds, List<String> seasons, List<String> rankedQueues, Long beginTime, Long endTime, Integer beginIndex, Integer endIndex, ServiceResponseListener<MatchList> listener);
+    void getMatchListBySummonerId(long summonerId, List<String> championIds, List<String> seasons, List<String> rankedQueues, Long beginTime, Long endTime, Integer beginIndex, Integer endIndex, ServiceResponseListener<MatchList> listener);
 }

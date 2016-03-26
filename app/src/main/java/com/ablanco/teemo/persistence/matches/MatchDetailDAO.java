@@ -8,6 +8,7 @@ import com.ablanco.teemo.model.matches.MatchTeam;
 import com.ablanco.teemo.model.matches.ParticipantIdentity;
 import com.ablanco.teemo.model.matches.Timeline;
 import com.ablanco.teemo.persistence.base.BaseDAO;
+import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class MatchDetailDAO extends BaseDAO<MatchDetail> {
 
     public MatchDetailDAO() {
         super(MatchDetail.class);
+        expirationTime = DBHelper.REFRESH_FREQUENCY_MINUTE;
     }
 
     public long save(MatchDetail object, Boolean includeTimeline) {

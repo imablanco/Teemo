@@ -18,7 +18,7 @@ public class ChampionSpellDto extends BaseObject {
     private List<Integer> cost;
     private String description, sanitizedDescription, sanitizedTooltip, tooltip;
 
-    private List<EffectList> effect;
+    private List<List<Double>> effect;
 
     private List<String> effectBurn;
 
@@ -138,11 +138,11 @@ public class ChampionSpellDto extends BaseObject {
         this.tooltip = tooltip;
     }
 
-    public List<EffectList> getEffect() {
+    public List<List<Double>> getEffect() {
         return effect;
     }
 
-    public void setEffect(List<EffectList> effect) {
+    public void setEffect(List<List<Double>> effect) {
         this.effect = effect;
     }
 

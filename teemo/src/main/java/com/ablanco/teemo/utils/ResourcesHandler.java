@@ -1,4 +1,4 @@
-package com.ablanco.teemo.service.base;
+package com.ablanco.teemo.utils;
 
 import com.ablanco.teemo.model.staticdata.LanguageStringsDto;
 import com.ablanco.teemo.persistence.languages.LanguageStringDAO;

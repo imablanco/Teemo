@@ -12,6 +12,9 @@ public class TestConstants {
     public final static String TEAM_ID = "TEAM-4e4d8770-6800-11e4-b7b9-c81f66db96d8";
     public final static String SUMMONER_NAME = "Sympherion";
     public final static long MATCH_ID = 2561649831l;
+    public final static int CHAMPION_ID = 266;
+    public final static int ITEM_ID = 1411;
+    public final static int MASTERY_ID = 6121;
 
 
 }

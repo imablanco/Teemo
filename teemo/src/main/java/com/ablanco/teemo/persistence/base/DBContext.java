@@ -20,6 +20,7 @@ import com.ablanco.teemo.persistence.games.GameDAO;
 import com.ablanco.teemo.persistence.games.PlayerDAO;
 import com.ablanco.teemo.persistence.games.RawStatsDAO;
 import com.ablanco.teemo.persistence.games.RecentGamesDAO;
+import com.ablanco.teemo.persistence.languages.LanguageStringDAO;
 import com.ablanco.teemo.persistence.leagues.LeagueDAO;
 import com.ablanco.teemo.persistence.leagues.LeagueEntryDAO;
 import com.ablanco.teemo.persistence.leagues.MiniSeriesDAO;
@@ -67,7 +68,7 @@ import com.ablanco.teemo.persistence.teams.TeamStatDetailDAO;
 public class DBContext extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Teemo";
-    private static final int DB_VERSION = 7;
+    private static final int DB_VERSION = 9;
 
     /**
      * Singleton
@@ -139,6 +140,7 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new PositionDAO().createTable());
         sqLiteDatabase.execSQL(new TimelineDAO().createTable());
         sqLiteDatabase.execSQL(new MatchTeamDAO().createTable());
+        sqLiteDatabase.execSQL(new LanguageStringDAO().createTable());
 
     }
 
@@ -185,7 +187,6 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new EventDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new FrameDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new ParticipantFrameDAO().upgradeTable(oldVersion, newVersion));
-
         sqLiteDatabase.execSQL(new EventDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new FrameDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new MatchBannedChampionDAO().upgradeTable(oldVersion, newVersion));
@@ -202,6 +203,7 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new PositionDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new TimelineDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new MatchTeamDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new LanguageStringDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -293,6 +295,7 @@ public class DBContext extends SQLiteOpenHelper {
         new ParticipantTimelineDAO().clearTable();
         new PositionDAO().clearTable();
         new TimelineDAO().clearTable();
+        new LanguageStringDAO().clearTable();
 
     }//clearDb
 

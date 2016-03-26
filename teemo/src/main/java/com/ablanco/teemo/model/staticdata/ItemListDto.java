@@ -2,7 +2,6 @@ package com.ablanco.teemo.model.staticdata;
 
 import com.ablanco.teemo.model.BaseObject;
 
-import java.security.acl.Group;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ public class ItemListDto extends BaseObject {
 
     private BasicDataDto basic;
     private Map<String, ItemDto> data;
-    private List<Group> groups;
+    private List<GroupDto> groups;
     private List<ItemTreeDto> tree;
 
     private String type, version;
@@ -35,11 +34,11 @@ public class ItemListDto extends BaseObject {
         this.data = data;
     }
 
-    public List<Group> getGroups() {
+    public List<GroupDto> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Group> groups) {
+    public void setGroups(List<GroupDto> groups) {
         this.groups = groups;
     }
 

@@ -13,6 +13,7 @@ public class LanguageStringsDto extends BaseObject {
     private Map<String, String> data;
     private String type;
     private String version;
+    private String locale;
 
     public Map<String, String> getData() {
         return data;
@@ -36,5 +37,13 @@ public class LanguageStringsDto extends BaseObject {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
 }

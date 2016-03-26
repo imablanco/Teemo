@@ -1,7 +1,5 @@
 package com.ablanco.teemo.model.staticdata;
 
-import android.media.Image;
-
 import com.ablanco.teemo.model.BaseObject;
 
 import java.util.List;
@@ -20,7 +18,7 @@ public class RuneDto extends BaseObject {
     private List<String> from;
     private String group;
     private Integer id;
-    private Image image;
+    private ImageDto image;
     private List<String> into;
     private Map<String, Boolean> maps;
     private MetaDataDto rune;
@@ -155,11 +153,11 @@ public class RuneDto extends BaseObject {
         this.id = id;
     }
 
-    public Image getImage() {
+    public ImageDto getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(ImageDto image) {
         this.image = image;
     }
 

@@ -1,7 +1,5 @@
 package com.ablanco.teemo.model.staticdata;
 
-import android.media.Image;
-
 import com.ablanco.teemo.model.BaseObject;
 
 import java.util.List;
@@ -19,7 +17,7 @@ public class SummonerSpellDto extends BaseObject {
     private List<EffectList> effect;
     private List<String> effectBurn;
     private Integer id;
-    private Image image;
+    private ImageDto image;
     private String key;
     private LevelTipDto leveltip;
     private Integer maxrank, summonerLevel;
@@ -147,11 +145,11 @@ public class SummonerSpellDto extends BaseObject {
         this.id = id;
     }
 
-    public Image getImage() {
+    public ImageDto getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(ImageDto image) {
         this.image = image;
     }
 

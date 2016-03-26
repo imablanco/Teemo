@@ -1,7 +1,5 @@
 package com.ablanco.teemo.model.staticdata;
 
-import android.media.Image;
-
 import com.ablanco.teemo.model.BaseObject;
 
 import java.util.List;
@@ -14,7 +12,7 @@ public class MasteryDto extends BaseObject {
 
     private List<String> description;
     private Integer id;
-    private Image image;
+    private ImageDto image;
     private String masteryTree, name, prereq;
     private Integer ranks;
     private List<String> sanitizedDescription;
@@ -35,11 +33,11 @@ public class MasteryDto extends BaseObject {
         this.id = id;
     }
 
-    public Image getImage() {
+    public ImageDto getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(ImageDto image) {
         this.image = image;
     }
 

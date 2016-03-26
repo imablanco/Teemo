@@ -14,6 +14,7 @@ import com.ablanco.teemo.service.handlers.GamesServiceHandler;
 import com.ablanco.teemo.service.handlers.LeaguesServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchListServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchesServiceHandler;
+import com.ablanco.teemo.service.handlers.ShardsServiceHandler;
 import com.ablanco.teemo.service.handlers.StatsServiceHandler;
 import com.ablanco.teemo.service.handlers.SummonersServiceHandler;
 import com.ablanco.teemo.service.handlers.TeamsServiceHandler;
@@ -24,6 +25,7 @@ import com.ablanco.teemo.service.interfaces.GamesServiceI;
 import com.ablanco.teemo.service.interfaces.LeaguesServiceI;
 import com.ablanco.teemo.service.interfaces.MatchListServiceI;
 import com.ablanco.teemo.service.interfaces.MatchesServiceI;
+import com.ablanco.teemo.service.interfaces.ShardsServiceI;
 import com.ablanco.teemo.service.interfaces.StatsServiceI;
 import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.interfaces.TeamsServiceI;
@@ -34,6 +36,7 @@ import com.ablanco.teemo.service.retrofit.RetrofitGamesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitLeaguesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchListServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchesServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitShardsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitStatsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitSummonerServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitTeamsServiceHandler;
@@ -55,11 +58,10 @@ public class Teemo {
 
     private final String TAG = getClass().getSimpleName();
 
-    private static String API_KEY_PARAM = "api_key";
-    private static String META_DATA_API_KEY = "com.ablanco.teemo.apikey";
+    private final static String API_KEY_PARAM = "api_key";
+    private final static String META_DATA_API_KEY = "com.ablanco.teemo.apikey";
 
     private static Teemo mInstance;
-    private Retrofit retrofit;
 
     private ChampionsServiceI mChampionsHandler;
     private CurrentGameInfoServiceI mCurrentGameInfoHandler;
@@ -71,6 +73,7 @@ public class Teemo {
     private SummonerServiceI mSummonersHandler;
     private MatchListServiceI mMatchListHandler;
     private MatchesServiceI mMatchesHandler;
+    private ShardsServiceI mShardsHandler;
 
     public static Teemo getInstance(Context context) {
         if (mInstance == null) {
@@ -111,17 +114,30 @@ public class Teemo {
 
         DBContext.initDb(context);
 
+        buildStatusRetrofit();
+
         if(region != null){
-            buildRetrofit(context);
+            buildAPIRetrofit();
         }
     }
 
-    public void setRegion(Context context, String region){
+    public void setRegion(String region){
         APIConfigurationContext.setRegion(region);
-        buildRetrofit(context);
+        buildAPIRetrofit();
     }
 
-    private void buildRetrofit(Context context){
+    private void buildStatusRetrofit(){
+        Retrofit statusAPI = new Retrofit.Builder()
+                .baseUrl(APIConfigurationContext.STATUS_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ServiceGenerator mServiceGenerator = new ServiceGenerator(statusAPI);
+
+        mShardsHandler = new ShardsServiceHandler(mServiceGenerator.createService(RetrofitShardsServiceHandler.class));
+
+    }
+
+    private void buildAPIRetrofit(){
 
         Interceptor interceptor = new Interceptor() {
             @Override
@@ -137,23 +153,23 @@ public class Teemo {
         builder.interceptors().add(interceptor);
         OkHttpClient client = builder.build();
 
-        retrofit = new Retrofit.Builder()
+        Retrofit retrofitAPI = new Retrofit.Builder()
                 .baseUrl(APIConfigurationContext.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
-        ServiceGenerator mServiceGenerator = new ServiceGenerator(retrofit);
+        ServiceGenerator mServiceGenerator = new ServiceGenerator(retrofitAPI);
 
-        mChampionsHandler = new ChampionsServiceHandler(context, mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
-        mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(context, mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
-        mFeaturedGamesHandler = new FeaturedGamesServiceHandler(context, mServiceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
-        mGamesHandler = new GamesServiceHandler(context, mServiceGenerator.createService(RetrofitGamesServiceHandler.class));
-        mLeaguesHandler = new LeaguesServiceHandler(context, mServiceGenerator.createService(RetrofitLeaguesServiceHandler.class));
-        mStatsHandler = new StatsServiceHandler(context, mServiceGenerator.createService(RetrofitStatsServiceHandler.class));
-        mTeamsHandler = new TeamsServiceHandler(context, mServiceGenerator.createService(RetrofitTeamsServiceHandler.class));
-        mSummonersHandler = new SummonersServiceHandler(context, mServiceGenerator.createService(RetrofitSummonerServiceHandler.class));
-        mMatchListHandler = new MatchListServiceHandler(context, mServiceGenerator.createService(RetrofitMatchListServiceHandler.class));
-        mMatchesHandler = new MatchesServiceHandler(context, mServiceGenerator.createService(RetrofitMatchesServiceHandler.class));
+        mChampionsHandler = new ChampionsServiceHandler(mServiceGenerator.createService(RetrofitChampionsServiceHandler.class));
+        mCurrentGameInfoHandler = new CurrentGameInfoServiceHandler(mServiceGenerator.createService(RetrofitCurrentGameInfoServiceHandler.class));
+        mFeaturedGamesHandler = new FeaturedGamesServiceHandler(mServiceGenerator.createService(RetrofitFeaturedGamesServiceHandler.class));
+        mGamesHandler = new GamesServiceHandler(mServiceGenerator.createService(RetrofitGamesServiceHandler.class));
+        mLeaguesHandler = new LeaguesServiceHandler(mServiceGenerator.createService(RetrofitLeaguesServiceHandler.class));
+        mStatsHandler = new StatsServiceHandler(mServiceGenerator.createService(RetrofitStatsServiceHandler.class));
+        mTeamsHandler = new TeamsServiceHandler(mServiceGenerator.createService(RetrofitTeamsServiceHandler.class));
+        mSummonersHandler = new SummonersServiceHandler(mServiceGenerator.createService(RetrofitSummonerServiceHandler.class));
+        mMatchListHandler = new MatchListServiceHandler(mServiceGenerator.createService(RetrofitMatchListServiceHandler.class));
+        mMatchesHandler = new MatchesServiceHandler(mServiceGenerator.createService(RetrofitMatchesServiceHandler.class));
     }
 
     private void checkRegion(){
@@ -210,5 +226,10 @@ public class Teemo {
     public MatchesServiceI getMatchesHandler(){
         checkRegion();
         return mMatchesHandler;
+    }
+
+    public ShardsServiceI getShardsHandler(){
+        checkRegion();
+        return mShardsHandler;
     }
 }

@@ -1,6 +1,5 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.ablanco.teemo.APIConfigurationContext;
@@ -32,8 +31,8 @@ import retrofit2.Response;
  */
 public class SummonersServiceHandler extends BaseRetrofitServiceClass<RetrofitSummonerServiceHandler> implements SummonerServiceI {
 
-    public SummonersServiceHandler(Context context, RetrofitSummonerServiceHandler handler) {
-        super(context, handler);
+    public SummonersServiceHandler(RetrofitSummonerServiceHandler handler) {
+        super(handler);
     }
 
     @Override

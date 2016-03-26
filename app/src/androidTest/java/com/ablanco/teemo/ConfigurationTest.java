@@ -41,7 +41,7 @@ public class ConfigurationTest extends AndroidTestCase {
     public void testLazyRegion(){
         try {
             Teemo.setArmedAndReady(getContext(),TestConstants.DEV_API_KEY, null);
-            Teemo.getInstance(getContext()).setRegion(getContext(), Regions.REGION_EUW);
+            Teemo.getInstance(getContext()).setRegion(Regions.REGION_EUW);
             Teemo.getInstance(getContext()).getChampionsHandler();
             assertTrue(true);
         }catch (IllegalStateException e){

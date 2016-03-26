@@ -1,6 +1,5 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.ablanco.teemo.RateLimiter;
@@ -22,8 +21,8 @@ import retrofit2.Response;
  */
 public class FeaturedGamesServiceHandler extends BaseRetrofitServiceClass<RetrofitFeaturedGamesServiceHandler> implements FeaturedGamesServiceI {
 
-    public FeaturedGamesServiceHandler(Context context, RetrofitFeaturedGamesServiceHandler handler) {
-        super(context, handler);
+    public FeaturedGamesServiceHandler(RetrofitFeaturedGamesServiceHandler handler) {
+        super(handler);
     }
 
     @Override

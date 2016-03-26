@@ -1,6 +1,5 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.ablanco.teemo.APIConfigurationContext;
@@ -28,8 +27,8 @@ import retrofit2.Response;
  */
 public class TeamsServiceHandler extends BaseRetrofitServiceClass<RetrofitTeamsServiceHandler> implements TeamsServiceI{
 
-    public TeamsServiceHandler(Context context, RetrofitTeamsServiceHandler handler) {
-        super(context, handler);
+    public TeamsServiceHandler(RetrofitTeamsServiceHandler handler) {
+        super(handler);
     }
 
     @Override

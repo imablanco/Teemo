@@ -1,6 +1,5 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.ablanco.teemo.APIConfigurationContext;
@@ -25,8 +24,8 @@ import retrofit2.Response;
  */
 public class StatsServiceHandler extends BaseRetrofitServiceClass<RetrofitStatsServiceHandler> implements StatsServiceI {
 
-    public StatsServiceHandler(Context context, RetrofitStatsServiceHandler handler) {
-        super(context, handler);
+    public StatsServiceHandler(RetrofitStatsServiceHandler handler) {
+        super(handler);
     }
 
     @Override

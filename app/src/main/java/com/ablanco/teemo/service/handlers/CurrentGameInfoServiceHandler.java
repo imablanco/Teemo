@@ -1,9 +1,7 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.ablanco.teemo.APIConfigurationContext;
 import com.ablanco.teemo.RateLimiter;
 import com.ablanco.teemo.TeemoException;
 import com.ablanco.teemo.model.currentgames.CurrentGameInfo;
@@ -24,8 +22,8 @@ import retrofit2.Response;
 public class CurrentGameInfoServiceHandler extends BaseRetrofitServiceClass<RetrofitCurrentGameInfoServiceHandler> implements CurrentGameInfoServiceI {
 
 
-    public CurrentGameInfoServiceHandler(Context context, RetrofitCurrentGameInfoServiceHandler handler) {
-        super(context, handler);
+    public CurrentGameInfoServiceHandler(RetrofitCurrentGameInfoServiceHandler handler) {
+        super(handler);
     }
 
     @Override

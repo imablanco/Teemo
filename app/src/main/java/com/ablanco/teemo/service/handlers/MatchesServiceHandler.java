@@ -1,6 +1,5 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.ablanco.teemo.APIConfigurationContext;
@@ -23,8 +22,8 @@ import retrofit2.Response;
  */
 public class MatchesServiceHandler extends BaseRetrofitServiceClass<RetrofitMatchesServiceHandler> implements MatchesServiceI {
 
-    public MatchesServiceHandler(Context context, RetrofitMatchesServiceHandler handler) {
-        super(context, handler);
+    public MatchesServiceHandler(RetrofitMatchesServiceHandler handler) {
+        super(handler);
     }
 
 

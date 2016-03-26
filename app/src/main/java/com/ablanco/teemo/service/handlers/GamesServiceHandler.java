@@ -1,6 +1,5 @@
 package com.ablanco.teemo.service.handlers;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.ablanco.teemo.APIConfigurationContext;
@@ -23,8 +22,8 @@ import retrofit2.Response;
  */
 public class GamesServiceHandler extends BaseRetrofitServiceClass<RetrofitGamesServiceHandler> implements GamesServiceI {
 
-    public GamesServiceHandler(Context context, RetrofitGamesServiceHandler handler) {
-        super(context, handler);
+    public GamesServiceHandler(RetrofitGamesServiceHandler handler) {
+        super(handler);
     }
 
     @Override

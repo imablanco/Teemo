@@ -5,7 +5,6 @@ import android.database.Cursor;
 import com.ablanco.teemo.model.featuredgames.FeaturedGameInfo;
 import com.ablanco.teemo.model.featuredgames.FeaturedGames;
 import com.ablanco.teemo.persistence.base.BaseDAO;
-import com.ablanco.teemo.persistence.base.DBHelper;
 
 import java.util.List;
 
@@ -17,7 +16,6 @@ public class FeaturedGamesDAO  extends BaseDAO<FeaturedGames>{
 
     public FeaturedGamesDAO() {
         super(FeaturedGames.class);
-        expirationTime = DBHelper.REFRESH_FREQUENCY_HALF_HOUR;
     }
 
     @Override
@@ -60,5 +58,10 @@ public class FeaturedGamesDAO  extends BaseDAO<FeaturedGames>{
         }
 
         return featuredGames;
+    }
+
+    public boolean hasExpired(FeaturedGames obj) {
+        //as it is not specified in the API reference, we gonna take client refresh interval as seconds
+        return System.currentTimeMillis() - obj.getLastUpdate().getTime() > obj.getClientRefreshInterval()*1000;
     }
 }

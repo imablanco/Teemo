@@ -104,11 +104,10 @@ public class SummonersServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getSummonersHandler().getSummonerMasteryPages(Collections.singletonList(TestConstants.SUMMONER_ID_STRING), new ServiceResponseListener<Map<String, MasteryPages>>() {
+            Teemo.getInstance(getContext()).getSummonersHandler().getSummonerMasteryPages(TestConstants.SUMMONER_ID_STRING, new ServiceResponseListener<MasteryPages>() {
                 @Override
-                public void onResponse(Map<String, MasteryPages> response) {
+                public void onResponse(MasteryPages response) {
                     assertTrue(response != null);
-                    assertTrue(response.size() == 1);
                     countDownLatch.countDown();
                 }
 
@@ -131,7 +130,7 @@ public class SummonersServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getSummonersHandler().getSummonerRunePages(Collections.singletonList(TestConstants.SUMMONER_ID_STRING), new ServiceResponseListener<Map<String, RunePages>>() {
+            Teemo.getInstance(getContext()).getSummonersHandler().getSummonersRunePages(Collections.singletonList(TestConstants.SUMMONER_ID_STRING), new ServiceResponseListener<Map<String, RunePages>>() {
                 @Override
                 public void onResponse(Map<String, RunePages> response) {
                     assertTrue(response != null);

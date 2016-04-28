@@ -15,9 +15,15 @@ import java.util.Map;
 public interface SummonerServiceI {
 
     void getSummonersByIds(List<String> summonerIds, ServiceResponseListener<Map<String, Summoner>> listener);
+    void getSummonerById(String summonerId, ServiceResponseListener<Summoner> listener);
     void getSummonersByNames(List<String> summonerNames, ServiceResponseListener<Map<String, Summoner>> listener);
+    void getSummonerByName(String summonerName, ServiceResponseListener<Summoner> listener);
     void getSummonersNamesByIds(List<String> summonerIds, ServiceResponseListener<Map<String, String>> listener);
-    void getSummonerMasteryPages(List<String> summonerIds, ServiceResponseListener<Map<String, MasteryPages>> listener);
-    void getSummonerRunePages(List<String> summonerIds, ServiceResponseListener<Map<String, RunePages>> listener);
+    void getSummonerNameById(String summonerId, ServiceResponseListener<String> listener);
+    void getSummonersMasteryPages(List<String> summonerIds, ServiceResponseListener<Map<String, MasteryPages>> listener);
+    void getSummonerMasteryPages(String summonerId, ServiceResponseListener<MasteryPages> listener);
+    void getSummonersRunePages(List<String> summonerIds, ServiceResponseListener<Map<String, RunePages>> listener);
+    void getSummonerRunePages(String summonerId, ServiceResponseListener<RunePages> listener);
+    List<Summoner> findSummonersBySuggestion(String nameSuggestion);
 
 }

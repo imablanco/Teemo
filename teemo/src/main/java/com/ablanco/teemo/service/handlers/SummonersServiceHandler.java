@@ -18,6 +18,7 @@ import com.ablanco.teemo.service.base.ServiceResponseListener;
 import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitSummonerServiceHandler;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +101,25 @@ public class SummonersServiceHandler extends BaseRetrofitServiceClass<RetrofitSu
     }
 
     @Override
+    public void getSummonerById(final String summonerId, final ServiceResponseListener<Summoner> listener) {
+        getSummonersByIds(Collections.singletonList(summonerId), new ServiceResponseListener<Map<String, Summoner>>() {
+            @Override
+            public void onResponse(Map<String, Summoner> response) {
+                if(response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().equals(summonerId)){
+                    listener.onResponse(response.entrySet().iterator().next().getValue());
+                }else {
+                    listener.onError(new TeemoException(TeemoException.CODE_NOT_FOUND));
+                }
+            }
+
+            @Override
+            public void onError(TeemoException e) {
+                listener.onError(e);
+            }
+        });
+    }
+
+    @Override
     public void getSummonersByNames(final List<String> summonerNames, ServiceResponseListener<Map<String, Summoner>> listener) {
         BaseServiceAsyncTask<Map<String, Summoner>> task = new BaseServiceAsyncTask<Map<String, Summoner>>(listener) {
             @Override
@@ -164,6 +184,25 @@ public class SummonersServiceHandler extends BaseRetrofitServiceClass<RetrofitSu
     }
 
     @Override
+    public void getSummonerByName(final String summonerName, final ServiceResponseListener<Summoner> listener) {
+        getSummonersByNames(Collections.singletonList(summonerName), new ServiceResponseListener<Map<String, Summoner>>() {
+            @Override
+            public void onResponse(Map<String, Summoner> response) {
+                if (response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().equalsIgnoreCase(summonerName)) {
+                    listener.onResponse(response.entrySet().iterator().next().getValue());
+                } else {
+                    listener.onError(new TeemoException(TeemoException.CODE_NOT_FOUND));
+                }
+            }
+
+            @Override
+            public void onError(TeemoException e) {
+                listener.onError(e);
+            }
+        });
+    }
+
+    @Override
     public void getSummonersNamesByIds(final List<String> summonerIds, ServiceResponseListener<Map<String, String>> listener) {
         BaseServiceAsyncTask<Map<String, String>> task = new BaseServiceAsyncTask<Map<String, String>>(listener) {
             @Override
@@ -220,7 +259,69 @@ public class SummonersServiceHandler extends BaseRetrofitServiceClass<RetrofitSu
     }
 
     @Override
-    public void getSummonerMasteryPages(final List<String> summonerIds, ServiceResponseListener<Map<String, MasteryPages>> listener) {
+    public void getSummonerNameById(final String summonerId, final ServiceResponseListener<String> listener) {
+        getSummonersNamesByIds(Collections.singletonList(summonerId), new ServiceResponseListener<Map<String, String>>() {
+            @Override
+            public void onResponse(Map<String, String> response) {
+                if (response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().equals(summonerId)) {
+                    listener.onResponse(response.entrySet().iterator().next().getValue());
+                } else {
+                    listener.onError(new TeemoException(TeemoException.CODE_NOT_FOUND));
+                }
+            }
+
+            @Override
+            public void onError(TeemoException e) {
+                listener.onError(e);
+            }
+        });
+    }
+
+    @Override
+    public void getSummonerMasteryPages(final String summonerId, final ServiceResponseListener<MasteryPages> listener) {
+        getSummonersMasteryPages(Collections.singletonList(summonerId), new ServiceResponseListener<Map<String, MasteryPages>>() {
+            @Override
+            public void onResponse(Map<String, MasteryPages> response) {
+                if (response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().equals(summonerId)) {
+                    listener.onResponse(response.entrySet().iterator().next().getValue());
+                } else {
+                    listener.onError(new TeemoException(TeemoException.CODE_NOT_FOUND));
+                }
+            }
+
+            @Override
+            public void onError(TeemoException e) {
+                listener.onError(e);
+            }
+        });
+    }
+
+    @Override
+    public void getSummonerRunePages(final String summonerId, final ServiceResponseListener<RunePages> listener) {
+        getSummonersRunePages(Collections.singletonList(summonerId), new ServiceResponseListener<Map<String, RunePages>>() {
+            @Override
+            public void onResponse(Map<String, RunePages> response) {
+                if (response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().equals(summonerId)) {
+                    listener.onResponse(response.entrySet().iterator().next().getValue());
+                } else {
+                    listener.onError(new TeemoException(TeemoException.CODE_NOT_FOUND));
+                }
+            }
+
+            @Override
+            public void onError(TeemoException e) {
+                listener.onError(e);
+            }
+        });
+    }
+
+    @Override
+    public List<Summoner> findSummonersBySuggestion(String nameSuggestion) {
+        return new SummonerDAO().findBySuggestion(nameSuggestion);
+    }
+
+    @Override
+    public void getSummonersMasteryPages(final List<String> summonerIds, ServiceResponseListener<Map<String, MasteryPages>> listener) {
         BaseServiceAsyncTask<Map<String, MasteryPages>> task = new BaseServiceAsyncTask<Map<String, MasteryPages>>(listener) {
             @Override
             protected Object doInBackground(Void... params) {
@@ -284,7 +385,7 @@ public class SummonersServiceHandler extends BaseRetrofitServiceClass<RetrofitSu
     }
 
     @Override
-    public void getSummonerRunePages(final List<String> summonerIds, ServiceResponseListener<Map<String, RunePages>> listener) {
+    public void getSummonersRunePages(final List<String> summonerIds, ServiceResponseListener<Map<String, RunePages>> listener) {
         BaseServiceAsyncTask<Map<String, RunePages>> task = new BaseServiceAsyncTask<Map<String, RunePages>>(listener) {
             @Override
             protected Object doInBackground(Void... params) {

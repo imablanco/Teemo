@@ -12,12 +12,19 @@ import com.ablanco.teemo.model.staticdata.LanguageStringsDto;
 import com.ablanco.teemo.model.staticdata.MapDataDto;
 import com.ablanco.teemo.model.staticdata.MasteryDto;
 import com.ablanco.teemo.model.staticdata.MasteryListDto;
+import com.ablanco.teemo.model.staticdata.RealmDto;
+import com.ablanco.teemo.model.staticdata.RuneDto;
+import com.ablanco.teemo.model.staticdata.RuneListDto;
+import com.ablanco.teemo.model.staticdata.SummonerSpellDto;
+import com.ablanco.teemo.model.staticdata.SummonerSpellListDto;
 import com.ablanco.teemo.persistence.languages.LanguageStringDAO;
 import com.ablanco.teemo.service.base.BaseRetrofitServiceClass;
 import com.ablanco.teemo.service.base.BaseServiceAsyncTask;
 import com.ablanco.teemo.service.base.ServiceResponseListener;
 import com.ablanco.teemo.service.interfaces.StaticDataServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitStaticDataServiceHandler;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -115,14 +122,14 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
     }
 
     @Override
-    public void getItemById(final Integer id, final String locale, final String version, final String itemListData, ServiceResponseListener<ItemDto> listener) {
+    public void getItemById(final Integer id, final String locale, final String version, final String itemData, ServiceResponseListener<ItemDto> listener) {
         BaseServiceAsyncTask<ItemDto> task = new BaseServiceAsyncTask<ItemDto>(listener) {
             @Override
             protected Object doInBackground(Void... params) {
 
                 try {
 
-                    Call<ItemDto> call = mHandler.getItemById(APIConfigurationContext.REGION, id, locale, version, itemListData);
+                    Call<ItemDto> call = mHandler.getItemById(APIConfigurationContext.REGION, id, locale, version, itemData);
                     final Response<ItemDto> response = call.execute();
 
                     if (response.isSuccessful()) {
@@ -247,6 +254,168 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
 
                     Call<MasteryDto> call = mHandler.getMasteryById(APIConfigurationContext.REGION, id, locale, version, masteryData);
                     final Response<MasteryDto> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    @Override
+    public void getRealms(ServiceResponseListener<RealmDto> listener) {
+        BaseServiceAsyncTask<RealmDto> task = new BaseServiceAsyncTask<RealmDto>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+
+                    Call<RealmDto> call = mHandler.getRealms(APIConfigurationContext.REGION);
+                    final Response<RealmDto> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    @Override
+    public void getRunes(final String locale, final String version, final String runeListData, ServiceResponseListener<RuneListDto> listener) {
+        BaseServiceAsyncTask<RuneListDto> task = new BaseServiceAsyncTask<RuneListDto>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+
+                    Call<RuneListDto> call = mHandler.getRunes(APIConfigurationContext.REGION, locale, version, runeListData);
+                    final Response<RuneListDto> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    @Override
+    public void getRuneById(final Integer id, final String locale, final String version, final String runeData, ServiceResponseListener<RuneDto> listener) {
+        BaseServiceAsyncTask<RuneDto> task = new BaseServiceAsyncTask<RuneDto>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+
+                    Call<RuneDto> call = mHandler.getRuneById(APIConfigurationContext.REGION, id, locale, version, runeData);
+                    final Response<RuneDto> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    @Override
+    public void getSummonerSpells(final String locale, final String version, final Boolean dataById, final String spellData, ServiceResponseListener<SummonerSpellListDto> listener) {
+        BaseServiceAsyncTask<SummonerSpellListDto> task = new BaseServiceAsyncTask<SummonerSpellListDto>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+
+                    Call<SummonerSpellListDto> call = mHandler.getSummonerSpells(APIConfigurationContext.REGION, locale, version, dataById, spellData);
+                    final Response<SummonerSpellListDto> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    @Override
+    public void getSummonerSpell(final Integer id, final String locale, final String version, final String spellData, ServiceResponseListener<SummonerSpellDto> listener) {
+        BaseServiceAsyncTask<SummonerSpellDto> task = new BaseServiceAsyncTask<SummonerSpellDto>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+
+                    Call<SummonerSpellDto> call = mHandler.getSummonerSpellById(APIConfigurationContext.REGION, id,locale, version, spellData);
+                    final Response<SummonerSpellDto> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    @Override
+    public void getVersions(ServiceResponseListener<List<String>> listener) {
+        BaseServiceAsyncTask<List<String>> task = new BaseServiceAsyncTask<List<String>>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+
+                    Call<List<String>> call = mHandler.getVersions(APIConfigurationContext.REGION);
+                    final Response<List<String>> response = call.execute();
 
                     if (response.isSuccessful()) {
                         return response.body();

@@ -31,7 +31,7 @@ public class DBHelper {
     public static final long REFRESH_FREQUENCY_HALF_HOUR = 1800000;
     public static final long REFRESH_FREQUENCY_HOUR = 3600000;
     public static final long REFRESH_FREQUENCY_DAY = 86400000;
-    public static final long REFRESH_FREQUENCY_NEVER = 2592000000l;
+    public static final long REFRESH_FREQUENCY_NEVER = 2592000000L;
 
     /**
      * Remove all the objects from the given table

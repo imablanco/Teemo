@@ -4,6 +4,8 @@ import com.ablanco.teemo.model.summoners.Summoner;
 import com.ablanco.teemo.persistence.base.BaseDAO;
 import com.ablanco.teemo.persistence.base.DBHelper;
 
+import java.util.List;
+
 /**
  * Created by Álvaro Blanco Cabrero on 24/3/16
  * Teemo
@@ -22,5 +24,10 @@ public class SummonerDAO extends BaseDAO<Summoner> {
 
     public Summoner findById(long id){
         return findFirst("id = ?", new String[]{String.valueOf(id)}, null, null);
+    }
+
+    public List<Summoner> findBySuggestion(String suggestion){
+        String suggestionFormatted = "%".concat(suggestion).concat("%");
+        return find("name LIKE ?", new String[]{suggestionFormatted}, null, null);
     }
 }

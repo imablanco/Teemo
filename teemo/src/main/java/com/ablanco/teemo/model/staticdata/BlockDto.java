@@ -11,7 +11,7 @@ import java.util.List;
 public class BlockDto extends BaseObject {
 
     private List<BlockItemDto> items;
-    private Boolean recMatch;
+    private Boolean recMath;
     private String type;
 
     public List<BlockItemDto> getItems() {
@@ -22,12 +22,12 @@ public class BlockDto extends BaseObject {
         this.items = items;
     }
 
-    public Boolean getRecMatch() {
-        return recMatch;
+    public Boolean getRecMath() {
+        return recMath;
     }
 
-    public void setRecMatch(Boolean recMatch) {
-        this.recMatch = recMatch;
+    public void setRecMath(Boolean recMath) {
+        this.recMath = recMath;
     }
 
     public String getType() {

@@ -71,6 +71,56 @@ public class StaticAPIQueryParams {
         public static final String tree = "tree";
     }
 
+    /**
+     * Rune API
+     */
+    public class Runes{
+        public static final String all = "all";
+        public static final String basic = "basic";
+        public static final String colloq = "colloq";
+        public static final String consumeOnFull = "consumeOnFull";
+        public static final String consumed = "consumed";
+        public static final String depth = "depth";
+        public static final String from = "from";
+        public static final String gold = "gold";
+        public static final String hideFromAll = "hideFromAll";
+        public static final String image = "image";
+        public static final String inStore = "inStore";
+        public static final String into = "into";
+        public static final String requiredChampion = "requiredChampion";
+        public static final String sanitizedDescription = "sanitizedDescription";
+        public static final String specialRecipe = "specialRecipe";
+        public static final String stacks = "stacks";
+        public static final String stats = "stats";
+        public static final String tags = "tags";
+    }
+
+    /**
+     * SummonerSpells API
+     */
+    public class SummonerSpells{
+        public static final String all = "all";
+        public static final String cooldown = "cooldown";
+        public static final String cooldownBurn = "cooldownBurn";
+        public static final String cost = "cost";
+        public static final String costBurn = "costBurn";
+        public static final String costType = "costType";
+        public static final String effect = "effect";
+        public static final String effectBurn = "effectBurn";
+        public static final String hideFromAll = "hideFromAll";
+        public static final String image = "image";
+        public static final String key = "key";
+        public static final String leveltip = "leveltip";
+        public static final String maxrank = "maxrank";
+        public static final String range = "range";
+        public static final String rangeBurn = "rangeBurn";
+        public static final String resource = "resource";
+        public static final String sanitizedDescription = "sanitizedDescription";
+        public static final String sanitizedTooltip = "sanitizedTooltip";
+        public static final String tooltip = "tooltip";
+        public static final String vars = "vars";
+    }
+
 
     public static class StaticQueryParamsBuilder{
 

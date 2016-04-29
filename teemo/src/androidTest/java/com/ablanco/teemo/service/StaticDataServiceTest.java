@@ -126,7 +126,7 @@ public class StaticDataServiceTest extends BaseServiceTest {
 
         try {
 
-            Teemo.getInstance(getContext()).getStaticDataHandler().getLanguages("es_ES",null, new ServiceResponseListener<LanguageStringsDto>() {
+            Teemo.getInstance(getContext()).getStaticDataHandler().getStringsLanguages("es_ES",null, new ServiceResponseListener<LanguageStringsDto>() {
                 @Override
                 public void onResponse(LanguageStringsDto response) {
                     assertTrue(response != null);

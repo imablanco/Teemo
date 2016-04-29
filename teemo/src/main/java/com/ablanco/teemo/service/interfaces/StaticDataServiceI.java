@@ -68,7 +68,10 @@ public interface StaticDataServiceI {
      * @param locale Locale code for returned data (e.g., en_US, es_ES). If not specified, the default locale for the region is used.
      * @param version Data dragon version for returned data. If not specified, the latest version for the region is used. List of valid versions can be obtained from the /versions endpoint.
      */
-    void getLanguages(String locale, String version, ServiceResponseListener<LanguageStringsDto> listener);
+    void getStringsLanguages(String locale, String version, ServiceResponseListener<LanguageStringsDto> listener);
+
+
+    void getAvailableLanguages(ServiceResponseListener<List<String>> listener);
 
     /**
      * Retrieve map data

@@ -48,7 +48,7 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
 
                 try {
 
-                    Call<ChampionListDto> call = mHandler.getChampions(APIConfigurationContext.REGION,locale, version, dataById, champData);
+                    Call<ChampionListDto> call = mHandler.getChampions(APIConfigurationContext.REGION, locale, version, dataById, champData);
                     final Response<ChampionListDto> response = call.execute();
 
                     if (response.isSuccessful()) {
@@ -75,7 +75,7 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
 
                 try {
 
-                    Call<ChampionDto> call = mHandler.getChampionById(APIConfigurationContext.REGION, id,locale, version, champData);
+                    Call<ChampionDto> call = mHandler.getChampionById(APIConfigurationContext.REGION, id, locale, version, champData);
                     final Response<ChampionDto> response = call.execute();
 
                     if (response.isSuccessful()) {
@@ -149,7 +149,7 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
     }
 
     @Override
-    public void getLanguages(final String locale, final String version, ServiceResponseListener<LanguageStringsDto> listener) {
+    public void getStringsLanguages(final String locale, final String version, ServiceResponseListener<LanguageStringsDto> listener) {
 
         BaseServiceAsyncTask<LanguageStringsDto> task = new BaseServiceAsyncTask<LanguageStringsDto>(listener) {
             @Override
@@ -160,11 +160,11 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
                     LanguageStringDAO languageStringDAO = new LanguageStringDAO();
                     LanguageStringsDto cache = languageStringDAO.findByLocale(locale);
 
-                    if(cache != null && languageStringDAO.hasExpired(cache)){
+                    if (cache != null && languageStringDAO.hasExpired(cache)) {
                         return cache;
-                    }else {
+                    } else {
 
-                        if(cache != null){
+                        if (cache != null) {
                             languageStringDAO.delete(cache);
                         }
 
@@ -188,6 +188,31 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
 
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
+    }
+
+    @Override
+    public void getAvailableLanguages(ServiceResponseListener<List<String>> listener) {
+        BaseServiceAsyncTask<List<String>> task = new BaseServiceAsyncTask<List<String>>(listener) {
+            @Override
+            protected Object doInBackground(Void... params) {
+
+                try {
+                    Call<List<String>> call = mHandler.getLanguages(APIConfigurationContext.REGION);
+                    final Response<List<String>> response = call.execute();
+
+                    if (response.isSuccessful()) {
+                        return response.body();
+                    } else {
+                        return new TeemoException(response);
+                    }
+
+                } catch (Exception e) {
+                    return new TeemoException(e);
+                }
+            }
+        };
+
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
@@ -387,7 +412,7 @@ public class StaticDataServiceHandler extends BaseRetrofitServiceClass<RetrofitS
 
                 try {
 
-                    Call<SummonerSpellDto> call = mHandler.getSummonerSpellById(APIConfigurationContext.REGION, id,locale, version, spellData);
+                    Call<SummonerSpellDto> call = mHandler.getSummonerSpellById(APIConfigurationContext.REGION, id, locale, version, spellData);
                     final Response<SummonerSpellDto> response = call.execute();
 
                     if (response.isSuccessful()) {

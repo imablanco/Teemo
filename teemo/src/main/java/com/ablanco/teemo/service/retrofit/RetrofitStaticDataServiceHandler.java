@@ -60,6 +60,9 @@ public interface RetrofitStaticDataServiceHandler {
                                                 @Query("locale") String locale,
                                                 @Query("version") String version);
 
+    @GET("api/lol/static-data/{region}/v1.2/languages")
+    Call<List<String>> getLanguages(@Path("region") String region);
+
     @GET("api/lol/static-data/{region}/v1.2/map")
     Call<MapDataDto> getMapData(@Path("region") String region,
                                 @Query("locale") String locale,

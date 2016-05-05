@@ -20,7 +20,7 @@ public class MatchDetailDAO extends BaseDAO<MatchDetail> {
 
     public MatchDetailDAO() {
         super(MatchDetail.class);
-        expirationTime = DBHelper.REFRESH_FREQUENCY_MINUTE;
+        expirationTime = DBHelper.REFRESH_FREQUENCY_NEVER;
     }
 
     public long save(MatchDetail object, Boolean includeTimeline) {

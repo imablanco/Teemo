@@ -7,5 +7,5 @@ package com.ablanco.teemo.constants;
 public class TeamID {
 
     public final static int BLUE_TEAM = 100;
-    public final static int BURPLE_TEAM = 200;
+    public final static int PURPLE_TEAM = 200;
 }

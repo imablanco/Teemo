@@ -55,6 +55,7 @@ public class AggregatedStats extends BaseObject {
     private Integer totalNeutralMinionsKilled;
     private Integer totalNodeCapture;
     private Integer totalNodeNeutralize;
+    private Integer totalPentaKills;
     private Integer totalPhysicalDamageDealt;
     private Integer totalQuadraKills;
     private Integer totalSessionsLost;
@@ -439,6 +440,14 @@ public class AggregatedStats extends BaseObject {
 
     public void setTotalNodeNeutralize(Integer totalNodeNeutralize) {
         this.totalNodeNeutralize = totalNodeNeutralize;
+    }
+
+    public Integer getTotalPentaKills() {
+        return totalPentaKills;
+    }
+
+    public void setTotalPentaKills(Integer totalPentaKills) {
+        this.totalPentaKills = totalPentaKills;
     }
 
     public Integer getTotalPhysicalDamageDealt() {

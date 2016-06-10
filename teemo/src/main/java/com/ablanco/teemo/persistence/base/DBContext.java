@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ablanco.teemo.persistence.championmastery.ChampionMasteryDtoDAO;
 import com.ablanco.teemo.persistence.champions.ChampionDAO;
 import com.ablanco.teemo.persistence.champions.ChampionListDAO;
 import com.ablanco.teemo.persistence.common.BannedChampionDAO;
@@ -68,7 +69,7 @@ import com.ablanco.teemo.persistence.teams.TeamStatDetailDAO;
 public class DBContext extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Teemo";
-    private static final int DB_VERSION = 9;
+    private static final int DB_VERSION = 10;
 
     /**
      * Singleton
@@ -141,6 +142,7 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new TimelineDAO().createTable());
         sqLiteDatabase.execSQL(new MatchTeamDAO().createTable());
         sqLiteDatabase.execSQL(new LanguageStringDAO().createTable());
+        sqLiteDatabase.execSQL(new ChampionMasteryDtoDAO().createTable());
 
     }
 
@@ -204,6 +206,7 @@ public class DBContext extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(new TimelineDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new MatchTeamDAO().upgradeTable(oldVersion, newVersion));
         sqLiteDatabase.execSQL(new LanguageStringDAO().upgradeTable(oldVersion, newVersion));
+        sqLiteDatabase.execSQL(new ChampionMasteryDtoDAO().upgradeTable(oldVersion, newVersion));
 
         // re create database
         onCreate(sqLiteDatabase);
@@ -296,6 +299,7 @@ public class DBContext extends SQLiteOpenHelper {
         new PositionDAO().clearTable();
         new TimelineDAO().clearTable();
         new LanguageStringDAO().clearTable();
+        new ChampionMasteryDtoDAO().clearTable();
 
     }//clearDb
 

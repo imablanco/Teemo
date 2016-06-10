@@ -50,6 +50,8 @@ public class TeamsServiceHandler extends BaseRetrofitServiceClass<RetrofitTeamsS
                         teams = dao.findBySummonerId(summonerId);
                         if (!teams.isEmpty() && !dao.hasExpired(teams)) {
                             cache.put(summonerId, teams);
+                        }else {
+                            dao.deleteAll(teams);
                         }
                     }
 

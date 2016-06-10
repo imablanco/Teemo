@@ -1,7 +1,6 @@
 package com.ablanco.teemo.model.staticdata;
 
 import com.ablanco.teemo.model.BaseObject;
-import com.ablanco.teemo.model.summoners.Mastery;
 
 import java.util.Map;
 
@@ -10,16 +9,16 @@ import java.util.Map;
  * Teemo
  */
 public class MasteryListDto extends BaseObject {
-    private Map<String, Mastery> data;
+    private Map<String, MasteryDto> data;
     private MasteryTreeDto tree;
     private String type, version;
 
 
-    public Map<String, Mastery> getData() {
+    public Map<String, MasteryDto> getData() {
         return data;
     }
 
-    public void setData(Map<String, Mastery> data) {
+    public void setData(Map<String, MasteryDto> data) {
         this.data = data;
     }
 

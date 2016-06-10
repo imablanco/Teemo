@@ -1,7 +1,6 @@
 package com.ablanco.teemo.model.staticdata;
 
 import com.ablanco.teemo.model.BaseObject;
-import com.ablanco.teemo.model.currentgames.Rune;
 
 import java.util.Map;
 
@@ -12,7 +11,7 @@ import java.util.Map;
 public class RuneListDto extends BaseObject {
 
     private BasicDataDto basic;
-    private Map<String, Rune> data;
+    private Map<String, RuneDto> data;
 
     private String type, version;
 
@@ -24,11 +23,11 @@ public class RuneListDto extends BaseObject {
         this.basic = basic;
     }
 
-    public Map<String, Rune> getData() {
+    public Map<String, RuneDto> getData() {
         return data;
     }
 
-    public void setData(Map<String, Rune> data) {
+    public void setData(Map<String, RuneDto> data) {
         this.data = data;
     }
 

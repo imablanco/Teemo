@@ -51,13 +51,14 @@ public class LeaguesServiceHandler extends BaseRetrofitServiceClass<RetrofitLeag
                         leagues = dao.findBySummonerOrTeamIdAndOnlyEntry(summonerId, onlyEntry);
                         if (!leagues.isEmpty() && !dao.hasExpired(leagues)) {
                             cache.put(summonerId, leagues);
+                        }else {
+                            dao.deleteAll(leagues);
                         }
                     }
 
                     if (cache.size() == summoners.size()) {
                         return cache;
                     } else if (!RateLimiter.getInstance().isLimited()) {
-
 
                         for (List<League> leagueList : cache.values()) {
                             dao.deleteAll(leagueList);
@@ -123,6 +124,8 @@ public class LeaguesServiceHandler extends BaseRetrofitServiceClass<RetrofitLeag
                         leagues = dao.findBySummonerOrTeamIdAndOnlyEntry(teamId, onlyEntry);
                         if (!leagues.isEmpty() && !dao.hasExpired(leagues)) {
                             cache.put(teamId, leagues);
+                        }else{
+                            dao.deleteAll(leagues);
                         }
                     }
 

@@ -18,7 +18,7 @@ public class ImageUris {
     public final static String CHAMPION_ABILITY_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/spell/{0}";
     public final static String SUMMONER_SPELL_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/spell/{0}";
     public final static String ITEM_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/item/{0}.png";
-    public final static String MASTERY_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/mastery/{0}.png";
+    public final static String MASTERY_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/mastery/{0}";
     public final static String RUNE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/rune/{0}";
     public final static String SPRITE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/sprite/{0}";
     public final static String MAP_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/{2}/img/map/map{0}.png";

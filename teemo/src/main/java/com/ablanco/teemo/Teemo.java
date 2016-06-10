@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.ablanco.teemo.persistence.base.DBContext;
 import com.ablanco.teemo.service.base.ServiceGenerator;
+import com.ablanco.teemo.service.handlers.ChampionMasteryServiceHandler;
 import com.ablanco.teemo.service.handlers.ChampionsServiceHandler;
 import com.ablanco.teemo.service.handlers.CurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.handlers.FeaturedGamesServiceHandler;
@@ -19,6 +20,7 @@ import com.ablanco.teemo.service.handlers.StatusServiceHandler;
 import com.ablanco.teemo.service.handlers.StatsServiceHandler;
 import com.ablanco.teemo.service.handlers.SummonersServiceHandler;
 import com.ablanco.teemo.service.handlers.TeamsServiceHandler;
+import com.ablanco.teemo.service.interfaces.ChampionMasteryServiceI;
 import com.ablanco.teemo.service.interfaces.ChampionsServiceI;
 import com.ablanco.teemo.service.interfaces.CurrentGameInfoServiceI;
 import com.ablanco.teemo.service.interfaces.FeaturedGamesServiceI;
@@ -31,6 +33,7 @@ import com.ablanco.teemo.service.interfaces.StatusServiceI;
 import com.ablanco.teemo.service.interfaces.StatsServiceI;
 import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.interfaces.TeamsServiceI;
+import com.ablanco.teemo.service.retrofit.RetrofitChampionMasteryServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionsServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitCurrentGameInfoServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitFeaturedGamesServiceHandler;
@@ -60,8 +63,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class Teemo {
 
-    private final String TAG = getClass().getSimpleName();
-
     private final static String API_KEY_PARAM = "api_key";
     private final static String META_DATA_API_KEY = "com.ablanco.teemo.apikey";
 
@@ -79,6 +80,7 @@ public class Teemo {
     private MatchesServiceI mMatchesHandler;
     private StatusServiceI mStatusHandler;
     private StaticDataServiceI mStaticDataHandler;
+    private ChampionMasteryServiceI mChampionMasteryHandler;
 
     private Converter.Factory converterFactory =  GsonConverterFactory.create();
 
@@ -191,6 +193,7 @@ public class Teemo {
         mSummonersHandler = new SummonersServiceHandler(serviceGenerator.createService(RetrofitSummonerServiceHandler.class));
         mMatchListHandler = new MatchListServiceHandler(serviceGenerator.createService(RetrofitMatchListServiceHandler.class));
         mMatchesHandler = new MatchesServiceHandler(serviceGenerator.createService(RetrofitMatchesServiceHandler.class));
+        mChampionMasteryHandler = new ChampionMasteryServiceHandler(serviceGenerator.createService(RetrofitChampionMasteryServiceHandler.class));
     }
 
     private void checkRegion(){
@@ -252,6 +255,11 @@ public class Teemo {
     public StaticDataServiceI getStaticDataHandler(){
         checkRegion();
         return mStaticDataHandler;
+    }
+
+    public ChampionMasteryServiceI getChampionMasteryHandler(){
+        checkRegion();
+        return mChampionMasteryHandler;
     }
 
     public StatusServiceI getStatusHandler(){

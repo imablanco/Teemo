@@ -10,29 +10,29 @@ import java.util.List;
  */
 public class MasteryTreeDto extends BaseObject {
 
-    private List<MasteryTreeListDto> Defense, Offense, Utility;
+    private List<MasteryTreeListDto> Cunning, Ferocity, Resolve;
 
-    public List<MasteryTreeListDto> getDefense() {
-        return Defense;
+    public List<MasteryTreeListDto> getCunning() {
+        return Cunning;
     }
 
-    public void setDefense(List<MasteryTreeListDto> defense) {
-        Defense = defense;
+    public void setCunning(List<MasteryTreeListDto> cunning) {
+        Cunning = cunning;
     }
 
-    public List<MasteryTreeListDto> getOffense() {
-        return Offense;
+    public List<MasteryTreeListDto> getFerocity() {
+        return Ferocity;
     }
 
-    public void setOffense(List<MasteryTreeListDto> offense) {
-        Offense = offense;
+    public void setFerocity(List<MasteryTreeListDto> ferocity) {
+        Ferocity = ferocity;
     }
 
-    public List<MasteryTreeListDto> getUtility() {
-        return Utility;
+    public List<MasteryTreeListDto> getResolve() {
+        return Resolve;
     }
 
-    public void setUtility(List<MasteryTreeListDto> utility) {
-        Utility = utility;
+    public void setResolve(List<MasteryTreeListDto> resolve) {
+        Resolve = resolve;
     }
 }

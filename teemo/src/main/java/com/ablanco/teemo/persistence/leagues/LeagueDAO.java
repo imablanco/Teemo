@@ -67,5 +67,10 @@ public class LeagueDAO extends BaseDAO<League> {
         return find("summonerOrTeamId LIKE ? AND onlyEntry = ?", new String[]{summonerId, String.valueOf(convertedValue)}, null, null);
     }
 
+    public League findFirstBySummonerOrTeamIdAndOnlyEntry(String summonerId, boolean onlyEntry){
+        int convertedValue = onlyEntry ? 1 : 0;
+        return findFirst("summonerOrTeamId LIKE ? AND onlyEntry = ?", new String[]{summonerId, String.valueOf(convertedValue)}, null, null);
+    }
+
     // TODO: 23/3/16 future findByTier save manually tier(as it dont comes in the call) and dont save summonerId, that could be the searchCriteria
 }

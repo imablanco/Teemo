@@ -188,7 +188,7 @@ public class SummonersServiceHandler extends BaseRetrofitServiceClass<RetrofitSu
         getSummonersByNames(Collections.singletonList(summonerName), new ServiceResponseListener<Map<String, Summoner>>() {
             @Override
             public void onResponse(Map<String, Summoner> response) {
-                if (response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().equalsIgnoreCase(summonerName)) {
+                if (response.size() == 1 && response.values().iterator().hasNext() && response.keySet().iterator().hasNext() && response.keySet().iterator().next().replaceAll("\\s+","").equalsIgnoreCase(summonerName.replaceAll("\\s+",""))) {
                     listener.onResponse(response.entrySet().iterator().next().getValue());
                 } else {
                     listener.onError(new TeemoException(TeemoException.CODE_NOT_FOUND));

@@ -13,7 +13,7 @@ public class Message extends BaseObject {
     private String author;
     private String content;
     private String created_at;
-    private Long id;
+    private String id;
     private String severity;
     private List<Translation> translations;
     private String updated_at;
@@ -42,11 +42,11 @@ public class Message extends BaseObject {
         this.created_at = created_at;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

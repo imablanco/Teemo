@@ -27,7 +27,7 @@ public class SummonerDAO extends BaseDAO<Summoner> {
     }
 
     public List<Summoner> findBySuggestion(String suggestion){
-        String suggestionFormatted = "%".concat(suggestion).concat("%");
+        String suggestionFormatted = suggestion.concat("%");
         return find("name LIKE ?", new String[]{suggestionFormatted}, null, null);
     }
 }

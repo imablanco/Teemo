@@ -1,9 +1,6 @@
 package com.ablanco.teemo;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
 
 import com.ablanco.teemo.persistence.base.DBContext;
 import com.ablanco.teemo.service.base.ServiceGenerator;
@@ -16,8 +13,8 @@ import com.ablanco.teemo.service.handlers.LeaguesServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchListServiceHandler;
 import com.ablanco.teemo.service.handlers.MatchesServiceHandler;
 import com.ablanco.teemo.service.handlers.StaticDataServiceHandler;
-import com.ablanco.teemo.service.handlers.StatusServiceHandler;
 import com.ablanco.teemo.service.handlers.StatsServiceHandler;
+import com.ablanco.teemo.service.handlers.StatusServiceHandler;
 import com.ablanco.teemo.service.handlers.SummonersServiceHandler;
 import com.ablanco.teemo.service.handlers.TeamsServiceHandler;
 import com.ablanco.teemo.service.interfaces.ChampionMasteryServiceI;
@@ -29,8 +26,8 @@ import com.ablanco.teemo.service.interfaces.LeaguesServiceI;
 import com.ablanco.teemo.service.interfaces.MatchListServiceI;
 import com.ablanco.teemo.service.interfaces.MatchesServiceI;
 import com.ablanco.teemo.service.interfaces.StaticDataServiceI;
-import com.ablanco.teemo.service.interfaces.StatusServiceI;
 import com.ablanco.teemo.service.interfaces.StatsServiceI;
+import com.ablanco.teemo.service.interfaces.StatusServiceI;
 import com.ablanco.teemo.service.interfaces.SummonerServiceI;
 import com.ablanco.teemo.service.interfaces.TeamsServiceI;
 import com.ablanco.teemo.service.retrofit.RetrofitChampionMasteryServiceHandler;
@@ -42,8 +39,8 @@ import com.ablanco.teemo.service.retrofit.RetrofitLeaguesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchListServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitMatchesServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitStaticDataServiceHandler;
-import com.ablanco.teemo.service.retrofit.RetrofitStatusServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitStatsServiceHandler;
+import com.ablanco.teemo.service.retrofit.RetrofitStatusServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitSummonerServiceHandler;
 import com.ablanco.teemo.service.retrofit.RetrofitTeamsServiceHandler;
 
@@ -64,7 +61,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Teemo {
 
     private final static String API_KEY_PARAM = "api_key";
-    private final static String META_DATA_API_KEY = "com.ablanco.teemo.apikey";
 
     private static Teemo mInstance;
 
@@ -105,12 +101,8 @@ public class Teemo {
     }
 
 
-    public static void setArmedAndReady(Context context){
-        mInstance = new Teemo(context,null,null);
-    }
-
-    public static void setArmedAndReady(Context context, String region){
-        mInstance = new Teemo(context,null,region);
+    public static void setArmedAndReady(Context context, String apiKey){
+        mInstance = new Teemo(context,apiKey,null);
     }
 
     public static void setArmedAndReady(Context context, String apiKey, String region){
@@ -121,15 +113,9 @@ public class Teemo {
 
 
         if(apiKey == null){
-            try {
-                ApplicationInfo ai = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
-                Bundle bundle = ai.metaData;
-                apiKey = bundle.getString(META_DATA_API_KEY);
-            } catch (PackageManager.NameNotFoundException | NullPointerException e) {
-                throw new IllegalStateException("");
-            }
+            throw new IllegalStateException("API key can not be null");
         }
-
+        
         APIConfigurationContext.API_KEY = apiKey;
         APIConfigurationContext.setRegion(region);
 

@@ -12,7 +12,7 @@ public class ConfigurationTest extends AndroidTestCase {
 
     public void testNoApiKeyError(){
         try {
-            Teemo.setArmedAndReady(getContext());
+            Teemo.setArmedAndReady(getContext(), null);
             assertTrue(false);
         }catch (IllegalStateException e){
             assertTrue(true);
